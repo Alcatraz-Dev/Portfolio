@@ -1,0 +1,46 @@
+.toggle {
+    @apply absolute inline-flex  justify-end lg:ml-32 xl:ml-60 border-[none] top-0 print:hidden;
+    --background-color: white;
+    --text-color: black;
+    --switch-background-color: #3300857e;
+    --dot-color: rgba(255, 255, 255, 0.658);
+    font-family: sans-serif;
+    transform: scale(var(--scale, 1)) translateZ(0);
+    /* Hide theme toggle button on small screens, it won’t change anything visible */
+  }
+  .toggle:active {
+    --scale: 0.96;
+  }
+  .toggle label {
+    @apply flex justify-end  cursor-pointer mt-[18px] p-4 rounded-[9px] ;
+  }
+  .toggle label span {
+    @apply leading-[22px] text-base text-[color:var(--text-color)] ml-3;
+    font-family: var(--header-font);
+  }
+  @media (max-width: 1020px) {
+    .toggle.hideOnSmallScreens {
+      @apply hidden;
+    }
+  }
+  .input {
+    @apply hidden;
+  }
+  .input:checked + label {
+    --offset: 18px;
+    --text-color: white;
+    --background-color: #7f7f7f;
+    --switch-background-color: #ffe100e5;
+  }
+  .input:checked + label > div::after {
+    @apply content-["🌤"]  right-auto left-1;
+  }
+  .switchDiv {
+    @apply relative align-top h-[22px] w-10 transition-[background-color] duration-[0.4s] rounded-[11px] after:content-["🌙"] after:block after:absolute after:z-[8] after:text-xs after:leading-[23px] after:right-[3px];
+    background: var(--switch-background-color);
+  }
+  .dot {
+    @apply absolute z-10 w-6 h-6 translate-x-[var(--offset,0)] transition-transform duration-[0.4s] rounded-[50%] -left-px -top-px;
+    background: var(--dot-color);
+  }
+  

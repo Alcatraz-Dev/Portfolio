@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -16,12 +18,186 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer components {
+  .section {
+    @apply py-8 px-4 ml-6 mr-6;
+  }
+  .text-gredient-one {
+    @apply font-bold text-transparent text-5xl bg-clip-text bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-yellow-200 via-emerald-200 to-yellow-200;
+  }
+  .text-gredient-tow {
+    @apply font-bold text-transparent text-5xl bg-clip-text bg-gradient-to-r from-green-300 via-green-400 to-green-500;
+  }
+  .text-gredient-three {
+    @apply font-bold text-transparent text-5xl bg-clip-text bg-gradient-to-r from-rose-400 to-orange-300;
+  }
+  .text-gredient-about {
+    @apply font-bold text-transparent  bg-clip-text bg-gradient-to-r from-blue-500 to-teal-500 text-5xl;
+  }
+  .text-gredient-project {
+    @apply font-bold text-transparent  bg-clip-text bg-gradient-to-r from-[#ffb95c] to-[#d24600] text-5xl;
+  }
+  .text-gredient-video {
+    @apply font-bold text-transparent  bg-clip-text bg-gradient-to-r from-[#8e61ae] to-[#ff3131] text-5xl;
+  }
+  .text-gredient-blog {
+    @apply font-bold text-transparent  bg-clip-text bg-gradient-to-r from-[#30bfac] to-[#041860] text-5xl;
+  }
+  .text-gredient-contact {
+    @apply font-bold text-transparent  bg-clip-text bg-gradient-to-r from-[#ffa57f] to-[#950c0c] text-5xl;
+  }
+  .text-gredient-community {
+    @apply font-bold text-transparent  bg-clip-text bg-gradient-to-r from-[#a3d163] to-[#008dc0] text-5xl;
+  }
+  .button {
+    @apply px-4 py-3 rounded-full bg-gradient-to-r from-cyan-500 to-cyan-400 hover:bg-gradient-to-r hover:from-cyan-300 hover:to-cyan-500
+     text-white font-mono w-40 text-lg shadow-md hover:scale-105 hover:duration-300 hover:transition-transform hover:ease-in-out my-5;
+  }
+
+  /*
+  Based on TailwindCSS recommendations,
+  consider using classes instead of the `@apply` directive
+  @see https://tailwindcss.com/docs/reusing-styles#avoiding-premature-abstraction
+*/
+  .parent {
+    @apply w-[290px] h-[300px];
+    perspective: 1000px;
+  }
+  .card {
+    @apply h-full transition-all duration-[0.5s] ease-[ease-in-out] shadow-[rgba(5,71,17,0)_40px_50px_25px_-40px,rgba(5,71,17,0.2)_0px_25px_25px_-5px] rounded-[50px];
+    background: linear-gradient(
+      135deg,
+      rgb(0, 255, 214) 0%,
+      rgb(8, 226, 96) 100%
+    );
+    transform-style: preserve-3d;
+  }
+  .glass {
+    @apply absolute transition-all duration-[0.5s] ease-[ease-in-out] rounded-tr-[100%] rounded-[55px] border-l-[white] border-b-[white] border-l border-solid border-b inset-2;
+    transform-style: preserve-3d;
+    background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.349) 0%,
+      rgba(255, 255, 255, 0.815) 100%
+    );
+    /* -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px); */
+    transform: translate3d(0px, 0px, 25px);
+  }
+  .content {
+    @apply pl-[30px] pr-[60px] pt-[100px] pb-0;
+    transform: translate3d(0, 0, 26px);
+  }
+  .content .title {
+    @apply block text-[#00894d] font-black text-xl;
+  }
+  .content .text {
+    @apply block text-[rgba(0,137,78,0.7647058824)] text-[15px] mt-5;
+  }
+  .bottom {
+    @apply absolute flex items-center justify-between px-3 py-2.5 bottom-5 inset-x-5;
+    transform-style: preserve-3d;
+    transform: translate3d(0, 0, 26px);
+  }
+  .bottom .view-more {
+    @apply flex items-center w-2/5 justify-end transition-all duration-[0.2s] ease-[ease-in-out];
+  }
+  .bottom .view-more:hover {
+    transform: translate3d(0, 0, 10px);
+  }
+  .bottom .view-more .view-more-button {
+    @apply text-[#00c37b] font-[bolder] text-xs border-[none];
+    background: none;
+  }
+  .bottom .view-more .svg {
+    @apply fill-none stroke-[#00c37b] stroke-[3px] max-h-[15px];
+  }
+  .bottom .social-buttons-container {
+    @apply flex gap-2.5;
+    transform-style: preserve-3d;
+  }
+  .bottom .social-buttons-container .social-button {
+    @apply w-[30px] aspect-[1] grid place-content-center shadow-[rgba(5,71,17,0.5)_0px_7px_5px_-5px] p-[5px] rounded-[50%] border-[none];
+    background: rgb(255, 255, 255);
+  }
+  .bottom .social-buttons-container .social-button:first-child {
+    transition: transform 0.2s ease-in-out 0.4s,
+      box-shadow 0.2s ease-in-out 0.4s;
+  }
+  .bottom .social-buttons-container .social-button:nth-child(2) {
+    transition: transform 0.2s ease-in-out 0.6s,
+      box-shadow 0.2s ease-in-out 0.6s;
+  }
+  .bottom .social-buttons-container .social-button:nth-child(3) {
+    transition: transform 0.2s ease-in-out 0.8s,
+      box-shadow 0.2s ease-in-out 0.8s;
+  }
+  .bottom .social-buttons-container .social-button .svg {
+    @apply w-[15px] fill-[#00894d];
+  }
+  .bottom .social-buttons-container .social-button:hover {
+    background: black;
+  }
+  .bottom .social-buttons-container .social-button:hover .svg {
+    @apply fill-[white];
+  }
+  .bottom .social-buttons-container .social-button:active {
+    background: rgb(255, 234, 0);
+  }
+  .bottom .social-buttons-container .social-button:active .svg {
+    @apply fill-[black];
+  }
+  .logo {
+    @apply absolute right-0 top-0;
+    transform-style: preserve-3d;
+  }
+  .logo .circle {
+    @apply block absolute aspect-[1] shadow-[rgba(100,100,111,0.2)_-10px_10px_20px_0px] backdrop-blur-[5px] transition-all duration-[0.5s] ease-[ease-in-out] rounded-[50%] right-0 top-0;
+    -webkit-backdrop-filter: blur(5px);
+    background: rgba(0, 249, 203, 0.2);
+  }
+  .logo .circle1 {
+    @apply w-[170px] right-2 top-2;
+    transform: translate3d(0, 0, 20px);
+  }
+  .logo .circle2 {
+    @apply w-[140px] backdrop-blur-[1px] delay-[0.4s] right-2.5 top-2.5;
+    transform: translate3d(0, 0, 40px);
+    -webkit-backdrop-filter: blur(1px);
+  }
+  .logo .circle3 {
+    @apply w-[110px] delay-[0.8s] right-[17px] top-[17px];
+    transform: translate3d(0, 0, 60px);
+  }
+  .logo .circle4 {
+    @apply w-20 delay-[1.2s] right-[23px] top-[23px];
+    transform: translate3d(0, 0, 80px);
+  }
+  .logo .circle5 {
+    @apply w-[50px] grid place-content-center delay-[1.6s] right-[30px] top-[30px];
+    transform: translate3d(0, 0, 100px);
+  }
+  .logo .circle5 .svg {
+    @apply w-5 fill-[white];
+  }
+  .parent:hover .card {
+    @apply shadow-[rgba(5,71,17,0.3)_30px_50px_25px_-40px,rgba(5,71,17,0.1)_0px_25px_30px_0px];
+    transform: rotate3d(1, 1, 0, 30deg);
+  }
+  .parent:hover .card .bottom .social-buttons-container .social-button {
+    @apply shadow-[rgba(5,71,17,0.2)_-5px_20px_10px_0px];
+    transform: translate3d(0, 0, 50px);
+  }
+  .parent:hover .card .logo .circle2 {
+    transform: translate3d(0, 0, 60px);
+  }
+  .parent:hover .card .logo .circle3 {
+    transform: translate3d(0, 0, 80px);
+  }
+  .parent:hover .card .logo .circle4 {
+    transform: translate3d(0, 0, 100px);
+  }
+  .parent:hover .card .logo .circle5 {
+    transform: translate3d(0, 0, 120px);
+  }
 }
