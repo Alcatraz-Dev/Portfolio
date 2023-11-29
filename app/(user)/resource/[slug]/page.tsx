@@ -60,14 +60,20 @@ async function Resources({ params: { slug } }: Props) {
         >
           <Link href="/#resources">
             <div className=" absolute top-0 right-0   cursor-pointer items-center hover:scale-105 ease-in-out duration-300">
-              <ArrowLeftCircleIcon width={40} height={40} className="mr-10" />
+              <ArrowLeftCircleIcon
+                width={40}
+                height={40}
+                className="mr-10 hover:text-lime-400 hover:scale-105 ease-in-out duration-300"
+              />
             </div>
           </Link>
-          <WebShare
-            key={resource?._id}
-            title={resource?.title}
-            url={`https://alcatraz-portfolio.vercel.app/project/${resource?.slug.current}`}
-          />
+          <div className=" absolute top-0 right-0   cursor-pointer items-center hover:text-blue-400 hover:scale-105 ease-in-out duration-300">
+            <WebShare
+              key={resource?._id}
+              title={resource?.title}
+              url={`https://alcatraz-portfolio.vercel.app/project/${resource?.slug.current}`}
+            />
+          </div>
           <div className="p-5">
             <h2
               className={`py-4 text-3xl  font-bold ${resource?.resourceTitleColor}`}

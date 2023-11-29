@@ -126,7 +126,7 @@ export default function NewsLetter({}: Props) {
                   <p
                     className={`${
                       status !== 201 
-                        ? "text-red-500 text-sm"
+                        ? "text-red-400 text-sm"
                         : "text-lime-500 text-sm"
                     } pt-4 font-black `}
                   >
