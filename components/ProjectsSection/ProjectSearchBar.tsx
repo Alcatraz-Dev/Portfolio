@@ -9,7 +9,6 @@ import ClientSideRoute from "../Route/ClientSideRoute";
 
 type Projects = Project[];
 
-
 function SearchBar() {
   const [query, setQuery] = useState<string>("");
   const [results, setResults] = useState<Projects>([]);
@@ -98,70 +97,70 @@ function SearchBar() {
         Search projects by category , tag , title...
       </p>
       <div className="flex justify-center items-center mt-5">
-        <div className="relative flex flex-col justify-center overflow-hidden p-6 sm:py-12">
-          <div className="relative rounded-2xl backdrop-blur-xl bg-white/40 dark:bg-zinc-700/40 px-6 pt-10 pb-8 shadow-lg ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:px-10 ">
+        <div className="relative flex flex-col justify-center overflow-hidden  ">
+          <div className="relative rounded-2xl backdrop-blur-xl bg-white/40 dark:bg-zinc-700/40 px-6 pt-10 pb-8 shadow-lg ring-1 ring-gray-900/5  ">
             <div ref={boxRef} className="mx-auto max-w-md">
               <form action="" className="relative mx-auto w-max">
                 <input
                   type="search"
-                  className="peer cursor-pointer relative z-10 h-12 w-12 rounded-full  border bg-transparent pl-12 outline-none focus:w-full focus:cursor-text focus:border-orange-300 focus:pl-16 focus:pr-4"
-                  placeholder="Search projects..."
+                  className=" peer cursor-pointer relative z-10 h-12 w-12 rounded-full  border bg-transparent pl-10 outline-none focus:w-full focus:cursor-text focus:border-orange-300 focus:pl-14 focus:pr-0"
+                  placeholder="Search project..."
                   value={query}
                   onChange={handleSearchInputChange}
                 />
                 <MagnifyingGlassIcon className="absolute inset-y-0 my-auto h-8 w-12 border-r border-transparent stroke-gray-500 px-3.5 peer-focus:border-orange-300 peer-focus:stroke-orange-500" />
               </form>
-              {isLoading && (
-                <p className="mt-5 flex justify-center">Loading...</p>
-              )}
-              {results.length === 0 && !isLoading && query && (
-                <p className="mt-5 flex justify-center">No results found.</p>
-              )}
-              {showResults && (
-                <ul>
-                  {results.length === 0 && query === "" ? (
-                    // Display all projects when no search input or results
-                    <p className="mt-5 flex justify-center">
-                      Display all projects here
-                    </p>
-                  ) : (
-                    results.map((result, index) => (
-                      <>
-                        <ul
-                          key={index}
-                          className=" overflow-y-scroll  scrollbar-hide "
-                        >
-                          <ClientSideRoute
-                            key={result?._id}
-                            route={`/project/${result?.slug.current}`}
-                          >
-                            <button
-                              key={result?._id}
-                              className={`flex items-center justify-center right-0 p-2 mt-2 mb-2 text-center text-sm font-bold w-full  py-2 
-                               rounded-lg shadow-lg ${result?.searchColor}   `}
-                            >
-                              <span className="mr-3 my-1">{result?.title}</span>
-                              <Image
-                                key={result?._id}
-                                src={urlFor(result?.mainImage)
-                                  .width(500)
-                                  .height(500)
-                                  .url()}
-                                alt={result?.title}
-                                width={50}
-                                height={50}
-                                className="rounded-md object-cover "
-                              />
-                            </button>
-                          </ClientSideRoute>
-                          {/* Display other project fields as needed */}
-                        </ul>
-                      </>
-                    ))
-                  )}
-                </ul>
-              )}
             </div>
+            {isLoading && (
+              <p className="mt-5 flex justify-center">Loading...</p>
+            )}
+            {results.length === 0 && !isLoading && query && (
+              <p className="mt-5 flex justify-center">No results found.</p>
+            )}
+            {showResults && (
+              <ul>
+                {results.length === 0 && query === "" ? (
+                  // Display all projects when no search input or results
+                  <p className="mt-5 flex justify-center">
+                    Display all projects here
+                  </p>
+                ) : (
+                  results.map((result, index) => (
+                    <>
+                      <ul
+                        key={index}
+                        className=" overflow-y-scroll  scrollbar-hide "
+                      >
+                        <ClientSideRoute
+                          key={result?._id}
+                          route={`/project/${result?.slug.current}`}
+                        >
+                          <button
+                            key={result?._id}
+                            className={`flex items-center justify-center right-0 p-2 mt-2 mb-2 text-center text-sm font-bold w-full  py-2 
+                               rounded-lg shadow-lg ${result?.searchColor}   `}
+                          >
+                            <span className="mr-3 my-1">{result?.title}</span>
+                            <Image
+                              key={result?._id}
+                              src={urlFor(result?.mainImage)
+                                .width(500)
+                                .height(500)
+                                .url()}
+                              alt={result?.title}
+                              width={50}
+                              height={50}
+                              className="rounded-md object-cover "
+                            />
+                          </button>
+                        </ClientSideRoute>
+                        {/* Display other project fields as needed */}
+                      </ul>
+                    </>
+                  ))
+                )}
+              </ul>
+            )}
           </div>
         </div>
       </div>
