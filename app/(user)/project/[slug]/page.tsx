@@ -11,6 +11,7 @@ import { RichTextComponents } from "@/components/CustomText/RichText/RichTextCom
 import WebShare from "@/components/WebShare";
 import { format } from "date-fns";
 import { notFound } from "next/navigation";
+import Comments from "@/components/CommentSection/comments";
 
 type Props = {
   params: {
@@ -408,7 +409,7 @@ async function Projects({ params: { slug } }: Props) {
       </div>
 
       {/* <CommentSection/> */}
-
+       <Comments/>
       <div className="grid grid-cols-3 md:grid-cols-1 ">
         <Link href="/#projects">
           <p

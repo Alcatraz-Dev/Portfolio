@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@giscus/react": "^2.3.0",
     "@heroicons/react": "^2.0.15",
     "@next/font": "13.1.6",
     "@pandasekh/dynamic-script-loader": "^1.2.0",
