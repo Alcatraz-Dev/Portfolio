@@ -158,30 +158,30 @@ export default async function HomePage() {
         }
       >
         <HeroPreview hero={heroQuery} />
-        <PreviewTechnologies
+        {/* <PreviewTechnologies
           pargraph={paragraphsQuery}
           generalTechnologies={technologiesQuery}
-        />
-        <PreviewVideo
+        /> */}
+        {/* <PreviewVideo
           buttonLink={customButtonQuery}
           pargraph={paragraphsQuery}
           video={videoQuery}
-        />
+        /> */}
         <PreviewProject
           projects={projectsQuery}
           projectSection={projectsSectionQuery}
         />
         <ContactPreview contact={contactQuery} />
-        <PreviewBlogList
+        {/* <PreviewBlogList
           buttonLink={customButtonQuery}
           pargraph={paragraphsQuery}
           post={blogQuery}
-        />
-        <PreviewCommunity
+        /> */}
+        {/* <PreviewCommunity
           buttonLink={customButtonQuery}
           pargraph={paragraphsQuery}
           Community={communityQuery}
-        />
+        /> */}
       </PreviewSuspense>
     );
   }
