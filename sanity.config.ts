@@ -3,8 +3,8 @@ import { deskTool } from "sanity/desk";
 import { visionTool } from "@sanity/vision";
 import { schemaTypes } from "./schemas";
 import { myTheme } from "./theme";
-import StudioNavbar from "@/components/CustomStudioCms/StudioNavbar";
-import Logo from "@/components/CustomStudioCms/Logo";
+import StudioNavbar from "./components/CustomStudioCms/StudioNavbar";
+import Logo from "./components/CustomStudioCms/Logo";
 import { getDefaultDocumentNode } from "./structure";
 import { codeInput } from "@sanity/code-input";
 import { simplerColorInput } from 'sanity-plugin-simpler-color-input'

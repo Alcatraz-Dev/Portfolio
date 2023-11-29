@@ -18,7 +18,10 @@ export default function Comments() {
 
   return (
     <div className="p-5">
-     <h1 className="flex justify-center md:justify-start lg:justify-start my-8 text-2xl font-bold text-zinc-500">Leave a comment </h1>
+     <h1 className="flex justify-center md:justify-start lg:justify-start mt-5 mb-2 text-3xl font-bold text-gray-500">Leave a comment </h1>
+     <p className="text-gray-500 text-sm font-semibold flex justify-center md:justify-start lg:justify-start mb-3">
+       Comment support markdown 
+      </p>
       <Giscus
         id="comments"
         repo="Alcatraz-Dev/Portfolio"
