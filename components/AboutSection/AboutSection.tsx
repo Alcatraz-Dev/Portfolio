@@ -29,7 +29,12 @@ const AboutSection = ({ about }: Props) => {
 
       content: (
         <>
-          <div className="list-disc pl-2">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="list-disc pl-2"
+          >
             {about?.map((aboutSkills) => (
               <div key={aboutSkills?._id}>
                 <div className="flex-wrap text-sm font-medium text-center ">
@@ -39,9 +44,14 @@ const AboutSection = ({ about }: Props) => {
                         <div key={skills?._id}>
                           <p
                             key={skills?._id}
-                            className=" text-left mb-1 text-xs font-mono capitalize line-clamp-1 hover:line-clamp-none "
+                            className=" flex justify-between space-x-2 "
                           >
-                            {skills?.skillName}
+                            <span className="flex justify-start mb-1 text-xs font-sm capitalize line-clamp-1 hover:line-clamp-none  ">
+                              {skills?.skillName}{" "}
+                            </span>
+                            <span className="flex justify-end mb-1 text-xs font-sm capitalize line-clamp-1 hover:line-clamp-none ">
+                              {skills?.skillProgress} %
+                            </span>
                           </p>
                           <div
                             style={{ width: skills?.skillProgressBg }}
@@ -59,7 +69,7 @@ const AboutSection = ({ about }: Props) => {
                 </div>
               </div>
             ))}
-          </div>
+          </motion.div>
         </>
       ),
     },
@@ -70,7 +80,12 @@ const AboutSection = ({ about }: Props) => {
       content: (
         <>
           {about?.map((aboutEducation) => (
-            <ul key={aboutEducation?._id}>
+            <motion.ul
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              key={aboutEducation?._id}
+            >
               {aboutEducation?.educationTab?.map((education) => (
                 <li
                   key={education?._id}
@@ -95,7 +110,7 @@ const AboutSection = ({ about }: Props) => {
                   </div>
                 </li>
               ))}
-            </ul>
+            </motion.ul>
           ))}
         </>
       ),
@@ -109,7 +124,10 @@ const AboutSection = ({ about }: Props) => {
           {about?.map((aboutCertificate) => (
             <ul key={aboutCertificate?._id}>
               {aboutCertificate?.certificateTab?.map((certificate) => (
-                <li
+                <motion.li
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5 }}
                   key={certificate?._id}
                   className=" mb-4 flex text-sm sm:text-start"
                 >
@@ -137,15 +155,22 @@ const AboutSection = ({ about }: Props) => {
                       target={"_blank"}
                       className=" flex justify-center items-center"
                     >
-                      <div className={`${certificate?.classNameCertificateUrlColor} mt-1 mr-2 `}>
+                      <div
+                        className={`${certificate?.classNameCertificateUrlColor} mt-1 mr-2 `}
+                      >
                         <span className="flex justify-between items-center">
                           {" "}
-                          Show Certificate{" "}  <ArrowUpRightIcon className=" ml-3" width={10} height={10} />
+                          Show Certificate{" "}
+                          <ArrowUpRightIcon
+                            className=" ml-3"
+                            width={10}
+                            height={10}
+                          />
                         </span>
                       </div>
                     </Link>
                   </div>
-                </li>
+                </motion.li>
               ))}
             </ul>
           ))}
@@ -208,7 +233,7 @@ const AboutSection = ({ about }: Props) => {
                 <h2
                   className={`text-4xl font-bold mb-4 ${ab?.classNameAboutTitleColor} `}
                 >
-                 {ab?.aboutSectionTitle}
+                  {ab?.aboutSectionTitle}
                 </h2>
                 <p className="text-base lg:text-lg ">{ab?.shortBio}</p>
                 <div className="flex flex-row justify-start mt-8">

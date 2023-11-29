@@ -1,8 +1,9 @@
 import { defineField, defineType } from "sanity";
-
+import {FcEngineering} from "react-icons/fc"
 export default defineType({
   name: "projectsDetailsCard",
   title: "Projects Details",
+  icon:FcEngineering,
   type: "document",
   fields: [
     defineField({
@@ -90,6 +91,7 @@ export default defineType({
           hotspot: true,
         },
       }),
+     
 
   ],
 });

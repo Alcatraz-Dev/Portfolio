@@ -1,21 +1,21 @@
 import React from "react";
 import urlFor from "@/lib/urlFor";
-import { ButtonLink, SectionParagraph, Video } from "@/typings";
+import { ButtonLink, Video } from "@/typings";
 import {
   CalendarDaysIcon,
   PlayCircleIcon,
   UserIcon,
 } from "@heroicons/react/24/outline";
 import Image from "next/image";
-import ClientSideRoute from "./ClientSideRoute";
+import ClientSideRoute from "./Route/ClientSideRoute";
 
 type Props = {
   video: Video[];
-  pharagraph: SectionParagraph[];
+ 
   linkButton: ButtonLink[];
 };
 
-function VideoList({ video, pharagraph, linkButton }: Props) {
+function VideoList({ video, linkButton }: Props) {
   const colors = [
     "text-yellow-500",
     "text-red-500",
@@ -33,11 +33,11 @@ function VideoList({ video, pharagraph, linkButton }: Props) {
          rounded-full"
       ></div>
       <h1 className="text-gredient-video py-10">Videos</h1>
-      {pharagraph?.map((ph) => (
+      {/* {pharagraph?.map((ph) => (
         <div key={ph?._id}>
           <p className="text-lg font-light w-72">{ph?.videosParagraph}</p>
         </div>
-      ))}
+      ))} */}
 
       <div className=" flex justify-center items-center py-20">
         <div className="flex overflow-x-scroll py-5 w-full scrollbar-hide space-x-5">
@@ -74,7 +74,7 @@ function VideoList({ video, pharagraph, linkButton }: Props) {
                   <Image
                     key={videos?._id}
                     // className="  object-fill rounded-xl "
-                    src={urlFor(videos?.author?.mainImage)
+                    src={urlFor(videos?.author?.authorImage)
                       .width(500)
                       .height(500)
                       .url()}

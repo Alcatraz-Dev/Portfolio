@@ -10,7 +10,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import ClientSideRoute from "./ClientSideRoute";
+import ClientSideRoute from "./Route/ClientSideRoute";
 
 type Props = {
   community: Community[];

@@ -1,8 +1,9 @@
 import { defineField, defineType } from "sanity";
-
+import {FcAbout} from "react-icons/fc"
 export default defineType({
   name: "about",
   title: "About",
+  icon:FcAbout,
   type: "document",
   fields: [
     defineField({

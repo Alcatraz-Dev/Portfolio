@@ -1,9 +1,10 @@
 import { defineField, defineType } from "sanity";
-
+import { FcCommandLine } from "react-icons/fc";
 export default defineType({
   name: "stack",
   title: "Stack",
   type: "document",
+  icon:FcCommandLine,
   fields: [
     defineField({
       name: "title",

@@ -1,8 +1,9 @@
 import { defineField, defineType } from "sanity";
-
+import {FcClapperboard} from "react-icons/fc"
 export default defineType({
   name: "video",
   title: "Video",
+  icon:FcClapperboard,
   type: "document",
   fields: [
     defineField({

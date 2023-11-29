@@ -1,9 +1,10 @@
 import { defineField, defineType } from "sanity";
-
+import { FcProcess } from "react-icons/fc";
 export default defineType({
   name: "status",
   title: "Status",
   type: "document",
+  icon:FcProcess,
   fields: [
     defineField({
       name: "title",

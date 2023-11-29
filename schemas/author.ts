@@ -1,9 +1,10 @@
 import { defineField, defineType } from "sanity";
-
+import { FcManager } from "react-icons/fc";
 export default defineType({
   name: "author",
   title: "Author",
   type: "document",
+  icon:FcManager,
   fields: [
     defineField({
       name: "name",

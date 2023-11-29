@@ -13,7 +13,7 @@ import {
   UserIcon,
 } from "@heroicons/react/24/outline";
 import { PortableText } from "@portabletext/react";
-import { RichTextComponents } from "@/components/RichTextComponents";
+import { RichTextComponents } from "@/components/CustomText/RichText/RichTextComponents";
 import WebShare from "@/components/WebShare";
 
 // const colors = [

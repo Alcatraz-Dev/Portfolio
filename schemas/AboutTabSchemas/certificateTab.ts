@@ -1,8 +1,10 @@
 import { defineField, defineType } from "sanity";
+import {FcServices} from "react-icons/fc"
 
 export default defineType({
   name: "certificateTab",
   title: "Certificate Tab",
+  icon:FcServices,
   description:"Add this document to about schema ",
   type: "document",
   fields: [

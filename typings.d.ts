@@ -2,6 +2,7 @@ type Base = {
   _createdAt: string;
   _id: string;
   _rev: string;
+  _ref: string;
   _type: string;
   _updatedAt: string;
 };
@@ -28,10 +29,9 @@ interface Author extends Base {
 }
 
 interface SocialIcons extends Base {
-  name: string;
-  url: string;
-  fgcolor: string;
-  bgcolor: string;
+  socialIconName: string;
+  socialIconUrl: string;
+  socialIconButtonIcon: Image;
 }
 interface Image {
   _type: "image";
@@ -65,6 +65,10 @@ interface Category extends Base {
   description: string;
   title: string;
 }
+interface FilterTabs extends Base {
+  title: string;
+  tabColor: string;
+}
 
 interface Title {
   _type: "string";
@@ -91,7 +95,19 @@ export interface ProjectSection extends Base {
   projectSectionTitle: string;
   project: Project[];
   shortDescription: string;
+  tagEmptyPargraph: string;
+  tagEmptyPargraphIcon: Image;
   classNameProjectSectionTitleColor: string;
+  tabFilter: FilterTabs[];
+}
+export interface ResourceSection extends Base {
+  resourceSectionTitle: string;
+  resource: Resource[];
+  shortDescription: string;
+  tagEmptyPargraph: string;
+  tagEmptyPargraphIcon: Image;
+  classNameResourceSectionTitleColor: string;
+  tabFilter: FilterTabs[];
 }
 export interface Tags extends Base {
   title: string;
@@ -101,14 +117,12 @@ export interface Project extends Base {
   publishedAt: string;
   difficulty: number;
   mainImage: Image;
-  authorImage: Image;
-  authorName: string;
-  authorSlug: Slug;
+  searchColor: string;
   body: Block[];
-  authorBio: Block[];
   projectShortDescriptionPage: Block[];
   stacks: Stack[];
   tags: string[];
+  categoryTag: string[];
   categories: Category[];
   title: string;
   projectUrl: string;
@@ -130,6 +144,8 @@ export interface Project extends Base {
   statusColor: string;
   statusClassName: string;
   projectOverlayImageClassNmae: string;
+  tagTitleColor: string;
+  author: Author;
 }
 export interface ProjectsDetailsCard extends Base {
   projectDetailsTitleCardIcon: Image;
@@ -142,28 +158,97 @@ export interface ProjectsDetailsCard extends Base {
   projectDetailsTagCardIcon: Image;
   title: string;
 }
+export interface Resource extends Base {
+  publishedAt: string;
+  difficulty: number;
+  mainImage: Image;
+  searchColor: string;
+  body: Block[];
+  resourceShortDescriptionPage: Block[];
+  stacks: Stack[];
+  tags: string[];
+  categoryTag: string[];
+  categories: Category[];
+  title: string;
+  resourceUrl: string;
+  sourceUrl: string;
+  resourceTag: string;
+  slug: Slug;
+  description: string;
+  resourceTitleColor: string;
+  tagBgColor: string;
+  customButton: ButtonLink[];
+  assetFile: AssetFile[];
+  resourceDetails: ResourcesDetailsCard[];
+  buttonBgColor: string;
+  buttonHoverBgColor: string;
+  buttonIcon: Image;
+  buttonTitle: string;
+  statusTitle: string;
+  statusName: string;
+  statusColor: string;
+  statusClassName: string;
+  resourceOverlayImageClassNmae: string;
+  tagTitleColor: string;
+  author: Author;
+}
+export interface ResourcesDetailsCard extends Base {
+  resourceDetailsTitleCardIcon: Image;
+  resourceDetailsStatusCardIcon: Image;
+  resourceDetailsCategoryCardIcon: Image;
+  resourceDetailsCreatedDateCardIcon: Image;
+  resourceDetailsAuthorCardIcon: Image;
+  resourceDetailsAuthorBioCardIcon: Image;
+  resourceDetailsShortDescriptionCardIcon: Image;
+  resourceDetailsTagCardIcon: Image;
+  title: string;
+}
 
 export interface Contact extends Base {
-  description: string;
-  mainImage: Image;
-  name: string;
-  shortDesColor: string;
-  nameColor: string;
-  shortDescription: string;
-  socials: Social[];
+  formTitle: string;
+  formTitleColor: string;
+  formShortDescription: string;
+  socials: SocialIcons[];
   url: string;
 }
-export interface SectionParagraph extends Base {
-  aboutParagraph: string;
-  contactParagraph: string;
-  footerParagraph: string;
-  heroParagraph: string;
-  projectsParagraph: string;
-  blogsParagraph: string;
-  technologiesParagraph: string;
-  videosParagraph: string;
-  communitysParagraph: string;
+
+export interface Comment extends Base {
+  email: string;
+  approved: boolean;
+  comment: string;
+  childComments: Comment[];
+  childCommentsEmojis: Emoji[];
+  userImage: image;
+  name: string;
 }
+
+export interface Emoji extends Base {
+  commentId: string;
+  counter: number;
+  _key: string;
+  emojiImage: image;
+  emoji: string;
+}
+export interface DefaultNotFoundPage extends Base {
+  errorImage: Image;
+  title: string;
+  url: string;
+  buttonHoverBg: string;
+  buttonBg: string;
+  description: string;
+  buttonTitel: string;
+  subtitle: string;
+  buttonTitelClassName: string;
+}
+export interface PrivacyPolicy extends Base {
+  title: string;
+  body: Block[];
+}
+export interface TermsAndConditions extends Base {
+  title: string;
+  body: Block[];
+}
+
 export interface Video extends Base {
   author: Author;
   body: Block[];
@@ -181,18 +266,22 @@ export interface Video extends Base {
 }
 export interface ButtonLink extends Base {
   buttonBgColor: string;
-  buttonHoverBgColor:string;
+  buttonHoverBgColor: string;
   buttonTitle: string;
   buttonIcon: Image;
   url: string;
-  
+  // buttonBackgroundColor:CustomColor;
+}
+export interface CustomColor {
+  label: string;
+  value: string;
 }
 export interface AssetFile extends Base {
   assetFile: AssetClass;
   name: string;
   fileId: string;
   buttonIcon: Image;
-  buttonHoverBgColor:string;
+  buttonHoverBgColor: string;
   buttonBgColor: string;
 }
 export interface AssetClass {

@@ -1,9 +1,10 @@
 import { defineField, defineType } from "sanity";
-
+import { FcServices } from "react-icons/fc";
 export default defineType({
   name: "skillsTab",
   title: "Skills Tab",
-  description:"Add this document to about schema",
+  icon: FcServices,
+  description: "Add this document to about schema",
   type: "document",
   fields: [
     defineField({

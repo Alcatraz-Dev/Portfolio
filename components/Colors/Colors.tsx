@@ -1,9 +1,6 @@
-type Props={
-  
-  colors:string;
-}
 
-function Colors({colors}:Props) {
+
+function Colors() {
   const BgGradientColor = [
     "bg-gradient-to-br from-lime-500 to-green-500",
     "bg-gradient-to-br from-orange-500 to-amber-500",
@@ -46,10 +43,7 @@ function Colors({colors}:Props) {
     "text-red-700",
     "text-red-800",
     "text-red-900",
-    "text-red-100-accent",
-    "text-red-200-accent",
-    "text-red-400-accent",
-    "text-red-700-accent",
+  
 
     "text-pink-50",
     "text-pink-100",
@@ -61,10 +55,7 @@ function Colors({colors}:Props) {
     "text-pink-700",
     "text-pink-800",
     "text-pink-900",
-    "text-pink-100-accent",
-    "text-pink-200-accent",
-    "text-pink-400-accent",
-    "text-pink-700-accent",
+   
 
     "text-purple-50",
     "text-purple-100",
@@ -76,25 +67,7 @@ function Colors({colors}:Props) {
     "text-purple-700",
     "text-purple-800",
     "text-purple-900",
-    "text-purple-100-accent",
-    "text-purple-200-accent",
-    "text-purple-400-accent",
-    "text-purple-700-accent",
-    
-    "text-deep-purple-50",
-    "text-deep-purple-100",
-    "text-deep-purple-200",
-    "text-deep-purple-300",
-    "text-deep-purple-400",
-    "text-deep-purple-500",
-    "text-deep-purple-600",
-    "text-deep-purple-700",
-    "text-deep-purple-800",
-    "text-deep-purple-900",
-    "text-deep-purple-100-accent",
-    "text-deep-purple-200-accent",
-    "text-deep-purple-400-accent",
-    "text-deep-purple-700-accent",
+   
 
     "text-indigo-50",
     "text-indigo-100",
@@ -106,10 +79,7 @@ function Colors({colors}:Props) {
     "text-indigo-700",
     "text-indigo-800",
     "text-indigo-900",
-    "text-indigo-100-accent",
-    "text-indigo-200-accent",
-    "text-indigo-400-accent",
-    "text-indigo-700-accent",
+
 
     "text-blue-50",
     "text-blue-100",
@@ -121,26 +91,7 @@ function Colors({colors}:Props) {
     "text-blue-700",
     "text-blue-800",
     "text-blue-900",
-    "text-blue-100-accent",
-    "text-blue-200-accent",
-    "text-blue-400-accent",
-    "text-blue-700-accent",
-
-    "text-light-blue-50",
-    "text-light-blue-100",
-    "text-light-blue-200",
-    "text-light-blue-300",
-    "text-light-blue-400",
-    "text-light-blue-500",
-    "text-light-blue-600",
-    "text-light-blue-700",
-    "text-light-blue-800",
-    "text-light-blue-900",
-    "text-light-blue-100-accent",
-    "text-light-blue-200-accent",
-    "text-light-blue-400-accent",
-    "text-light-blue-700-accent",
-
+   
 
     "text-cyan-50",
     "text-cyan-100",
@@ -152,10 +103,7 @@ function Colors({colors}:Props) {
     "text-cyan-700",
     "text-cyan-800",
     "text-cyan-900",
-    "text-cyan-100-accent",
-    "text-cyan-200-accent",
-    "text-cyan-400-accent",
-    "text-cyan-700-accent",
+ 
 
     "text-teal-50",
     "text-teal-100",
@@ -167,10 +115,7 @@ function Colors({colors}:Props) {
     "text-teal-700",
     "text-teal-800",
     "text-teal-900",
-    "text-teal-100-accent",
-    "text-teal-200-accent",
-    "text-teal-400-accent",
-    "text-teal-700-accent",
+  
 
     "text-green-50",
     "text-green-100",
@@ -182,25 +127,7 @@ function Colors({colors}:Props) {
     "text-green-700",
     "text-green-800",
     "text-green-900",
-    "text-green-100-accent",
-    "text-green-200-accent",
-    "text-green-400-accent",
-    "text-green-700-accent",
-
-    "text-light-green-50",
-    "text-light-green-100",
-    "text-light-green-200",
-    "text-light-green-300",
-    "text-light-green-400",
-    "text-light-green-500",
-    "text-light-green-600",
-    "text-light-green-700",
-    "text-light-green-800",
-    "text-light-green-900",
-    "text-light-green-100-accent",
-    "text-light-green-200-accent",
-    "text-light-green-400-accent",
-    "text-light-green-700-accent",
+  
 
     "text-lime-50",
     "text-lime-100",
@@ -212,10 +139,7 @@ function Colors({colors}:Props) {
     "text-lime-700",
     "text-lime-800",
     "text-lime-900",
-    "text-lime-100-accent",
-    "text-lime-200-accent",
-    "text-lime-400-accent",
-    "text-lime-700-accent",
+ 
 
     "text-yellow-50",
     "text-yellow-100",
@@ -227,10 +151,7 @@ function Colors({colors}:Props) {
     "text-yellow-700",
     "text-yellow-800",
     "text-yellow-900",
-    "text-yellow-100-accent",
-    "text-yellow-200-accent",
-    "text-yellow-400-accent",
-    "text-yellow-700-accent",
+   
 
     "text-amber-50",
     "text-amber-100",
@@ -242,10 +163,7 @@ function Colors({colors}:Props) {
     "text-amber-700",
     "text-amber-800",
     "text-amber-900",
-    "text-amber-100-accent",
-    "text-amber-200-accent",
-    "text-amber-400-accent",
-    "text-amber-700-accent",
+  
 
     "text-orange-50",
     "text-orange-100",
@@ -257,25 +175,8 @@ function Colors({colors}:Props) {
     "text-orange-700",
     "text-orange-800",
     "text-orange-900",
-    "text-orange-100-accent",
-    "text-orange-200-accent",
-    "text-orange-400-accent",
-    "text-orange-700-accent",
+    
 
-    "text-deep-orange-50",
-    "text-deep-orange-100",
-    "text-deep-orange-200",
-    "text-deep-orange-300",
-    "text-deep-orange-400",
-    "text-deep-orange-500",
-    "text-deep-orange-600",
-    "text-deep-orange-700",
-    "text-deep-orange-800",
-    "text-deep-orange-900",
-    "text-deep-orange-100-accent",
-    "text-deep-orange-200-accent",
-    "text-deep-orange-400-accent",
-    "text-deep-orange-700-accent",
 
     "text-brown-50",
     "text-brown-100",
@@ -287,10 +188,7 @@ function Colors({colors}:Props) {
     "text-brown-700",
     "text-brown-800",
     "text-brown-900",
-    "text-brown-100-accent",
-    "text-brown-200-accent",
-    "text-brown-400-accent",
-    "text-brown-700-accent",
+   
 
     "text-grey-50",
     "text-grey-100",
@@ -302,10 +200,7 @@ function Colors({colors}:Props) {
     "text-grey-700",
     "text-grey-800",
     "text-grey-900",
-    "text-grey-100-accent",
-    "text-grey-200-accent",
-    "text-grey-400-accent",
-    "text-grey-700-accent",
+ 
 
     "text-blue-grey-50",
     "text-blue-grey-100",
@@ -317,10 +212,7 @@ function Colors({colors}:Props) {
     "text-blue-grey-700",
     "text-blue-grey-800",
     "text-blue-grey-900",
-    "text-blue-grey-100-accent",
-    "text-blue-grey-200-accent",
-    "text-blue-grey-400-accent",
-    "text-blue-grey-700-accent",
+  
 
     "text-violet-50",
     "text-violet-100",
@@ -332,10 +224,7 @@ function Colors({colors}:Props) {
     "text-violet-700",
     "text-violet-800",
     "text-violet-900",
-    "text-violet-100-accent",
-    "text-violet-200-accent",
-    "text-violet-400-accent",
-    "text-violet-700-accent",
+ 
 
     "text-zinc-50",
     "text-zinc-100",
@@ -347,10 +236,7 @@ function Colors({colors}:Props) {
     "text-zinc-700",
     "text-zinc-800",
     "text-zinc-900",
-    "text-zinc-100-accent",
-    "text-zinc-200-accent",
-    "text-zinc-400-accent",
-    "text-zinc-700-accent",
+   
 
   ];
   const BgColor = [
@@ -365,10 +251,7 @@ function Colors({colors}:Props) {
     "bg-red-700",
     "bg-red-800",
     "bg-red-900",
-    "bg-red-100-accent",
-    "bg-red-200-accent",
-    "bg-red-400-accent",
-    "bg-red-700-accent",
+  
 
     "bg-pink-50",
     "bg-pink-100",
@@ -380,10 +263,7 @@ function Colors({colors}:Props) {
     "bg-pink-700",
     "bg-pink-800",
     "bg-pink-900",
-    "bg-pink-100-accent",
-    "bg-pink-200-accent",
-    "bg-pink-400-accent",
-    "bg-pink-700-accent",
+    
 
     "bg-purple-50",
     "bg-purple-100",
@@ -395,26 +275,8 @@ function Colors({colors}:Props) {
     "bg-purple-700",
     "bg-purple-800",
     "bg-purple-900",
-    "bg-purple-100-accent",
-    "bg-purple-200-accent",
-    "bg-purple-400-accent",
-    "bg-purple-700-accent",
+   
     
-    "bg-deep-purple-50",
-    "bg-deep-purple-100",
-    "bg-deep-purple-200",
-    "bg-deep-purple-300",
-    "bg-deep-purple-400",
-    "bg-deep-purple-500",
-    "bg-deep-purple-600",
-    "bg-deep-purple-700",
-    "bg-deep-purple-800",
-    "bg-deep-purple-900",
-    "bg-deep-purple-100-accent",
-    "bg-deep-purple-200-accent",
-    "bg-deep-purple-400-accent",
-    "bg-deep-purple-700-accent",
-
     "bg-indigo-50",
     "bg-indigo-100",
     "bg-indigo-200",
@@ -425,10 +287,7 @@ function Colors({colors}:Props) {
     "bg-indigo-700",
     "bg-indigo-800",
     "bg-indigo-900",
-    "bg-indigo-100-accent",
-    "bg-indigo-200-accent",
-    "bg-indigo-400-accent",
-    "bg-indigo-700-accent",
+  
 
     "bg-blue-50",
     "bg-blue-100",
@@ -440,26 +299,7 @@ function Colors({colors}:Props) {
     "bg-blue-700",
     "bg-blue-800",
     "bg-blue-900",
-    "bg-blue-100-accent",
-    "bg-blue-200-accent",
-    "bg-blue-400-accent",
-    "bg-blue-700-accent",
-
-    "bg-light-blue-50",
-    "bg-light-blue-100",
-    "bg-light-blue-200",
-    "bg-light-blue-300",
-    "bg-light-blue-400",
-    "bg-light-blue-500",
-    "bg-light-blue-600",
-    "bg-light-blue-700",
-    "bg-light-blue-800",
-    "bg-light-blue-900",
-    "bg-light-blue-100-accent",
-    "bg-light-blue-200-accent",
-    "bg-light-blue-400-accent",
-    "bg-light-blue-700-accent",
-
+  
 
     "bg-cyan-50",
     "bg-cyan-100",
@@ -471,10 +311,7 @@ function Colors({colors}:Props) {
     "bg-cyan-700",
     "bg-cyan-800",
     "bg-cyan-900",
-    "bg-cyan-100-accent",
-    "bg-cyan-200-accent",
-    "bg-cyan-400-accent",
-    "bg-cyan-700-accent",
+  
 
     "bg-teal-50",
     "bg-teal-100",
@@ -486,10 +323,7 @@ function Colors({colors}:Props) {
     "bg-teal-700",
     "bg-teal-800",
     "bg-teal-900",
-    "bg-teal-100-accent",
-    "bg-teal-200-accent",
-    "bg-teal-400-accent",
-    "bg-teal-700-accent",
+
 
     "bg-green-50",
     "bg-green-100",
@@ -501,25 +335,8 @@ function Colors({colors}:Props) {
     "bg-green-700",
     "bg-green-800",
     "bg-green-900",
-    "bg-green-100-accent",
-    "bg-green-200-accent",
-    "bg-green-400-accent",
-    "bg-green-700-accent",
+  
 
-    "bg-light-green-50",
-    "bg-light-green-100",
-    "bg-light-green-200",
-    "bg-light-green-300",
-    "bg-light-green-400",
-    "bg-light-green-500",
-    "bg-light-green-600",
-    "bg-light-green-700",
-    "bg-light-green-800",
-    "bg-light-green-900",
-    "bg-light-green-100-accent",
-    "bg-light-green-200-accent",
-    "bg-light-green-400-accent",
-    "bg-light-green-700-accent",
 
     "bg-lime-50",
     "bg-lime-100",
@@ -531,10 +348,7 @@ function Colors({colors}:Props) {
     "bg-lime-700",
     "bg-lime-800",
     "bg-lime-900",
-    "bg-lime-100-accent",
-    "bg-lime-200-accent",
-    "bg-lime-400-accent",
-    "bg-lime-700-accent",
+ 
 
     "bg-yellow-50",
     "bg-yellow-100",
@@ -546,10 +360,7 @@ function Colors({colors}:Props) {
     "bg-yellow-700",
     "bg-yellow-800",
     "bg-yellow-900",
-    "bg-yellow-100-accent",
-    "bg-yellow-200-accent",
-    "bg-yellow-400-accent",
-    "bg-yellow-700-accent",
+  
 
     "bg-amber-50",
     "bg-amber-100",
@@ -561,10 +372,7 @@ function Colors({colors}:Props) {
     "bg-amber-700",
     "bg-amber-800",
     "bg-amber-900",
-    "bg-amber-100-accent",
-    "bg-amber-200-accent",
-    "bg-amber-400-accent",
-    "bg-amber-700-accent",
+    
 
     "bg-orange-50",
     "bg-orange-100",
@@ -576,25 +384,8 @@ function Colors({colors}:Props) {
     "bg-orange-700",
     "bg-orange-800",
     "bg-orange-900",
-    "bg-orange-100-accent",
-    "bg-orange-200-accent",
-    "bg-orange-400-accent",
-    "bg-orange-700-accent",
+  
 
-    "bg-deep-orange-50",
-    "bg-deep-orange-100",
-    "bg-deep-orange-200",
-    "bg-deep-orange-300",
-    "bg-deep-orange-400",
-    "bg-deep-orange-500",
-    "bg-deep-orange-600",
-    "bg-deep-orange-700",
-    "bg-deep-orange-800",
-    "bg-deep-orange-900",
-    "bg-deep-orange-100-accent",
-    "bg-deep-orange-200-accent",
-    "bg-deep-orange-400-accent",
-    "bg-deep-orange-700-accent",
 
     "bg-brown-50",
     "bg-brown-100",
@@ -606,10 +397,7 @@ function Colors({colors}:Props) {
     "bg-brown-700",
     "bg-brown-800",
     "bg-brown-900",
-    "bg-brown-100-accent",
-    "bg-brown-200-accent",
-    "bg-brown-400-accent",
-    "bg-brown-700-accent",
+ 
 
     "bg-grey-50",
     "bg-grey-100",
@@ -621,25 +409,7 @@ function Colors({colors}:Props) {
     "bg-grey-700",
     "bg-grey-800",
     "bg-grey-900",
-    "bg-grey-100-accent",
-    "bg-grey-200-accent",
-    "bg-grey-400-accent",
-    "bg-grey-700-accent",
 
-    "bg-blue-grey-50",
-    "bg-blue-grey-100",
-    "bg-blue-grey-200",
-    "bg-blue-grey-300",
-    "bg-blue-grey-400",
-    "bg-blue-grey-500",
-    "bg-blue-grey-600",
-    "bg-blue-grey-700",
-    "bg-blue-grey-800",
-    "bg-blue-grey-900",
-    "bg-blue-grey-100-accent",
-    "bg-blue-grey-200-accent",
-    "bg-blue-grey-400-accent",
-    "bg-blue-grey-700-accent",
 
     "bg-violet-50",
     "bg-violet-100",
@@ -651,10 +421,7 @@ function Colors({colors}:Props) {
     "bg-violet-700",
     "bg-violet-800",
     "bg-violet-900",
-    "bg-violet-100-accent",
-    "bg-violet-200-accent",
-    "bg-violet-400-accent",
-    "bg-violet-700-accent",
+   
 
     "bg-zinc-50",
     "bg-zinc-100",
@@ -666,10 +433,7 @@ function Colors({colors}:Props) {
     "bg-zinc-700",
     "bg-zinc-800",
     "bg-zinc-900",
-    "bg-zinc-100-accent",
-    "bg-zinc-200-accent",
-    "bg-zinc-400-accent",
-    "bg-zinc-700-accent",
+   
 
   
   ];
@@ -684,10 +448,7 @@ function Colors({colors}:Props) {
     "border-red-700",
     "border-red-800",
     "border-red-900",
-    "border-red-100-accent",
-    "border-red-200-accent",
-    "border-red-400-accent",
-    "border-red-700-accent",
+ 
 
     "border-pink-50",
     "border-pink-100",
@@ -699,10 +460,6 @@ function Colors({colors}:Props) {
     "border-pink-700",
     "border-pink-800",
     "border-pink-900",
-    "border-pink-100-accent",
-    "border-pink-200-accent",
-    "border-pink-400-accent",
-    "border-pink-700-accent",
 
     "border-purple-50",
     "border-purple-100",
@@ -714,25 +471,6 @@ function Colors({colors}:Props) {
     "border-purple-700",
     "border-purple-800",
     "border-purple-900",
-    "border-purple-100-accent",
-    "border-purple-200-accent",
-    "border-purple-400-accent",
-    "border-purple-700-accent",
-    
-    "border-deep-purple-50",
-    "border-deep-purple-100",
-    "border-deep-purple-200",
-    "border-deep-purple-300",
-    "border-deep-purple-400",
-    "border-deep-purple-500",
-    "border-deep-purple-600",
-    "border-deep-purple-700",
-    "border-deep-purple-800",
-    "border-deep-purple-900",
-    "border-deep-purple-100-accent",
-    "border-deep-purple-200-accent",
-    "border-deep-purple-400-accent",
-    "border-deep-purple-700-accent",
 
     "border-indigo-50",
     "border-indigo-100",
@@ -744,10 +482,7 @@ function Colors({colors}:Props) {
     "border-indigo-700",
     "border-indigo-800",
     "border-indigo-900",
-    "border-indigo-100-accent",
-    "border-indigo-200-accent",
-    "border-indigo-400-accent",
-    "border-indigo-700-accent",
+
 
     "border-blue-50",
     "border-blue-100",
@@ -759,25 +494,6 @@ function Colors({colors}:Props) {
     "border-blue-700",
     "border-blue-800",
     "border-blue-900",
-    "border-blue-100-accent",
-    "border-blue-200-accent",
-    "border-blue-400-accent",
-    "border-blue-700-accent",
-
-    "border-light-blue-50",
-    "border-light-blue-100",
-    "border-light-blue-200",
-    "border-light-blue-300",
-    "border-light-blue-400",
-    "border-light-blue-500",
-    "border-light-blue-600",
-    "border-light-blue-700",
-    "border-light-blue-800",
-    "border-light-blue-900",
-    "border-light-blue-100-accent",
-    "border-light-blue-200-accent",
-    "border-light-blue-400-accent",
-    "border-light-blue-700-accent",
 
 
     "border-cyan-50",
@@ -790,10 +506,7 @@ function Colors({colors}:Props) {
     "border-cyan-700",
     "border-cyan-800",
     "border-cyan-900",
-    "border-cyan-100-accent",
-    "border-cyan-200-accent",
-    "border-cyan-400-accent",
-    "border-cyan-700-accent",
+
 
     "border-teal-50",
     "border-teal-100",
@@ -805,10 +518,7 @@ function Colors({colors}:Props) {
     "border-teal-700",
     "border-teal-800",
     "border-teal-900",
-    "border-teal-100-accent",
-    "border-teal-200-accent",
-    "border-teal-400-accent",
-    "border-teal-700-accent",
+ 
 
     "border-green-50",
     "border-green-100",
@@ -820,25 +530,8 @@ function Colors({colors}:Props) {
     "border-green-700",
     "border-green-800",
     "border-green-900",
-    "border-green-100-accent",
-    "border-green-200-accent",
-    "border-green-400-accent",
-    "border-green-700-accent",
 
-    "border-light-green-50",
-    "border-light-green-100",
-    "border-light-green-200",
-    "border-light-green-300",
-    "border-light-green-400",
-    "border-light-green-500",
-    "border-light-green-600",
-    "border-light-green-700",
-    "border-light-green-800",
-    "border-light-green-900",
-    "border-light-green-100-accent",
-    "border-light-green-200-accent",
-    "border-light-green-400-accent",
-    "border-light-green-700-accent",
+ 
 
     "border-lime-50",
     "border-lime-100",
@@ -850,10 +543,7 @@ function Colors({colors}:Props) {
     "border-lime-700",
     "border-lime-800",
     "border-lime-900",
-    "border-lime-100-accent",
-    "border-lime-200-accent",
-    "border-lime-400-accent",
-    "border-lime-700-accent",
+  
 
     "border-yellow-50",
     "border-yellow-100",
@@ -865,10 +555,7 @@ function Colors({colors}:Props) {
     "border-yellow-700",
     "border-yellow-800",
     "border-yellow-900",
-    "border-yellow-100-accent",
-    "border-yellow-200-accent",
-    "border-yellow-400-accent",
-    "border-yellow-700-accent",
+
 
     "border-amber-50",
     "border-amber-100",
@@ -880,10 +567,7 @@ function Colors({colors}:Props) {
     "border-amber-700",
     "border-amber-800",
     "border-amber-900",
-    "border-amber-100-accent",
-    "border-amber-200-accent",
-    "border-amber-400-accent",
-    "border-amber-700-accent",
+
 
     "border-orange-50",
     "border-orange-100",
@@ -895,26 +579,7 @@ function Colors({colors}:Props) {
     "border-orange-700",
     "border-orange-800",
     "border-orange-900",
-    "border-orange-100-accent",
-    "border-orange-200-accent",
-    "border-orange-400-accent",
-    "border-orange-700-accent",
-
-    "border-deep-orange-50",
-    "border-deep-orange-100",
-    "border-deep-orange-200",
-    "border-deep-orange-300",
-    "border-deep-orange-400",
-    "border-deep-orange-500",
-    "border-deep-orange-600",
-    "border-deep-orange-700",
-    "border-deep-orange-800",
-    "border-deep-orange-900",
-    "border-deep-orange-100-accent",
-    "border-deep-orange-200-accent",
-    "border-deep-orange-400-accent",
-    "border-deep-orange-700-accent",
-
+  
     "border-brown-50",
     "border-brown-100",
     "border-brown-200",
@@ -925,10 +590,7 @@ function Colors({colors}:Props) {
     "border-brown-700",
     "border-brown-800",
     "border-brown-900",
-    "border-brown-100-accent",
-    "border-brown-200-accent",
-    "border-brown-400-accent",
-    "border-brown-700-accent",
+
 
     "border-grey-50",
     "border-grey-100",
@@ -940,25 +602,6 @@ function Colors({colors}:Props) {
     "border-grey-700",
     "border-grey-800",
     "border-grey-900",
-    "border-grey-100-accent",
-    "border-grey-200-accent",
-    "border-grey-400-accent",
-    "border-grey-700-accent",
-
-    "border-blue-grey-50",
-    "border-blue-grey-100",
-    "border-blue-grey-200",
-    "border-blue-grey-300",
-    "border-blue-grey-400",
-    "border-blue-grey-500",
-    "border-blue-grey-600",
-    "border-blue-grey-700",
-    "border-blue-grey-800",
-    "border-blue-grey-900",
-    "border-blue-grey-100-accent",
-    "border-blue-grey-200-accent",
-    "border-blue-grey-400-accent",
-    "border-blue-grey-700-accent",
 
     "border-violet-50",
     "border-violet-100",
@@ -970,10 +613,7 @@ function Colors({colors}:Props) {
     "border-violet-700",
     "border-violet-800",
     "border-violet-900",
-    "border-violet-100-accent",
-    "border-violet-200-accent",
-    "border-violet-400-accent",
-    "border-violet-700-accent",
+   
 
     "border-zinc-50",
     "border-zinc-100",
@@ -985,10 +625,7 @@ function Colors({colors}:Props) {
     "border-zinc-700",
     "border-zinc-800",
     "border-zinc-900",
-    "border-zinc-100-accent",
-    "border-zinc-200-accent",
-    "border-zinc-400-accent",
-    "border-zinc-700-accent",
+  
 
   ];
 

@@ -2,15 +2,19 @@ import Image from "next/image";
 import React from "react";
 import urlFor from "@/lib/urlFor";
 import { LogoCarousel } from "@/typings";
-import Colors from "../Colors/Colors";
+
 
 type Props = {
   logos: LogoCarousel[];
 };
-const colors=[Colors]
+
 const LogoCarousel = ({ logos }: Props) => {
   return (
+    
     <div className={`my-24 `}>
+       <h1 className=" mb-10 text-xs md:text-sm lg:text-sm  text-gray-400  font-bold flex justify-center capitalize">
+        FAMILIAR WITH THIS TECHNOLOGY AND TOOLS
+        </h1>
       <div
         x-data="{}"
         x-init="$nextTick(() => {
@@ -24,6 +28,7 @@ const LogoCarousel = ({ logos }: Props) => {
           x-ref="logos"
           className="flex items-center justify-center  md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll"
         >
+         
           {logos?.map((logo) => (
             <li key={logo?._id} >
               <Image
@@ -43,3 +48,10 @@ const LogoCarousel = ({ logos }: Props) => {
 };
 
 export default LogoCarousel;
+const GrayscaleColor = [
+  "grayscale",
+  "grayscale-0",
+  "dark:grayscale",
+  "dark:grayscale-0",
+ 
+];

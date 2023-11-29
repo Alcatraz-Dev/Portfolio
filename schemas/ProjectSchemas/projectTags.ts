@@ -1,9 +1,10 @@
 import {defineField, defineType} from 'sanity'
-
+import {FcWorkflow} from 'react-icons/fc'
 export default defineType({
   name: 'projectTags',
   title: 'Tag',
   type: 'document',
+  icon:FcWorkflow,
   fields: [
     defineField({
       name: 'title',

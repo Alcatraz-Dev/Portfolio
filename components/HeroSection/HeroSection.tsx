@@ -6,6 +6,7 @@ import "../../styles/globals.css";
 import { Link } from "react-scroll";
 import { Hero } from "@/typings";
 import Colors from "../Colors/Colors";
+
 type Props = {
   hero: Hero[];
 };

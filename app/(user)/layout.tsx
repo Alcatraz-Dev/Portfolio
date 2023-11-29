@@ -1,5 +1,5 @@
 
-import Providers from "@/components/Providers";
+import Providers from "@/components/Providers/Providers";
 import "../../styles/globals.css";
 
 export default async function RootLayout({

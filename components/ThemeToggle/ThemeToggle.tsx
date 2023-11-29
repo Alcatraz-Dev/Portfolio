@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./index.module.css";
-
 export type ThemeToggleProps = {
   useTheme: () => { theme?: string; setTheme: (theme: string) => void };
   hideOnSmallScreens?: boolean;
@@ -8,9 +7,9 @@ export type ThemeToggleProps = {
 
 const ThemeToggle = ({ useTheme, hideOnSmallScreens }: ThemeToggleProps) => {
   const { theme, setTheme } = useTheme();
-
+  
   return (
-    <div
+    <div 
       className={[
         styles.toggle,
         hideOnSmallScreens && styles.hideOnSmallScreens,
@@ -30,7 +29,7 @@ const ThemeToggle = ({ useTheme, hideOnSmallScreens }: ThemeToggleProps) => {
           )
         }
       />
-      <label htmlFor="theme-toggle-input">
+      <label   htmlFor="theme-toggle-input">
         <div className={styles.switchDiv}>
           <div className={styles.dot}></div>
         </div>

@@ -7,7 +7,7 @@ import {
 } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import React from "react";
-import ClientSideRoute from "./ClientSideRoute";
+import ClientSideRoute from "./Route/ClientSideRoute";
 
 type Props = {
   post: Post[];

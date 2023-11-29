@@ -1,5 +1,5 @@
 .toggle {
-    @apply absolute inline-flex  justify-end lg:ml-32 xl:ml-60 border-[none] top-0 print:hidden;
+    @apply  inline-flex  fixed justify-end lg:ml-32 xl:ml-60 border-[none] top-0 print:hidden;
     --background-color: white;
     --text-color: black;
     --switch-background-color: #3300857e;

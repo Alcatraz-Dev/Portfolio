@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import NavLink from "./NavLink";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import MenuOverlay from "./MenuOverlay";
@@ -22,21 +22,42 @@ const navLinks = [
     path: "projects",
   },
   {
-    title: "Resource",
-    path: "resource",
+    title: "Resources",
+    path: "resources",
   },
+
   {
     title: "Contact",
     path: "contact",
+  },
+  {
+    title: "Newsletter",
+    path: "newsletter",
   },
 ];
 
 const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
+  const boxRef = useRef<HTMLDivElement | null>(null);
+  const handleOutsideClick = (event: MouseEvent) => {
+    if (boxRef.current && !boxRef.current.contains(event.target as Node)) {
+      setNavbarOpen(false);
+    }
+  };
+  useEffect(() => {
+    document.addEventListener("mousedown", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
 
   return (
     <>
-      <nav className="fixed mx-auto border backdrop-blur-md  dark:border-[#33353F]/30 top-0 left-0 right-0 z-20 dark:bg-[#121212]/30 bg-opacity-100">
+      <div
+        ref={boxRef}
+        className="fixed mx-auto border backdrop-blur-md  dark:border-[#33353F]/30 top-0 left-0 right-0 z-20 dark:bg-[#121212]/30 bg-opacity-100"
+      >
         <div className="flex container lg:py-4 flex-wrap items-center justify-between mx-auto px-4 py-2 p-5">
           <Link href={"/"}>
             <Image
@@ -88,7 +109,7 @@ const Navbar = () => {
             </div>
           )}
         </div>
-      </nav>
+      </div>
     </>
   );
 };

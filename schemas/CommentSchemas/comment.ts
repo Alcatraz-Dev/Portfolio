@@ -6,44 +6,58 @@ export default defineType({
   type: "document",
   fields: [
     defineField({
-        name: "name",
-        title: "User Name",
-        type: "string",
+      name: "name",
+      title: "Name",
+      type: "string",
+     
     }),
     defineField({
-        name: "email",
-        title: "Email",
-        type: "string",
+      name: "email",
+      title: "Email",
+      type: "string",
     }),
     defineField({
-        name: "userImage",
-        title: "User Image",
-        type: "image",
-        options: {
-            hotspot: true,
-        },
+      name: "comment",
+      title: "Comment",
+      type: "text",
+     
     }),
     defineField({
-        name: "comment",
-        title: "Comment",
-        type: "text",
+      name: "userImage",
+			title: "User Image",
+			type: "image",
+			options: {
+				hotspot: true,
+			},
+		
     }),
+    
+   
     defineField({
-        name: "childComments",
+      name: "childComments",
 			title: "Child Comments",
 			type: "array",
 			of: [{ type: "comment" }],
+		
     }),
     defineField({
-        name: "approved",
-			title: "Approved",
-			type: "boolean",
+      name: "childCommentsEmojis",
+			title: "Child Comments Emojis",
+			type: "array",
+			of: [{ type: "emoji" }],
+		
+    }),
+    defineField({
+      name: "approved",
+      title: "Approved",
+      type: "boolean",
     }),
   ],
   preview: {
-    select: {
-        title: "name",
-        subtitle: "comment",
-    },
-},
+		select: {
+			title: "name",
+			subtitle: "comment",
+		},
+	},
+  
 });

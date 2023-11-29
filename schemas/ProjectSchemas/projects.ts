@@ -1,8 +1,9 @@
 import { defineField, defineType } from "sanity";
-
+import { FcFolder } from "react-icons/fc";
 export default defineType({
   name: "project",
   title: "Project",
+  icon: FcFolder,
   type: "document",
   fields: [
     defineField({
@@ -59,56 +60,27 @@ export default defineType({
       title: "Published at",
       type: "datetime",
       options: {
-        dateFormat: 'YYYY-MM-DD',
-        timeFormat: 'HH:mm',
+        dateFormat: "YYYY-MM-DD",
+        timeFormat: "HH:mm",
         timeStep: 15,
-       
-      }
+      },
     }),
 
     defineField({
       name: "projectOverlayImageClassNmae",
       title: "Project Overlay Image ClassName",
-      description: "Tailwindcss for adding custom BG  (spport gradient bg color and solid color ...)",
-      type: "string",
-     
-    }),
-   
-    defineField({
-      name: "authorImage",
-      title: "Author Image",
-      type: "image",
-      options: {
-        hotspot: true,
-      },
-    }),
-    defineField({
-      name: "authorName",
-      title: "Author Name",
+      description:
+        "Tailwindcss for adding custom BG  (spport gradient bg color and solid color ...)",
       type: "string",
     }),
+
     defineField({
-      name: "authorSlug",
-      title: "Author Slug",
-      type: "slug",
-      options: {
-        source: "authorName",
-        maxLength: 96,
-      },
+      name: "author",
+      title: "Author",
+      type: "reference",
+      to: { type: "author" },
     }),
-    defineField({
-      name: "authorBio",
-      title: "Author Bio",
-      type: "array",
-      of: [
-        {
-          title: "Block",
-          type: "block",
-          styles: [{ title: "Normal", value: "normal" }],
-          lists: [],
-        },
-      ],
-    }),
+
     defineField({
       name: "statusTitle",
       title: "Status Title",
@@ -144,6 +116,13 @@ export default defineType({
       type: "string",
     }),
     defineField({
+      name: "tagTitleColor",
+      title: "Tag Title Color",
+      description: " this is to change tag Title Color (text-violet-500)",
+      type: "string",
+    }),
+
+    defineField({
       name: "buttonBgColor",
       title: "Button Bg Color",
       description: " this is to change Button bg (bg-orange-500 , bg-blue-500)",
@@ -152,8 +131,7 @@ export default defineType({
     defineField({
       name: "buttonHoverBgColor",
       title: "Button Hover Bg Color",
-      description:
-        " this is to change Button hover bg (bg-orange-400 , bg-blue-400)",
+      description: " this is to change Button hover bg (hover:bg-orange-400 )",
       type: "string",
     }),
     defineField({
@@ -186,6 +164,13 @@ export default defineType({
         maxLength: 96,
       },
     }),
+    defineField({
+      name: "searchColor",
+      title: "Search Color",
+      type: "string",
+      description:
+        "this  for change Search color with tailwindcss (hover:bg-orange-400)..",
+    }),
 
     defineField({
       name: "projectDetails",
@@ -201,23 +186,36 @@ export default defineType({
     }),
     defineField({
       name: "categories",
-      title: "Categories",
+      title: "categories",
       type: "array",
       of: [{ type: "reference", to: { type: "category" } }],
     }),
     defineField({
-      name: 'tags',
-        title: 'Tags',
-       type:'array',
-       of: [
-         {
-           name:'tag',
-           title:'Tag',
-           type:'string'
-         }
-       ]
+      name: "categoryTag",
+      title: "Category Tag",
+      type: "array",
+      of: [
+        {
+          name: "categoryTag",
+          title: "Category Tag",
+          type: "string",
+        },
+      ],
     }),
-  
+
+    defineField({
+      name: "tags",
+      title: "Tags",
+      type: "array",
+      of: [
+        {
+          name: "tag",
+          title: "Tag",
+          type: "string",
+        },
+      ],
+    }),
+
     defineField({
       name: "customButton",
       title: "Link Button",
@@ -232,6 +230,16 @@ export default defineType({
       type: "array",
       of: [{ type: "reference", to: { type: "assetFile" } }],
     }),
-  
   ],
+  preview: {
+    select: {
+      title: "title",
+      author: "author.name",
+      media: "mainImage",
+    },
+    prepare(selection) {
+      const { author } = selection;
+      return { ...selection, subtitle: author && `by ${author}` };
+    },
+  },
 });

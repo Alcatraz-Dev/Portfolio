@@ -1,8 +1,9 @@
 import { defineField, defineType } from "sanity";
-
+import {FcDribbble} from "react-icons/fc"
 export default defineType({
   name: "logoCarousel",
   title: "Logo Carousel",
+  icon:FcDribbble,
   type: "document",
   fields: [
     defineField({

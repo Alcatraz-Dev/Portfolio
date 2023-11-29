@@ -1,8 +1,9 @@
 import { defineField, defineType } from "sanity";
-
+import {FcSurvey} from "react-icons/fc"
 export default defineType({
   name: "cv-resume",
   title: "Cv-Resume",
+  icon:FcSurvey,
   type: "document",
   fields: [
     defineField({

@@ -1,9 +1,10 @@
 import { defineField, defineType } from "sanity";
-
+import { FcKindle } from "react-icons/fc";
 export default defineType({
   name: "post",
   title: "Post",
   type: "document",
+  icon:FcKindle,
   fields: [
     defineField({
       name: "title",

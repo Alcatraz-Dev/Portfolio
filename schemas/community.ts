@@ -1,8 +1,9 @@
 import { defineField, defineType } from "sanity";
-
+import { FcTreeStructure } from "react-icons/fc";
 export default defineType({
   name: "community",
   title: "Community",
+  icon:FcTreeStructure,
   type: "document",
   fields: [
     defineField({

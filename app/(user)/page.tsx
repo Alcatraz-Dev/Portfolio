@@ -2,19 +2,12 @@ import { client } from "@/lib/sanity.client";
 import { groq } from "next-sanity";
 import { previewData } from "next/headers";
 import PreviewSuspense from "@/components/PreviewSuspense";
-import PreviewSocialIcons from "@/components/PreviewSocialIcons";
 import StatusPreview from "@/components/PreviewsComponents/PreviewStatus/StatusPreview";
 import HeroPreview from "@/components/PreviewsComponents/PreviewHero/HeroPreview";
-import Header from "@/components/Header";
-import HomeSection from "@/components/HomeSection";
 import Technologies from "@/components/Technologies";
 import PreviewTechnologies from "@/components/PreviewTechnologies";
-import About from "@/components/About";
-import PreviewResume from "@/components/PreviewResume";
-import Project from "@/components/Project";
-import PreviewProject from "@/components/PreviewProject";
-import Contact from "@/components/Contact";
-import PreviewContact from "@/components/PreviewContact";
+import PreviewProject from "@/components/PreviewsComponents/PreviewProject/PreviewProject";
+import ContactPreview from "@/components/PreviewsComponents/PreviewContact/ContactPreview";
 import PreviewBlogList from "@/components/PreviewBlogList";
 import BlogList from "@/components/BlogList";
 import PreviewVideo from "@/components/PreviewVideo";
@@ -30,9 +23,12 @@ import ProjectSection from "@/components/ProjectsSection/ProjectSection";
 import ResourceSection from "@/components/ResourceSection/ResourceSection";
 import LogoCarousel from "@/components/SkillsLogoCarousel/LogoCarousel";
 import Colors from "@/components/Colors/Colors";
+import CookieConsentPopup from "@/components/CookiePopup/CookieConsentPopup";
+import NewsLetter from "@/components/Newsletter/NewsLetter";
 
 
-const colors=[Colors]
+const colors = [Colors];
+
 const heroQuery = groq`
   *[_type == 'hero']{
        ...,status[]->
@@ -80,7 +76,7 @@ const resumeQuery = groq`
 `;
 const projectsSectionQuery = groq`
   *[_type == 'projectSection' ]{
-       ...,project[]->
+       ...,project[]->,tabFilter[]->,
     }|order(_createAt desc)
 `;
 const projectsQuery = groq`
@@ -89,9 +85,21 @@ const projectsQuery = groq`
   body[]->,projectDetails[]->,tags[]->
 }|order(_createAt desc)
 `;
+
+const resourcesSectionQuery = groq`
+  *[_type == 'resourceSection' ]{
+       ...,resource[]->,tabFilter[]->,
+    }|order(_createAt desc)
+`;
+const resourcesQuery = groq`
+ *[_type == "resource" ]{
+..., authorBio[]->,categories[]->,resourceShortDescriptionPage[]->,
+  body[]->,resourceDetails[]->,tags[]->
+}|order(_createAt desc)
+`;
 const contactQuery = groq`
   *[_type == 'contact']{
-       ..., socials[]->,paragraph[]->
+       ..., socials[]->
     }|order(_createAt desc)
 `;
 const codeQuery = groq`
@@ -104,6 +112,22 @@ const blogQuery = groq`
   ...,
   author->,
   categories[]->,customButton[]->,assetFile[]->
+}|order(_createAt desc)
+`;
+const commentQuery = groq`
+*[_type == 'comment']{
+  ...,
+  reaction[]->,replies[]->,parentComment[]->
+}|order(_createAt desc)
+`;
+const reactionQuery = groq`
+*[_type == 'reaction']{
+  ...,emoji[]->
+}|order(_createAt desc)
+`;
+const emojiQuery = groq`
+*[_type == 'emoji']{
+  ...,
 }|order(_createAt desc)
 `;
 const videoQuery = groq`
@@ -134,7 +158,6 @@ export default async function HomePage() {
         }
       >
         <HeroPreview hero={heroQuery} />
-        <PreviewSocialIcons socialIcons={socialQuery} />
         <PreviewTechnologies
           pargraph={paragraphsQuery}
           generalTechnologies={technologiesQuery}
@@ -144,13 +167,11 @@ export default async function HomePage() {
           pargraph={paragraphsQuery}
           video={videoQuery}
         />
-        <PreviewResume pargraph={paragraphsQuery} resume={resumeQuery} />
         <PreviewProject
-         
           projects={projectsQuery}
           projectSection={projectsSectionQuery}
         />
-        <PreviewContact pargraph={paragraphsQuery} contact={contactQuery} />
+        <ContactPreview contact={contactQuery} />
         <PreviewBlogList
           buttonLink={customButtonQuery}
           pargraph={paragraphsQuery}
@@ -173,13 +194,19 @@ export default async function HomePage() {
   const resume = await client.fetch(resumeQuery);
   const projectsSection = await client.fetch(projectsSectionQuery);
   const projects = await client.fetch(projectsQuery);
+  const resourcesSection = await client.fetch(resourcesSectionQuery);
+  const resources = await client.fetch(resourcesQuery);
   const contact = await client.fetch(contactQuery);
   const paragraph = await client.fetch(paragraphsQuery);
   const post = await client.fetch(blogQuery);
+  const comments = await client.fetch(commentQuery);
+  const reactions = await client.fetch(reactionQuery);
+  const emojis = await client.fetch(emojiQuery);
   const videos = await client.fetch(videoQuery);
   const buttons = await client.fetch(customButtonQuery);
   const communitys = await client.fetch(communityQuery);
   const code = await client.fetch(codeQuery);
+
   return (
     <>
       <Navbar />
@@ -187,9 +214,15 @@ export default async function HomePage() {
       <LogoCarousel logos={logoCarousel} />
       <AboutSection about={about} />
 
-      <ProjectSection  projectSection={projectsSection} projects={projects}/>
-      <ResourceSection />
-      <ContactSection />
+      <ProjectSection projectSection={projectsSection} projects={projects} />
+      <ResourceSection
+        resourceSection={resourcesSection}
+        resources={resources}
+      />
+      {/* <Comment comment={comments} reaction={reactions}  /> */}
+      <ContactSection contact={contact} />
+      <CookieConsentPopup />
+      <NewsLetter />
       <Footer />
       {/* <Header socialIcons={socialIcon} /> */}
       {/* <HomeSection pharagraph={paragraph} /> */}

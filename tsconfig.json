@@ -38,7 +38,19 @@
     "components/ProjectsSection/ProjectSearchBar.jsx",
     "components/ProjectsSection/ProjectSearchFilter.jsx",
     "components/Status/StatusProgresBar.jsx",
-    "app/(user)/resume/page.tsx"
+    "app/(user)/resume/page.tsx",
+    "lib/dynamicScriptLoader.js",
+    "lib/utils.js",
+    "lib/snarkdown.js",
+    "components/CommentSection/AddComment/SubmitMessage.jsx",
+    "components/CommentSection/AddComment/InputError.jsx",
+    "components/CommentSection/Comments/AllComments.jsx",
+    "components/CommentSection/Comments/CommentImage.jsx",
+    "components/CommentSection/Comments/SingleComment.jsx",
+    "components/CommentSection/Emoji/ReactionBlock.jsx",
+    "components/CommentSection/AddComment/ImageUpload.jsx",
+    "components/CommentSection/AddComment/AddCommentForm.jsx",
+    "pages/api/addReaction.js"
   ],
   "exclude": ["node_modules"]
 }
