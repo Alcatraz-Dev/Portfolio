@@ -93,17 +93,17 @@ function SearchBar() {
 
   return (
     <>
-      <p className="text-gray-500 font-semibold mt-5 mb-0">
+      <p className="text-gray-500 font-semibold  px-2 ml-4 mr-6 pb-3 ">
         Search projects by category , tag , title...
       </p>
       <div className="flex justify-center items-center mt-5">
-        <div className="relative flex flex-col justify-center overflow-hidden  ">
-          <div className="relative rounded-2xl backdrop-blur-xl bg-white/40 dark:bg-zinc-700/40 px-6 pt-10 pb-8 shadow-lg ring-1 ring-gray-900/5  ">
+        <div className="relative flex flex-col justify-center overflow-hidden rounded-2xl  bg-white dark:bg-zinc-700/40 ">
+          <div className="relative rounded-2xl  bg-white dark:bg-zinc-700/40 px-6 pt-10 pb-8 shadow-lg ring-1 ring-gray-900/5  ">
             <div ref={boxRef} className="mx-auto max-w-md">
               <form action="" className="relative mx-auto w-max">
                 <input
                   type="search"
-                  className=" peer cursor-pointer relative z-10 h-12 w-12 rounded-full  border bg-transparent pl-10 outline-none focus:w-full focus:cursor-text focus:border-orange-300 focus:pl-14 focus:pr-0"
+                  className=" peer cursor-pointer relative z-10 h-10 w-10 rounded-full  border bg-transparent pl-10 outline-none focus:w-full focus:cursor-text focus:border-orange-300 focus:pl-14 focus:pr-5"
                   placeholder="Search project..."
                   value={query}
                   onChange={handleSearchInputChange}

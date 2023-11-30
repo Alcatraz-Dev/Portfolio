@@ -54,11 +54,6 @@
      text-white font-mono w-40 text-lg shadow-md hover:scale-105 hover:duration-300 hover:transition-transform hover:ease-in-out my-5;
   }
 
-  /*
-  Based on TailwindCSS recommendations,
-  consider using classes instead of the `@apply` directive
-  @see https://tailwindcss.com/docs/reusing-styles#avoiding-premature-abstraction
-*/
   .parent {
     @apply w-[290px] h-[300px];
     perspective: 1000px;

@@ -147,117 +147,7 @@ async function Resources({ params: { slug } }: Props) {
                 </p>
                 {resource?.resourceDetails?.map((details) => (
                   <div key={details?._id} className=" p-2 ">
-                    <div className=" flex justify-start  text-xs font-semibold py-2 font-mono">
-                      <Image
-                        src={urlFor(details?.resourceDetailsTitleCardIcon)
-                          .width(500)
-                          .height(500)
-                          .url()}
-                        alt={details?.title}
-                        width={20}
-                        height={20}
-                        className="flex justify-start "
-                      />{" "}
-                      <span className="mx-2 mt-1">title: {""}</span>
-                      <span className="mt-1">{resource?.title}</span>
-                    </div>
-                  </div>
-                ))}
-                {resource?.resourceDetails?.map((details) => (
-                  <div key={details?._id} className=" p-2 ">
-                    <div className=" flex justify-start  text-xs font-semibold py-2 font-mono">
-                      <Image
-                        src={urlFor(details?.resourceDetailsStatusCardIcon)
-                          .width(500)
-                          .height(500)
-                          .url()}
-                        alt={details?.title}
-                        width={20}
-                        height={20}
-                        className="flex justify-start "
-                      />{" "}
-                      <span className="mx-2 mt-1">Status : {""}</span>
-                      <span className="text-xs font-semibold mt-1  font-mono">
-                        {resource?.statusName}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-
-                {resource?.resourceDetails?.map((details) => (
-                  <div key={details?._id} className=" p-2 ">
-                    <div className=" flex justify-start  text-xs font-semibold py-2 font-mono">
-                      <Image
-                        src={urlFor(details?.resourceDetailsCategoryCardIcon)
-                          .width(500)
-                          .height(500)
-                          .url()}
-                        alt={details?.title}
-                        width={20}
-                        height={20}
-                        className="flex justify-start "
-                      />{" "}
-                      <span className="mx-2 mt-1">Category : {""}</span>
-                      <span className="text-xs font-semibold font-mono mt-1">
-                        {resource?.categories?.map((category) => (
-                          <span key={category?._id}>{category?.title}</span>
-                        ))}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-                {resource?.resourceDetails?.map((details) => (
-                  <div key={details?._id} className=" p-2 ">
-                    <div className=" flex justify-start  text-xs font-semibold py-2 font-mono">
-                      <Image
-                        src={urlFor(details?.resourceDetailsTagCardIcon)
-                          .width(500)
-                          .height(500)
-                          .url()}
-                        alt={details?.title}
-                        width={20}
-                        height={20}
-                        className="flex justify-start "
-                      />{" "}
-                      <span className="mx-2 mt-1">Tag : {""}</span>
-                      <span className="text-xs font-semibold font-mono mt-1">
-                        {resource?.resourceTag}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-
-                {resource?.resourceDetails?.map((details) => (
-                  <div key={details?._id} className=" p-2 ">
-                    <div className=" flex justify-start  text-xs font-semibold py-2 font-mono">
-                      <Image
-                        src={urlFor(details?.resourceDetailsCreatedDateCardIcon)
-                          .width(500)
-                          .height(500)
-                          .url()}
-                        alt={details?.title}
-                        width={20}
-                        height={20}
-                        className="flex justify-start "
-                      />{" "}
-                      <span className="mx-2 mt-1"> Created Date : {""}</span>
-                      <span className="text-xs font-semibold mt-1  font-mono">
-                        {new Date(resource?.publishedAt).toLocaleDateString(
-                          "en-US",
-                          {
-                            day: "numeric",
-                            month: "long",
-                            year: "numeric",
-                          }
-                        )}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-
-                {resource?.resourceDetails?.map((details) => (
-                  <div key={details?._id} className=" p-2 ">
-                    <div className=" flex justify-start  text-xs font-semibold py-2 font-mono">
+                    <div className=" flex justify-center  text-xs font-semibold py-2 font-mono">
                       <Image
                         src={urlFor(details?.resourceDetailsAuthorCardIcon)
                           .width(500)
@@ -268,18 +158,21 @@ async function Resources({ params: { slug } }: Props) {
                         height={20}
                         className="flex justify-start "
                       />{" "}
-                      <span className="mx-2 mt-1">Author : {""}</span>
-                      <span className="text-xs font-semibold mt-1  font-mono">
-                        {resource?.author?.name}
+                      <span className="mx-2 mt-1 font-bold text-sm ">
+                        Author
                       </span>
                     </div>
+                    <span className=" flex justify-center text-xs  mt-1 ml-4">
+                      {resource?.author?.name}
+                    </span>
                   </div>
                 ))}
+
                 {resource?.resourceDetails?.map((details) => (
                   <div key={details?._id} className=" p-2 ">
-                    <div className=" flex justify-start  text-xs font-semibold py-2 font-mono">
+                    <div className=" flex justify-center  text-xs font-semibold py-2 font-mono">
                       <Image
-                        src={urlFor(details?.resourceDetailsAuthorBioCardIcon)
+                        src={urlFor(details?.resourceDetailsTitleCardIcon)
                           .width(500)
                           .height(500)
                           .url()}
@@ -288,20 +181,118 @@ async function Resources({ params: { slug } }: Props) {
                         height={20}
                         className="flex justify-start "
                       />{" "}
-                      <span className="mx-2 mt-1">Author Bio : {""}</span>
+                      <span className="mx-2 mt-1 font-bold text-sm ">
+                        title
+                      </span>
                     </div>
-                    <span className=" flex justify-start text-xs font-semibold font-mono mt-1">
-                      <PortableText
-                        value={resource?.author?.bio}
-                        components={RichTextComponents}
-                      />
+                    <span className=" flex justify-center text-xs  mt-1 ml-4">
+                      {resource?.title}
                     </span>
                   </div>
                 ))}
 
                 {resource?.resourceDetails?.map((details) => (
                   <div key={details?._id} className=" p-2 ">
-                    <div className=" flex justify-start  text-xs font-semibold py-2 font-mono">
+                    <div className=" flex justify-center  text-xs font-semibold py-2 font-mono">
+                      <Image
+                        src={urlFor(details?.resourceDetailsStatusCardIcon)
+                          .width(500)
+                          .height(500)
+                          .url()}
+                        alt={details?.title}
+                        width={20}
+                        height={20}
+                        className="flex justify-start "
+                      />{" "}
+                      <span className="mx-2 mt-1 font-bold text-sm ">
+                        Status
+                      </span>
+                    </div>
+                    <span className=" flex justify-center text-xs  mt-1 ml-4">
+                      {resource?.statusName}
+                    </span>
+                  </div>
+                ))}
+
+                {resource?.resourceDetails?.map((details) => (
+                  <div key={details?._id} className=" p-2 ">
+                    <div className=" flex justify-center  text-xs font-semibold py-2 font-mono">
+                      <Image
+                        src={urlFor(details?.resourceDetailsCategoryCardIcon)
+                          .width(500)
+                          .height(500)
+                          .url()}
+                        alt={details?.title}
+                        width={20}
+                        height={20}
+                        className="flex justify-start "
+                      />{" "}
+                      <span className="mx-2 mt-1 font-bold text-sm ">
+                        Category
+                      </span>
+                    </div>
+                    <span className=" flex justify-center text-xs  mt-1 ml-4">
+                      {resource?.categories?.map((category) => (
+                        <span key={category?._id}>{category?.title}</span>
+                      ))}
+                    </span>
+                  </div>
+                ))}
+
+                {resource?.resourceDetails?.map((details) => (
+                  <div key={details?._id} className=" p-2 ">
+                    <div className=" flex justify-center  text-xs font-semibold py-2 font-mono">
+                      <Image
+                        src={urlFor(details?.resourceDetailsTagCardIcon)
+                          .width(500)
+                          .height(500)
+                          .url()}
+                        alt={details?.title}
+                        width={20}
+                        height={20}
+                        className="flex justify-start "
+                      />{" "}
+                      <span className="mx-2 mt-1 font-bold text-sm ">Tag</span>
+                    </div>
+                    <span className=" flex justify-center text-xs  mt-1 ml-4">
+                      {resource?.resourceTag}
+                    </span>
+                  </div>
+                ))}
+
+                {resource?.resourceDetails?.map((details) => (
+                  <div key={details?._id} className=" p-2 ">
+                    <div className=" flex justify-center  text-xs font-semibold py-2 font-mono">
+                      <Image
+                        src={urlFor(details?.resourceDetailsCreatedDateCardIcon)
+                          .width(500)
+                          .height(500)
+                          .url()}
+                        alt={details?.title}
+                        width={20}
+                        height={20}
+                        className="flex justify-start "
+                      />{" "}
+                      <span className="mx-2 mt-1 font-bold text-sm ">
+                        Created Date
+                      </span>
+                    </div>
+                    <span className=" flex justify-center text-xs  mt-1 ml-4">
+                      {new Date(resource?.publishedAt).toLocaleDateString(
+                        "en-US",
+                        {
+                          day: "numeric",
+                          month: "long",
+                          year: "numeric",
+                        }
+                      )}
+                    </span>
+                  </div>
+                ))}
+
+                {resource?.resourceDetails?.map((details) => (
+                  <div key={details?._id} className=" p-2 ">
+                    <div className=" flex justify-center  text-xs  py-2 font-mono">
                       <Image
                         src={urlFor(
                           details?.resourceDetailsShortDescriptionCardIcon
@@ -314,12 +305,37 @@ async function Resources({ params: { slug } }: Props) {
                         height={20}
                         className="flex justify-start "
                       />{" "}
-                      <span className="mx-2 mt-1">
-                        Short Description : {""}
+                      <span className="mx-2 mt-1 font-bold text-sm ">
+                        Short Description
                       </span>
                     </div>
-                    <span className=" flex justify-start text-xs font-semibold font-mono mt-1">
+                    <span className=" flex justify-center text-xs  mt-1 ml-4">
                       {resource?.description}
+                    </span>
+                  </div>
+                ))}
+                {resource?.resourceDetails?.map((details) => (
+                  <div key={details?._id} className=" p-2 ">
+                    <div className=" flex justify-center  text-xs font-semibold py-2 font-mono">
+                      <Image
+                        src={urlFor(details?.resourceDetailsAuthorBioCardIcon)
+                          .width(500)
+                          .height(500)
+                          .url()}
+                        alt={details?.title}
+                        width={20}
+                        height={20}
+                        className="flex justify-start "
+                      />{" "}
+                      <span className="mx-2 mt-1 font-bold text-sm ">
+                        Author Bio
+                      </span>
+                    </div>
+                    <span className=" flex justify-center text-xs  mt-1 ml-4">
+                      <PortableText
+                        value={resource?.author?.bio}
+                        components={RichTextComponents}
+                      />
                     </span>
                   </div>
                 ))}

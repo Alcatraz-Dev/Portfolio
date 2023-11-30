@@ -7,14 +7,14 @@ import Confetti from "../FX/Confetti";
 type Props = {};
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const allowedDomains = ['gmail.com', 'yahoo.com', 'outlook.com']; // Add more as needed
+const allowedDomains = ["gmail.com", "yahoo.com", "outlook.com"]; // Add more as needed
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
-    .required('Email is required')
-    .matches(emailRegex, 'Invalid email format')
-    .test('is-valid-domain', 'The email domain is not allowed', (value) => {
-      const domain = value?.split('@')[1];
+    .required("Email is required")
+    .matches(emailRegex, "Invalid email format")
+    .test("is-valid-domain", "The email domain is not allowed", (value) => {
+      const domain = value?.split("@")[1];
       return allowedDomains.includes(domain);
     }),
 });
@@ -25,14 +25,11 @@ export default function NewsLetter({}: Props) {
   const [submitting, setSubmitting] = useState<boolean>(false);
   const [isVisible, setIsVisible] = useState(false);
 
-
-
-
   return (
     <>
       <section id="newsletter" className=" px-5 mt-5 mb-5  ">
         <div className="flex justify-center place-items-center">
-          <div className="  p-5 space-x-5  space-y-5 bg-white/40  px dark:bg-zinc-700/40 shadow-md rounded-xl max-w-[800px]">
+          <div className="  p-5 space-x-5  space-y-5 bg-white  px dark:bg-zinc-700/40 shadow-md rounded-xl max-w-[800px]">
             {/* Header and description */}
             <div className="pb-2 space-y-3">
               <h1 className="text-2xl font-black sm:text-2.5xl">
@@ -45,17 +42,15 @@ export default function NewsLetter({}: Props) {
                 spam-free experience.
               </p>
             </div>
-          
+
             {/* Formik */}
 
             <Formik
               initialValues={{
                 email: "",
               }}
-              
               validationSchema={validationSchema}
               onSubmit={async (values, { resetForm }) => {
-                
                 try {
                   const response = await fetch("/api/subscribe", {
                     method: "POST",
@@ -72,24 +67,22 @@ export default function NewsLetter({}: Props) {
                     setMessage(
                       "Error joining the newsletter.Oops, something went wrong... Send me an email at alcatrazdevcontact@gmail.com and I'll add you to the list."
                     );
-                    setIsVisible(false)
+                    setIsVisible(false);
                     setTimeout(() => {
                       setMessage("");
-                      setIsVisible(false)
+                      setIsVisible(false);
                     }, 2000);
                     return;
                   }
 
                   setStatus(201);
                   setMessage("Thank you for subscribing my newsletter 👻.");
-                  setIsVisible(true)
+                  setIsVisible(true);
                   setTimeout(() => {
-                    setIsVisible(false)
+                    setIsVisible(false);
                     setMessage("");
                     resetForm();
-                    
                   }, 4000);
-               
                 } catch (error) {
                   setStatus(500);
                   setMessage(
@@ -97,12 +90,10 @@ export default function NewsLetter({}: Props) {
                   );
                   setTimeout(() => {
                     setMessage("");
-                   
                   }, 2000);
                 }
               }}
             >
-             
               <Form>
                 <div className="flex items-center space-x-3 ">
                   <Field
@@ -115,17 +106,16 @@ export default function NewsLetter({}: Props) {
                   <button
                     className="px-5 py-1.5 font-bold text-gray-100 transition-all bg-lime-500 hover:bg-lime-400  rounded-md  hover:scale-105 ease-in duration-300 disabled:opacity-80"
                     type="submit"
-                   
                   >
                     {submitting ? "Submitting" : "Submit"}
                   </button>
                   {isVisible && <Confetti />}
                 </div>
-                
+
                 {message && (
                   <p
                     className={`${
-                      status !== 201 
+                      status !== 201
                         ? "text-red-400 text-sm"
                         : "text-lime-500 text-sm"
                     } pt-4 font-black `}

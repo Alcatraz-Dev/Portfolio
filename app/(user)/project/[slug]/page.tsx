@@ -60,15 +60,19 @@ async function Projects({ params: { slug } }: Props) {
         >
           <Link href="/#projects">
             <div className=" absolute top-0 right-0   cursor-pointer items-center ">
-              <ArrowLeftCircleIcon width={40} height={40} className="mr-10 hover:text-lime-400 hover:scale-105 ease-in-out duration-300" />
+              <ArrowLeftCircleIcon
+                width={40}
+                height={40}
+                className="mr-10 hover:text-lime-400 hover:scale-105 ease-in-out duration-300"
+              />
             </div>
           </Link>
-          <div className = " absolute top-0 right-0   cursor-pointer items-center hover:text-blue-400 hover:scale-105 ease-in-out duration-300">
-          <WebShare 
-            key={project?._id}
-            title={project?.title}
-            url={`https://alcatraz-portfolio.vercel.app/project/${project?.slug.current}`}
-          />
+          <div className=" absolute top-0 right-0   cursor-pointer items-center hover:text-blue-400 hover:scale-105 ease-in-out duration-300">
+            <WebShare
+              key={project?._id}
+              title={project?.title}
+              url={`https://alcatraz-portfolio.vercel.app/project/${project?.slug.current}`}
+            />
           </div>
           <div className="p-5">
             <h2
@@ -172,117 +176,7 @@ async function Projects({ params: { slug } }: Props) {
                 </p>
                 {project?.projectDetails?.map((details) => (
                   <div key={details?._id} className=" p-2 ">
-                    <div className=" flex justify-start  text-xs font-semibold py-2 font-mono">
-                      <Image
-                        src={urlFor(details?.projectDetailsTitleCardIcon)
-                          .width(500)
-                          .height(500)
-                          .url()}
-                        alt={details?.title}
-                        width={20}
-                        height={20}
-                        className="flex justify-start "
-                      />{" "}
-                      <span className="mx-2 mt-1">title: {""}</span>
-                      <span className="mt-1"> {project?.title}</span>
-                    </div>
-                  </div>
-                ))}
-                {project?.projectDetails?.map((details) => (
-                  <div key={details?._id} className=" p-2 ">
-                    <div className=" flex justify-start  text-xs font-semibold py-2 font-mono">
-                      <Image
-                        src={urlFor(details?.projectDetailsStatusCardIcon)
-                          .width(500)
-                          .height(500)
-                          .url()}
-                        alt={details?.title}
-                        width={20}
-                        height={20}
-                        className="flex justify-start "
-                      />{" "}
-                      <span className="mx-2 mt-1">Status : {""}</span>
-                      <span className="text-xs font-semibold mt-1  font-mono">
-                        {project?.statusName}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-
-                {project?.projectDetails?.map((details) => (
-                  <div key={details?._id} className=" p-2 ">
-                    <div className=" flex justify-start  text-xs font-semibold py-2 font-mono">
-                      <Image
-                        src={urlFor(details?.projectDetailsCategoryCardIcon)
-                          .width(500)
-                          .height(500)
-                          .url()}
-                        alt={details?.title}
-                        width={20}
-                        height={20}
-                        className="flex justify-start "
-                      />{" "}
-                      <span className="mx-2 mt-1">Category : {""}</span>
-                      <span className="text-xs font-semibold font-mono mt-1">
-                        {project?.categories?.map((category) => (
-                          <span key={category?._id}>{category?.title}</span>
-                        ))}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-                {project?.projectDetails?.map((details) => (
-                  <div key={details?._id} className=" p-2 ">
-                    <div className=" flex justify-start  text-xs font-semibold py-2 font-mono">
-                      <Image
-                        src={urlFor(details?.projectDetailsTagCardIcon)
-                          .width(500)
-                          .height(500)
-                          .url()}
-                        alt={details?.title}
-                        width={20}
-                        height={20}
-                        className="flex justify-start "
-                      />{" "}
-                      <span className="mx-2 mt-1">Tag : {""}</span>
-                      <span className="text-xs font-semibold font-mono mt-1">
-                        {project?.projectTag}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-
-                {project?.projectDetails?.map((details) => (
-                  <div key={details?._id} className=" p-2 ">
-                    <div className=" flex justify-start  text-xs font-semibold py-2 font-mono">
-                      <Image
-                        src={urlFor(details?.projectDetailsCreatedDateCardIcon)
-                          .width(500)
-                          .height(500)
-                          .url()}
-                        alt={details?.title}
-                        width={20}
-                        height={20}
-                        className="flex justify-start "
-                      />{" "}
-                      <span className="mx-2 mt-1">Created Date : {""}</span>
-                      <span className="text-xs font-semibold mt-1  font-mono">
-                        {new Date(project?.publishedAt).toLocaleDateString(
-                          "en-US",
-                          {
-                            day: "numeric",
-                            month: "long",
-                            year: "numeric",
-                          }
-                        )}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-
-                {project?.projectDetails?.map((details) => (
-                  <div key={details?._id} className=" p-2 ">
-                    <div className=" flex justify-start  text-xs font-semibold py-2 font-mono">
+                    <div className=" flex justify-center  text-xs font-semibold py-2 font-mono">
                       <Image
                         src={urlFor(details?.projectDetailsAuthorCardIcon)
                           .width(500)
@@ -293,18 +187,21 @@ async function Projects({ params: { slug } }: Props) {
                         height={20}
                         className="flex justify-start "
                       />{" "}
-                      <span className="mx-2 mt-1">Author : {""}</span>
-                      <span className="text-xs font-semibold mt-1  font-mono">
-                        {project?.author?.name}
+                      <span className="mx-2 mt-1 font-bold text-sm ">
+                        Author
                       </span>
                     </div>
+                    <span className=" flex justify-center text-xs  mt-1 ml-4">
+                      {project?.author?.name}
+                    </span>
                   </div>
                 ))}
+
                 {project?.projectDetails?.map((details) => (
                   <div key={details?._id} className=" p-2 ">
-                    <div className=" flex justify-start  text-xs font-semibold py-2 font-mono">
+                    <div className=" flex justify-center  text-xs font-semibold py-2 font-mono">
                       <Image
-                        src={urlFor(details?.projectDetailsAuthorBioCardIcon)
+                        src={urlFor(details?.projectDetailsTitleCardIcon)
                           .width(500)
                           .height(500)
                           .url()}
@@ -313,20 +210,118 @@ async function Projects({ params: { slug } }: Props) {
                         height={20}
                         className="flex justify-start "
                       />{" "}
-                      <span className="mx-2 mt-1">Author Bio : {""}</span>
+                      <span className="mx-2 mt-1 font-bold text-sm ">
+                        title
+                      </span>
                     </div>
-                    <span className=" flex justify-start text-xs font-semibold font-mono mt-1">
-                      <PortableText
-                        value={project?.author?.bio}
-                        components={RichTextComponents}
-                      />
+                    <span className=" flex justify-center text-xs  mt-1 ml-4">
+                      {project?.title}
                     </span>
                   </div>
                 ))}
 
                 {project?.projectDetails?.map((details) => (
                   <div key={details?._id} className=" p-2 ">
-                    <div className=" flex justify-start  text-xs font-semibold py-2 font-mono">
+                    <div className=" flex justify-center  text-xs font-semibold py-2 font-mono">
+                      <Image
+                        src={urlFor(details?.projectDetailsStatusCardIcon)
+                          .width(500)
+                          .height(500)
+                          .url()}
+                        alt={details?.title}
+                        width={20}
+                        height={20}
+                        className="flex justify-start "
+                      />{" "}
+                      <span className="mx-2 mt-1 font-bold text-sm ">
+                        Status
+                      </span>
+                    </div>
+                    <span className=" flex justify-center text-xs  mt-1 ml-4">
+                      {project?.statusName}
+                    </span>
+                  </div>
+                ))}
+
+                {project?.projectDetails?.map((details) => (
+                  <div key={details?._id} className=" p-2 ">
+                    <div className=" flex justify-center  text-xs font-semibold py-2 font-mono">
+                      <Image
+                        src={urlFor(details?.projectDetailsCategoryCardIcon)
+                          .width(500)
+                          .height(500)
+                          .url()}
+                        alt={details?.title}
+                        width={20}
+                        height={20}
+                        className="flex justify-start "
+                      />{" "}
+                      <span className="mx-2 mt-1 font-bold text-sm ">
+                        Category
+                      </span>
+                    </div>
+                    <span className=" flex justify-center text-xs  mt-1 ml-4">
+                      {project?.categories?.map((category) => (
+                        <span key={category?._id}>{category?.title}</span>
+                      ))}
+                    </span>
+                  </div>
+                ))}
+
+                {project?.projectDetails?.map((details) => (
+                  <div key={details?._id} className=" p-2 ">
+                    <div className=" flex justify-center  text-xs font-semibold py-2 font-mono">
+                      <Image
+                        src={urlFor(details?.projectDetailsTagCardIcon)
+                          .width(500)
+                          .height(500)
+                          .url()}
+                        alt={details?.title}
+                        width={20}
+                        height={20}
+                        className="flex justify-start "
+                      />{" "}
+                      <span className="mx-2 mt-1 font-bold text-sm ">Tag</span>
+                    </div>
+                    <span className=" flex justify-center text-xs  mt-1 ml-4">
+                      {project?.projectTag}
+                    </span>
+                  </div>
+                ))}
+
+                {project?.projectDetails?.map((details) => (
+                  <div key={details?._id} className=" p-2 ">
+                    <div className=" flex justify-center  text-xs font-semibold py-2 font-mono">
+                      <Image
+                        src={urlFor(details?.projectDetailsCreatedDateCardIcon)
+                          .width(500)
+                          .height(500)
+                          .url()}
+                        alt={details?.title}
+                        width={20}
+                        height={20}
+                        className="flex justify-start "
+                      />{" "}
+                      <span className="mx-2 mt-1 font-bold text-sm ">
+                        Created Date
+                      </span>
+                    </div>
+                    <span className=" flex justify-center text-xs  mt-1 ml-4">
+                      {new Date(project?.publishedAt).toLocaleDateString(
+                        "en-US",
+                        {
+                          day: "numeric",
+                          month: "long",
+                          year: "numeric",
+                        }
+                      )}
+                    </span>
+                  </div>
+                ))}
+
+                {project?.projectDetails?.map((details) => (
+                  <div key={details?._id} className=" p-2 ">
+                    <div className=" flex justify-center  text-xs  py-2 font-mono">
                       <Image
                         src={urlFor(
                           details?.projectDetailsShortDescriptionCardIcon
@@ -339,12 +334,37 @@ async function Projects({ params: { slug } }: Props) {
                         height={20}
                         className="flex justify-start "
                       />{" "}
-                      <span className="mx-2 mt-1">
-                        Short Description : {""}
+                      <span className="mx-2 mt-1 font-bold text-sm ">
+                        Short Description
                       </span>
                     </div>
-                    <span className=" flex justify-start text-xs font-semibold font-mono mt-1">
+                    <span className=" flex justify-center text-xs  mt-1 ml-4">
                       {project?.description}
+                    </span>
+                  </div>
+                ))}
+                {project?.projectDetails?.map((details) => (
+                  <div key={details?._id} className=" p-2 ">
+                    <div className=" flex justify-center  text-xs font-semibold py-2 font-mono">
+                      <Image
+                        src={urlFor(details?.projectDetailsAuthorBioCardIcon)
+                          .width(500)
+                          .height(500)
+                          .url()}
+                        alt={details?.title}
+                        width={20}
+                        height={20}
+                        className="flex justify-start "
+                      />{" "}
+                      <span className="mx-2 mt-1 font-bold text-sm ">
+                        Author Bio
+                      </span>
+                    </div>
+                    <span className=" flex justify-center text-xs  mt-1 ml-4">
+                      <PortableText
+                        value={project?.author?.bio}
+                        components={RichTextComponents}
+                      />
                     </span>
                   </div>
                 ))}
@@ -411,7 +431,7 @@ async function Projects({ params: { slug } }: Props) {
       </div>
 
       {/* <CommentSection/> */}
-       <Comments/>
+      <Comments />
       <div className="grid grid-cols-3 md:grid-cols-1 ">
         <Link href="/#projects">
           <p

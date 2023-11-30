@@ -41,11 +41,11 @@ function ProjectsSction({ projectSection, projects }: Props) {
     : project;
 
   return (
-    <section id="projects" className="p-5 sm:p-10 section">
+    <section id="projects" className="p-5 sm:p-10 ">
       {projectSection?.map((pr) => (
         <div
           key={pr?._id}
-          className="mt-5 md:mt-0 text-left flex flex-col h-full"
+          className="mt-5 md:mt-0 text-left flex flex-col h-full py-8 px-2 ml-4 mr-6 "
         >
           <h2
             className={`text-4xl font-bold mb-4 ${pr?.classNameProjectSectionTitleColor} `}
@@ -59,14 +59,14 @@ function ProjectsSction({ projectSection, projects }: Props) {
       <SearchBar  />
       
       {/* <FilterTab /> */}
-      <div className="flex justify-center">
+      <div className="flex justify-center section ">
         <div className="  max-w-3xl mx-auto px-8 py-6 sm:px-0">
           {projectSection?.map((filterTab) => (
             <div
               key={filterTab?._id}
               role="tablist"
               aria-label="tabs"
-              className="  relative  w-[450px] xl:w-[750px] lg:w-[650px] md:w-[550px] h-auto grid grid-cols-3 items-center px-[3px] rounded-full backdrop-blur-xl  bg-white/40 dark:bg-zinc-700/40 overflow-hidden shadow-2xl shadow-900/20 transition "
+              className="  relative  w-[450px] xl:w-[750px] lg:w-[650px] md:w-[550px] h-auto grid grid-cols-3 items-center px-[10px] rounded-full backdrop-blur-xl  bg-white dark:bg-zinc-700/40 overflow-hidden shadow-2xl shadow-900/20 transition "
             >
               {filterTab?.tabFilter?.map((linktab) => (
                 <button
@@ -93,7 +93,7 @@ function ProjectsSction({ projectSection, projects }: Props) {
 
       {filteredProjects.length > 0 ? (
         <div className=" flex justify-center items-center py-10">
-          <div className="flex overflow-x-scroll py-5 w-full scrollbar-hide space-x-5">
+          <div className="flex overflow-x-scroll py-5 w-full scrollbar-hide space-x-2">
             {filteredProjects.map((project) => (
 
               <motion.div
@@ -101,7 +101,7 @@ function ProjectsSction({ projectSection, projects }: Props) {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
                 key={project?._id}
-                className="max-w-sm min-w-[350px] backdrop-blur-xl bg-white/40  px-6 pt-6 pb-2 rounded-xl shadow-lg dark:bg-zinc-700/40 opacity-100"
+                className="max-w-sm min-w-[330px] backdrop-blur-xl bg-white  px-6 pt-6 pb-2 rounded-xl shadow-lg dark:bg-zinc-700/40 opacity-100"
               >
                 <h1
                   className={`mb-3 text-2xl font-bold  ${project?.projectTitleColor}`}
@@ -178,7 +178,7 @@ function ProjectsSction({ projectSection, projects }: Props) {
                         <span className="font-mono">
                           {format(
                             new Date(project?.publishedAt),
-                            " dd,MMMM,yyyy, p"
+                            "dd,MMMM,yyyy"
                           )}
                         </span>
                       </div>
