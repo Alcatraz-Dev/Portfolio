@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { ImageResponse } from '@vercel/og'
 
 export const config = {
-  runtime: 'experimental-edge',
+  runtime: 'edge',
 }
 
 export default function handler(req: NextRequest) {
@@ -16,14 +16,14 @@ export default function handler(req: NextRequest) {
   let objectDate = new Date();
 
 
-let day = objectDate.getDate();
-console.log(day); // 23
+// let day = objectDate.getDate();
+// console.log(day); // 23
 
-let month = objectDate.getMonth();
-console.log(month + 1); // 8
+// let month = objectDate.getMonth();
+// console.log(month + 1); // 8
 
-let year = objectDate.getFullYear();
-let date = month + "/" + day + "/" + year;
+// let year = objectDate.getFullYear();
+let date = new Date().toJSON().slice(0, 10);
 
 
   const coverUrl =
