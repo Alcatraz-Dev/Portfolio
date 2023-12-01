@@ -9,14 +9,26 @@ export default function handler(req: NextRequest) {
   const { searchParams, protocol, host } = new URL(req.url)
   const title = searchParams.get('title') || 'Haythem Dhahri | Portfolio'
   const author = searchParams.get('author') || 'Haythem Dhahri '
-  const date = searchParams.get('date') || '2023-11-08T12:00:00.000Z'
+  const dateformat = searchParams.get('date') 
   const cover = searchParams.get('cover')
 
+
+  let objectDate = new Date();
+
+
+let day = objectDate.getDate();
+console.log(day); // 23
+
+let month = objectDate.getMonth();
+console.log(month + 1); // 8
+
+let year = objectDate.getFullYear();
+let date = month + "/" + day + "/" + year;
+
+
   const coverUrl =
-    cover &&
-    `${protocol}//${host}/_next/image?url=${encodeURIComponent(
-      cover
-    )}&w=1200&q=75`
+    cover &&( "./LogoImage.png")
+   
 
   return new ImageResponse(
     (
@@ -34,7 +46,7 @@ export default function handler(req: NextRequest) {
           <div tw="text-2xl">
             {author +
               ' – ' +
-              new Date(date).toLocaleDateString('en-US', { dateStyle: 'long' })}
+              new Date(date)}
           </div>
         </div>
       </div>
