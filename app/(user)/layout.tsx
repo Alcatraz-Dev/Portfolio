@@ -9,6 +9,7 @@ export default async function RootLayout({
   return (
     <html>
       <head />
+
       <body>
         <Providers>
           <main className="overflow-x-hidden bg-gray-100 text-zinc-800 dark:bg-zinc-800 dark:text-white overflow-y-scroll scrollbar-hide">
