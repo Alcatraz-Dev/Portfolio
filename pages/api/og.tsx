@@ -1,8 +1,8 @@
 import { ImageResponse } from "@vercel/og";
 import { NextApiRequest, NextApiResponse } from "next";
-export const config = {
-  runtime: "edge",
-};
+// export const config = {
+//   runtime: "edge",
+// };
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   const title = 'Haythem Dhahri | Portfolio - Full Stack & Game Developer';
