@@ -1,7 +1,7 @@
 import Providers from "@/components/Providers/Providers";
 import "../../styles/globals.css";
 
-export const runtime = 'edge'
+
 export default async function RootLayout({
   children,
 }: {
