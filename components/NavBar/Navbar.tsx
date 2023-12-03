@@ -34,6 +34,8 @@ const navLinks = [
     title: "Newsletter",
     path: "newsletter",
   },
+ 
+  
 ];
 
 const Navbar = () => {
@@ -87,24 +89,28 @@ const Navbar = () => {
           </div>
 
           <div
-            className="menu hidden lg:block xl:block md:w-auto sm:w-auto px-5"
+            className="menu hidden lg:block xl:block md:w-auto sm:w-auto px-10 "
             id="navbar"
           >
-            <ul className="  flex justify-center p-4 md:p-0 md:flex-row md:space-x-8 mt-0">
+            <ul className="  flex justify-center space-x-2 px-5 p-4 md:p-0 md:flex-row md:space-x-8 mt-0 pr-10">
               {navLinks.map((link, index) => (
-                <li key={index}>
+                <>
+                <li className="pr-8" key={index}>
                   <NavLink href={link.path} title={link.title} />
                 </li>
+                
+               </>
               ))}
+             
             </ul>
           </div>
         </div>
 
-        <div className="container place-items-center">
+        <div className="container place-items-center ">
           {navbarOpen ? (
             <MenuOverlay links={navLinks} toogle={ThemeToggle} />
           ) : (
-            <div className="  flex justify-center space-x-3 ">
+            <div className=" absolute sm:justify-center lg:justify-end md:justify-end space-x-3 lg:right-[-10px] md:right-[-10px] lg:top-0 md:top-0">
               <ThemeToggle useTheme={useTheme} hideOnSmallScreens />
             </div>
           )}

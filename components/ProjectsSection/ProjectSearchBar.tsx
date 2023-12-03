@@ -108,7 +108,7 @@ function SearchBar() {
                   value={query}
                   onChange={handleSearchInputChange}
                 />
-                <MagnifyingGlassIcon className="absolute inset-y-0 my-auto h-8 w-12 border-r border-transparent stroke-gray-500 px-3.5 peer-focus:border-orange-300 peer-focus:stroke-orange-500" />
+                <MagnifyingGlassIcon className="absolute inset-y-0 my-auto h-8 w-11 border-r border-transparent stroke-gray-500 px-3.5 peer-focus:border-orange-300 peer-focus:stroke-orange-500" />
               </form>
             </div>
             {isLoading && (

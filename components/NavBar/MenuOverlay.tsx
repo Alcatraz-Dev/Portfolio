@@ -9,7 +9,7 @@ const MenuOverlay = ({ links, toogle }: any) => {
   toogle = ThemeToggle;
 
   return (
-    <div>
+    <div className="top-0">
       <div className="flex flex-col py-4 items-center ">
         <ThemeToggle useTheme={useTheme} />
       </div>

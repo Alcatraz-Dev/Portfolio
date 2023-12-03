@@ -109,7 +109,7 @@ function SearchBar() {
                   value={query}
                   onChange={handleSearchInputChange}
                 />
-                <MagnifyingGlassIcon className="absolute inset-y-0 my-auto h-8 w-12 border-r border-transparent stroke-gray-500 px-3.5 peer-focus:border-purple-300 peer-focus:stroke-purple-500" />
+                <MagnifyingGlassIcon className="absolute inset-y-0 my-auto h-8 w-11 border-r border-transparent stroke-gray-500 px-3.5 peer-focus:border-purple-300 peer-focus:stroke-purple-500" />
               </form>
               {isLoading && (
                 <p className="mt-5 flex justify-center">Loading...</p>
