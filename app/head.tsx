@@ -1,8 +1,7 @@
 
 export default function Head() {
   const BaseUrl = `${
-     process.env.NEXT_PUBLIC_VERCEL_URL 
-  }`;
+     process.env.NEXT_PUBLIC_VERCEL_URL}/`;
   
   return (
     <>
@@ -47,11 +46,11 @@ export default function Head() {
           />
       <meta
             name="Haythem Dhahri | Portfolio - Full Stack & Game Developer:image"
-            content={`${BaseUrl}/og-image.png`}
+            content={`${BaseUrl}og-image.png`}
           />
        <meta
         property="twitter:image"
-        content={`${BaseUrl}/og-image.png`}
+        content={`${BaseUrl}og-image.png`}
       />
 
 
