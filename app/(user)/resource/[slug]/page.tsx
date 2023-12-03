@@ -19,6 +19,7 @@ type Props = {
   };
 };
 export const revalidate = 10;
+export const runtime = 'edge'
 const urlFile = process.env.NEXT_PUBLIC_SANITY_FILE_URL;
 export async function generateStaticParams() {
   const quary = groq`*[_type =='resource']{

@@ -14,7 +14,7 @@ const resumeQuery = groq`
     }|order(_createAt desc)
 `;
 
-
+export const runtime = 'edge'
 export const revalidate = 10;
 export default async function Resume() {
   if (previewData()) {

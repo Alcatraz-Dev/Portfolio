@@ -1,3 +1,5 @@
+
+export const runtime = 'edge'
 export default function Head() {
   const BaseUrl = `${
      process.env.NEXT_PUBLIC_VERCEL_URL 
