@@ -72,7 +72,7 @@ async function Resources({ params: { slug } }: Props) {
             <WebShare
               key={resource?._id}
               title={resource?.title}
-              url={`${BaseUrl}${resource?.slug.current}`}
+              url={`${BaseUrl}/${resource?.slug.current}`}
             />
           </div>
           <div className="p-5">
