@@ -47,11 +47,11 @@ export default function Head() {
           />
       <meta
             name="Haythem Dhahri | Portfolio - Full Stack & Game Developer:image"
-            content={`${BaseUrl}og-image.png`}
+            content={`${BaseUrl}/og-image.png`}
           />
        <meta
         property="twitter:image"
-        content={`${BaseUrl}og-image.png`}
+        content={`${BaseUrl}/og-image.png`}
       />
 
 
