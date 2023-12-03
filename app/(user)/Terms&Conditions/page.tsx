@@ -10,7 +10,7 @@ type Props = {
   TermsAndConditions: TermsAndConditions;
 };
 export const revalidate = 10;
-export const runtime = 'edge'
+
 function TermsAndConditionsPage() {
   const [pageData, setPageData] = useState<TermsAndConditions>();
 

@@ -10,7 +10,7 @@ type Props = {
   PrivacyPolicy: PrivacyPolicy;
 };
 export const revalidate = 10;
-export const runtime = 'edge'
+
 function PrivacyPolicyPage() {
   const [pageData, setPageData] = useState<PrivacyPolicy>();
 

@@ -1,6 +1,10 @@
 import { ImageResponse } from "@vercel/og";
 
 
+export const config = {
+  runtime: 'edge',
+};
+
 const title = "Haythem Dhahri | Portfolio - Full Stack & Game Developer";
 
 const description =
@@ -13,10 +17,6 @@ export default async function () {
     (
       <div tw="flex flex-row-reverse h-full bg-zinc-900">
         <div tw="flex w-1/2 h-full">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-
-         
-
           <div
             tw="absolute left-[-80px] top-[-30px] w-[150px] h-[120%] bg-white"
             style={{ transform: "rotate(12deg)" }}
