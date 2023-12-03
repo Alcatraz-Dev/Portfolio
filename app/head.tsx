@@ -22,8 +22,36 @@ export default function Head() {
       <meta name="publisher" content="Haythem Dhahri" />
       <html lang="en" />
       <meta
-        property="og:image"
-        content="og-image.png"
+            property="og:site_name"
+            content={`${BaseUrl}`}
+          />
+            <meta
+            property="og:description"
+        content="Haythem Dhahri, an experienced Full Stack Developer specializing in frontend, backend, game development, and graphic design, delivering innovative solutions."
+       
+          />
+           <meta property="og:title" content="Haythem Dhahri | Portfolio - Full Stack & Game Developer" />
+           <meta name="Haythem Dhahri | Portfolio - Full Stack & Game Developer:card" content="summary_large_image" />
+           <meta
+            name="Haythem Dhahri | Portfolio - Full Stack & Game Developer:title"
+            content="Haythem Dhahri | Portfolio - Full Stack & Game Developer"
+          />
+           <meta
+            name="Haythem Dhahri | Portfolio - Full Stack & Game Developer:description"
+            content="Haythem Dhahri, an experienced Full Stack Developer specializing in frontend, backend, game development, and graphic design, delivering innovative solutions."
+
+          />
+           <meta
+            property="og:image"
+            content={`${BaseUrl}og-image.png`}
+          />
+      <meta
+            name="Haythem Dhahri | Portfolio - Full Stack & Game Developer:image"
+            content={`${BaseUrl}og-image.png`}
+          />
+       <meta
+        property="twitter:image"
+        content={`${BaseUrl}og-image.png`}
       />
 
 
