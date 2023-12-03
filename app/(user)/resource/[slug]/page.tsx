@@ -19,7 +19,7 @@ type Props = {
   };
 };
 export const revalidate = 10;
-const BaseUrl = process.env.NEXT_PUBLIC_VERCEL_URL;
+const BaseUrl = `${process.env.NEXT_PUBLIC_VERCEL_URL}/`;
 const urlFile = process.env.NEXT_PUBLIC_SANITY_FILE_URL;
 export async function generateStaticParams() {
   const quary = groq`*[_type =='resource']{
