@@ -60,7 +60,7 @@ async function Resources({ params: { slug } }: Props) {
           className="absolute top-[75%] max-w-[1240px] w-full left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%] text-white z-10 p-2"
         >
           <Link href="/#resources">
-            <div className=" absolute top-0 right-0   cursor-pointer items-center hover:scale-105 ease-in-out duration-300">
+            <div className=" absolute right-[-30px] top-14   cursor-pointer items-center hover:scale-105 ease-in-out duration-300">
               <ArrowLeftCircleIcon
                 width={40}
                 height={40}
@@ -68,7 +68,7 @@ async function Resources({ params: { slug } }: Props) {
               />
             </div>
           </Link>
-          <div className=" absolute top-0 right-0   cursor-pointer items-center hover:text-blue-400 hover:scale-105 ease-in-out duration-300">
+          <div className=" absolute right-[-30px] top-14   cursor-pointer items-center hover:text-blue-400 hover:scale-105 ease-in-out duration-300">
             <WebShare
               key={resource?._id}
               title={resource?.title}
@@ -77,7 +77,7 @@ async function Resources({ params: { slug } }: Props) {
           </div>
           <div className="p-5">
             <h2
-              className={`py-4 text-3xl  font-bold ${resource?.resourceTitleColor}`}
+              className={`py-4 text-2xl lg:text-3xl font-bold ${resource?.resourceTitleColor}`}
             >
               {resource?.title}
             </h2>

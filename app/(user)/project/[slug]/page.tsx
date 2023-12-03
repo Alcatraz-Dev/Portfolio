@@ -59,25 +59,27 @@ async function Projects({ params: { slug } }: Props) {
           key={project?._id}
           className="absolute top-[75%] max-w-[1240px] w-full left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%] text-white z-10 p-2"
         >
-          <Link href="/#projects">
-            <div className=" absolute top-0 right-0   cursor-pointer items-center ">
-              <ArrowLeftCircleIcon
-                width={40}
-                height={40}
-                className="mr-10 hover:text-lime-400 hover:scale-105 ease-in-out duration-300"
+         
+            <Link href="/#projects">
+              <div className=" absolute right-[-30px] top-14  cursor-pointer items-center  ">
+                <ArrowLeftCircleIcon
+                  width={40}
+                  height={40}
+                  className="mr-10 hover:text-lime-400 hover:scale-105 ease-in-out duration-300"
+                />
+              </div>
+            </Link>
+            <div className=" absolute right-[-30px]  top-14  cursor-pointer items-center hover:text-blue-400 hover:scale-105 ease-in-out duration-300">
+              <WebShare
+                key={project?._id}
+                title={project?.title}
+                url={`https://alcatraz-portfolio.vercel.app/project/${project?.slug.current}`}
               />
             </div>
-          </Link>
-          <div className=" absolute top-0 right-0   cursor-pointer items-center hover:text-blue-400 hover:scale-105 ease-in-out duration-300">
-            <WebShare
-              key={project?._id}
-              title={project?.title}
-              url={`https://alcatraz-portfolio.vercel.app/project/${project?.slug.current}`}
-            />
-          </div>
+        
           <div className="p-5">
             <h2
-              className={`   text-3xl  py-4   font-bold ${project?.projectTitleColor}`}
+              className={`text-2xl lg:text-3xl  py-4 justify-start font-bold ${project?.projectTitleColor}`}
             >
               {project?.title}
             </h2>
