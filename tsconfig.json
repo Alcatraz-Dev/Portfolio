@@ -29,7 +29,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "components/WebShare.tsx",
+    "components/Shear/WebShare.tsx",
     "components/DarkMode/DarkMode.tsx",
     "components/AboutSection/AboutSection.tsx",
     "components/Certificate/Certificate.tsx",

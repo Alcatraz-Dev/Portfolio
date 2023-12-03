@@ -8,7 +8,7 @@ import urlFor from "@/lib/urlFor";
 import { ArrowLeftCircleIcon } from "@heroicons/react/24/outline";
 import { PortableText } from "@portabletext/react";
 import { RichTextComponents } from "@/components/CustomText/RichText/RichTextComponents";
-import WebShare from "@/components/WebShare";
+import WebShare from "@/components/Shear/WebShare";
 import { format } from "date-fns";
 import { notFound } from "next/navigation";
 import Comments from "@/components/CommentSection/comments";
@@ -19,7 +19,7 @@ type Props = {
   };
 };
 export const revalidate = 10;
-
+const BaseUrl = process.env.NEXT_PUBLIC_VERCEL_URL;
 const urlFile = process.env.NEXT_PUBLIC_SANITY_FILE_URL;
 export async function generateStaticParams() {
   const quary = groq`*[_type =='resource']{
@@ -72,7 +72,7 @@ async function Resources({ params: { slug } }: Props) {
             <WebShare
               key={resource?._id}
               title={resource?.title}
-              url={`https://alcatraz-portfolio.vercel.app/project/${resource?.slug.current}`}
+              url={`${BaseUrl}${resource?.slug.current}`}
             />
           </div>
           <div className="p-5">
