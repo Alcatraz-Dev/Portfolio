@@ -1,20 +1,20 @@
 import { ImageResponse } from "@vercel/og";
 
-export const config = {
-  runtime: 'edge', // for Edge API Routes only
-  unstable_allowDynamic: [
-    // allows a single file
-    '/lib/utilities.js',
-    // use a glob to allow anything in the function-bind 3rd party module
-    '/node_modules/function-bind/**',
-  ],
-}
+// export const config = {
+//   runtime: 'edge', // for Edge API Routes only
+//   unstable_allowDynamic: [
+//     // allows a single file
+//     '/lib/utilities.js',
+//     // use a glob to allow anything in the function-bind 3rd party module
+//     '/node_modules/function-bind/**',
+//   ],
+// }
 const title = "Haythem Dhahri | Portfolio - Full Stack & Game Developer";
 
 const description =
   "Haythem Dhahri, an experienced Full Stack Developer specializing in frontend, backend, game development, and graphic design, delivering innovative solutions.";
 const websiteUrl =
-  process.env.NEXT_PUBLIC_VERCEL_URL || ` http://localhost:3000 `;
+  process.env.NEXT_PUBLIC_VERCEL_URL || `http://localhost:3000/`;
 
 export default async function () {
   return new ImageResponse(
@@ -30,7 +30,7 @@ export default async function () {
             style={{ transform: "rotate(12deg)" }}
           />
            <img
-            tw="absolute object-fill  h-100% w-100% bg-white z-10"
+            tw="absolute  h-100% w-100% bg-white "
             src={`${websiteUrl}/LogoImage.png`}
             width="50"
             height="50"
@@ -43,7 +43,7 @@ export default async function () {
           
         </div>
         <div tw="flex flex-col w-1/2 p-[48px] mt-auto text-white ">
-          <h1 tw="text-[52px] text-bold ">{title}</h1>
+          <h1 tw="text-[52px] font-bold">{title}</h1>
           <p tw="text-[26px] text-zinc-400 mx-auto ">{description}</p>
         </div>
       </div>
