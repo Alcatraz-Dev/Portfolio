@@ -2,7 +2,7 @@ export default function Head() {
   const BaseUrl = `${
      process.env.NEXT_PUBLIC_VERCEL_URL 
   }`;
-  const BaseUrlOG = `${BaseUrl}api/og?title=Your+Page+Title`;
+  const BaseUrlOG = `${BaseUrl}/api/og?title=Your+Page+Title`;
  
   return (
     <>

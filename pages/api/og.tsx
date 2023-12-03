@@ -6,7 +6,7 @@ const title = "Haythem Dhahri | Portfolio - Full Stack & Game Developer";
 const description =
   "Haythem Dhahri, an experienced Full Stack Developer specializing in frontend, backend, game development, and graphic design, delivering innovative solutions.";
 const websiteUrl =
-  process.env.NEXT_PUBLIC_VERCEL_URL ;
+  process.env.NEXT_PUBLIC_VERCEL_URL;
 
 export default async function () {
   return new ImageResponse(
