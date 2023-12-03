@@ -28,7 +28,7 @@ import NewsLetter from "@/components/Newsletter/NewsLetter";
 
 
 const colors = [Colors];
-export const runtime = 'edge'
+
 const heroQuery = groq`
   *[_type == 'hero']{
        ...,status[]->

@@ -3,8 +3,7 @@ export default function Head() {
   const BaseUrl = `${
      process.env.NEXT_PUBLIC_VERCEL_URL 
   }`;
-  const BaseUrlOG = `${BaseUrl}/api/og?title=Your+Page+Title`;
- 
+  
   return (
     <>
       <title>Haythem Dhahri | Portfolio - Full Stack & Game Developer</title>
@@ -24,7 +23,7 @@ export default function Head() {
       <html lang="en" />
       <meta
         property="og:image"
-        content={BaseUrlOG}
+        content="./og-image.png"
       />
 
 
