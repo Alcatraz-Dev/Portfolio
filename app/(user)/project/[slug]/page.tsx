@@ -73,7 +73,7 @@ async function Projects({ params: { slug } }: Props) {
               <WebShare
                 key={project?._id}
                 title={project?.title}
-                url={`${BaseUrl}/${project?.slug.current}`}
+                url={`${BaseUrl}${project?.slug.current}`}
               />
             </div>
         
