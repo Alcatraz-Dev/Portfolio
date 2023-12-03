@@ -23,7 +23,7 @@ export default function Head() {
       <html lang="en" />
       <meta
         property="og:image"
-        content="./og-image.png"
+        content="og-image.png"
       />
 
 
