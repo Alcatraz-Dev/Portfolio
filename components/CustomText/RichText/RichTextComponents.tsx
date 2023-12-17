@@ -67,11 +67,11 @@ export const RichTextComponents = {
       const Apple_href = `${value.Apple_url}`;
       const Apple_rel = !Apple_href ? "noreferrer noopener" : undefined;
       return (
-        <div className="flex items-center justify-center  mt-3 mb-3 mx-2 space-x-8 sm:space-x-20 ">
+        <div className="flex items-center justify-center  mt-3 mb-3 px-3 space-x-8 sm:space-x-20  ">
           <Link href={Google_href} rel={Google_rel} target={"_blank"}>
             <div className="flex mt-3 w-48 h-14 bg-transparent text-black dark:text-white border border-black  dark:border-white  rounded-xl items-center justify-center hover:scale-105 ease-in duration-300 ">
-              <div className="mr-3">
-                <svg viewBox="30 336.7 120.9 129.2" width="30">
+              <div className="mr-4">
+                <svg viewBox="30 336.7 120.9 129.2" width="30" className="ml-3">
                   <path
                     fill="#FFD400"
                     d="M119.2,421.2c15.3-8.4,27-14.8,28-15.3c3.2-1.7,6.5-6.2,0-9.7  c-2.1-1.1-13.4-7.3-28-15.3l-20.1,20.2L119.2,421.2z"
@@ -92,7 +92,7 @@ export const RichTextComponents = {
               </div>
               <div>
                 <div className="text-xs">Download on the</div>
-                <div className="text-2xl font-semibold font-sans -mt-1">
+                <div className="text-xl font-semibold font-sans -mt-1">
                   Google Play
                 </div>
               </div>
@@ -100,7 +100,7 @@ export const RichTextComponents = {
           </Link>
           <Link href={Apple_href} rel={Apple_rel} target={"_blank"}>
             <div className="flex mt-3 w-48 h-14 bg-transparent text-black dark:text-white border border-black  dark:border-white  rounded-xl items-center justify-center hover:scale-105 ease-in duration-300 ">
-              <div className="mr-3">
+              <div className="mr-5">
                 <svg viewBox="0 0 384 512" width="30">
                   <path
                     fill="currentColor"
@@ -110,7 +110,7 @@ export const RichTextComponents = {
               </div>
               <div>
                 <div className="text-xs">Download on the</div>
-                <div className="text-2xl font-semibold font-sans -mt-1">
+                <div className="text-xl font-semibold font-sans -mt-1">
                   App Store
                 </div>
               </div>
@@ -126,7 +126,7 @@ export const RichTextComponents = {
         <div className="flex items-center justify-center  mt-3 mb-3 mx-2 space-x-8 sm:space-x-20 ">
           <Link href={Apple_href} rel={Apple_rel} target={"_blank"}>
             <div className="flex mt-3 w-48 h-14 bg-transparent text-black dark:text-white border border-black  dark:border-white  rounded-xl items-center justify-center hover:scale-105 ease-in duration-300 ">
-              <div className="mr-3">
+              <div className="mr-5">
                 <svg viewBox="0 0 384 512" width="30">
                   <path
                     fill="currentColor"
@@ -136,7 +136,7 @@ export const RichTextComponents = {
               </div>
               <div>
                 <div className="text-xs">Download on the</div>
-                <div className="text-2xl font-semibold font-sans -mt-1">
+                <div className="text-xl font-semibold font-sans -mt-1">
                   App Store
                 </div>
               </div>
@@ -152,8 +152,8 @@ export const RichTextComponents = {
         <div className="flex items-center justify-center  mt-3 mb-3 mx-2 space-x-8 sm:space-x-20 ">
           <Link href={Google_href} rel={Google_rel} target={"_blank"}>
             <div className="flex mt-3 w-48 h-14 bg-transparent text-black dark:text-white border border-black  dark:border-white  rounded-xl items-center justify-center hover:scale-105 ease-in duration-300 ">
-              <div className="mr-3">
-                <svg viewBox="30 336.7 120.9 129.2" width="30">
+              <div className="mr-4">
+                <svg viewBox="30 336.7 120.9 129.2" width="30" className="ml-3">
                   <path
                     fill="#FFD400"
                     d="M119.2,421.2c15.3-8.4,27-14.8,28-15.3c3.2-1.7,6.5-6.2,0-9.7  c-2.1-1.1-13.4-7.3-28-15.3l-20.1,20.2L119.2,421.2z"
@@ -174,7 +174,7 @@ export const RichTextComponents = {
               </div>
               <div>
                 <div className="text-xs">Download on the</div>
-                <div className="text-2xl font-semibold font-sans -mt-1">
+                <div className="text-xl font-semibold font-sans -mt-1">
                   Google Play
                 </div>
               </div>
