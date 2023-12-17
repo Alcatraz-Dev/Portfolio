@@ -61,6 +61,191 @@ export const RichTextComponents = {
         </div>
       );
     },
+    buttonAppleAndGoogle_Store: ({ value }: any) => {
+      const Google_href = `${value.Google_url}`;
+      const Google_rel = !Google_href ? "noreferrer noopener" : undefined;
+      const Apple_href = `${value.Apple_url}`;
+      const Apple_rel = !Apple_href ? "noreferrer noopener" : undefined;
+      return (
+        <div className="flex items-center justify-center  mt-3 mb-3 mx-2 space-x-8 sm:space-x-20 ">
+          <Link href={Google_href} rel={Google_rel} target={"_blank"}>
+            <div className="flex mt-3 w-48 h-14 bg-transparent text-black dark:text-white border border-black  dark:border-white  rounded-xl items-center justify-center hover:scale-105 ease-in duration-300 ">
+              <div className="mr-3">
+                <svg viewBox="30 336.7 120.9 129.2" width="30">
+                  <path
+                    fill="#FFD400"
+                    d="M119.2,421.2c15.3-8.4,27-14.8,28-15.3c3.2-1.7,6.5-6.2,0-9.7  c-2.1-1.1-13.4-7.3-28-15.3l-20.1,20.2L119.2,421.2z"
+                  />
+                  <path
+                    fill="#FF3333"
+                    d="M99.1,401.1l-64.2,64.7c1.5,0.2,3.2-0.2,5.2-1.3  c4.2-2.3,48.8-26.7,79.1-43.3L99.1,401.1L99.1,401.1z"
+                  />
+                  <path
+                    fill="#48FF48"
+                    d="M99.1,401.1l20.1-20.2c0,0-74.6-40.7-79.1-43.1  c-1.7-1-3.6-1.3-5.3-1L99.1,401.1z"
+                  />
+                  <path
+                    fill="#3BCCFF"
+                    d="M99.1,401.1l-64.3-64.3c-2.6,0.6-4.8,2.9-4.8,7.6  c0,7.5,0,107.5,0,113.8c0,4.3,1.7,7.4,4.9,7.7L99.1,401.1z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <div className="text-xs">Download on the</div>
+                <div className="text-2xl font-semibold font-sans -mt-1">
+                  Google Play
+                </div>
+              </div>
+            </div>
+          </Link>
+          <Link href={Apple_href} rel={Apple_rel} target={"_blank"}>
+            <div className="flex mt-3 w-48 h-14 bg-transparent text-black dark:text-white border border-black  dark:border-white  rounded-xl items-center justify-center hover:scale-105 ease-in duration-300 ">
+              <div className="mr-3">
+                <svg viewBox="0 0 384 512" width="30">
+                  <path
+                    fill="currentColor"
+                    d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <div className="text-xs">Download on the</div>
+                <div className="text-2xl font-semibold font-sans -mt-1">
+                  App Store
+                </div>
+              </div>
+            </div>
+          </Link>
+        </div>
+      );
+    },
+    buttonAppleStore: ({ value }: any) => {
+      const Apple_href = `${value.Apple_url}`;
+      const Apple_rel = !Apple_href ? "noreferrer noopener" : undefined;
+      return (
+        <div className="flex items-center justify-center  mt-3 mb-3 mx-2 space-x-8 sm:space-x-20 ">
+          <Link href={Apple_href} rel={Apple_rel} target={"_blank"}>
+            <div className="flex mt-3 w-48 h-14 bg-transparent text-black dark:text-white border border-black  dark:border-white  rounded-xl items-center justify-center hover:scale-105 ease-in duration-300 ">
+              <div className="mr-3">
+                <svg viewBox="0 0 384 512" width="30">
+                  <path
+                    fill="currentColor"
+                    d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <div className="text-xs">Download on the</div>
+                <div className="text-2xl font-semibold font-sans -mt-1">
+                  App Store
+                </div>
+              </div>
+            </div>
+          </Link>
+        </div>
+      );
+    },
+    buttonGooglePlayStore: ({ value }: any) => {
+      const Google_href = `${value.Google_Play_url}`;
+      const Google_rel = !Google_href ? "noreferrer noopener" : undefined;
+      return (
+        <div className="flex items-center justify-center  mt-3 mb-3 mx-2 space-x-8 sm:space-x-20 ">
+          <Link href={Google_href} rel={Google_rel} target={"_blank"}>
+            <div className="flex mt-3 w-48 h-14 bg-transparent text-black dark:text-white border border-black  dark:border-white  rounded-xl items-center justify-center hover:scale-105 ease-in duration-300 ">
+              <div className="mr-3">
+                <svg viewBox="30 336.7 120.9 129.2" width="30">
+                  <path
+                    fill="#FFD400"
+                    d="M119.2,421.2c15.3-8.4,27-14.8,28-15.3c3.2-1.7,6.5-6.2,0-9.7  c-2.1-1.1-13.4-7.3-28-15.3l-20.1,20.2L119.2,421.2z"
+                  />
+                  <path
+                    fill="#FF3333"
+                    d="M99.1,401.1l-64.2,64.7c1.5,0.2,3.2-0.2,5.2-1.3  c4.2-2.3,48.8-26.7,79.1-43.3L99.1,401.1L99.1,401.1z"
+                  />
+                  <path
+                    fill="#48FF48"
+                    d="M99.1,401.1l20.1-20.2c0,0-74.6-40.7-79.1-43.1  c-1.7-1-3.6-1.3-5.3-1L99.1,401.1z"
+                  />
+                  <path
+                    fill="#3BCCFF"
+                    d="M99.1,401.1l-64.3-64.3c-2.6,0.6-4.8,2.9-4.8,7.6  c0,7.5,0,107.5,0,113.8c0,4.3,1.7,7.4,4.9,7.7L99.1,401.1z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <div className="text-xs">Download on the</div>
+                <div className="text-2xl font-semibold font-sans -mt-1">
+                  Google Play
+                </div>
+              </div>
+            </div>
+          </Link>
+        </div>
+      );
+    },
+    buttonBuyMeACafe: ({ value }: any) => {
+      const BuyMeACafe_href = `${value.BuyMeACafe_url}`;
+      const BuyMeACafe_rel = !BuyMeACafe_href
+        ? "noreferrer noopener"
+        : undefined;
+      return (
+        <div className="flex items-center justify-center  mt-3 mb-3 mx-2 space-x-8 sm:space-x-20 ">
+          <Link href={BuyMeACafe_href} rel={BuyMeACafe_rel} target={"_blank"}>
+            <div className="flex mt-3 w-50 h-16 bg-transparent text-black dark:text-white border border-black  dark:border-white  rounded-xl items-center justify-center hover:scale-105 ease-in duration-300 mx-2 ">
+              <div className="mx-3">
+                <svg viewBox="0 0 24 24" width="30">
+                  {" "}
+                  <path
+                    fill="currentColor"
+                    d="m20.216 6.415-.132-.666c-.119-.598-.388-1.163-1.001-1.379-.197-.069-.42-.098-.57-.241-.152-.143-.196-.366-.231-.572-.065-.378-.125-.756-.192-1.133-.057-.325-.102-.69-.25-.987-.195-.4-.597-.634-.996-.788a5.723 5.723 0 0 0-.626-.194c-1-.263-2.05-.36-3.077-.416a25.834 25.834 0 0 0-3.7.062c-.915.083-1.88.184-2.75.5-.318.116-.646.256-.888.501-.297.302-.393.77-.177 1.146.154.267.415.456.692.58.36.162.737.284 1.123.366 1.075.238 2.189.331 3.287.37 1.218.05 2.437.01 3.65-.118.299-.033.598-.073.896-.119.352-.054.578-.513.474-.834-.124-.383-.457-.531-.834-.473-.466.074-.96.108-1.382.146-1.177.08-2.358.082-3.536.006a22.228 22.228 0 0 1-1.157-.107c-.086-.01-.18-.025-.258-.036-.243-.036-.484-.08-.724-.13-.111-.027-.111-.185 0-.212h.005c.277-.06.557-.108.838-.147h.002c.131-.009.263-.032.394-.048a25.076 25.076 0 0 1 3.426-.12c.674.019 1.347.067 2.017.144l.228.031c.267.04.533.088.798.145.392.085.895.113 1.07.542.055.137.08.288.111.431l.319 1.484a.237.237 0 0 1-.199.284h-.003c-.037.006-.075.01-.112.015a36.704 36.704 0 0 1-4.743.295 37.059 37.059 0 0 1-4.699-.304c-.14-.017-.293-.042-.417-.06-.326-.048-.649-.108-.973-.161-.393-.065-.768-.032-1.123.161-.29.16-.527.404-.675.701-.154.316-.199.66-.267 1-.069.34-.176.707-.135 1.056.087.753.613 1.365 1.37 1.502a39.69 39.69 0 0 0 11.343.376.483.483 0 0 1 .535.53l-.071.697-1.018 9.907c-.041.41-.047.832-.125 1.237-.122.637-.553 1.028-1.182 1.171-.577.131-1.165.2-1.756.205-.656.004-1.31-.025-1.966-.022-.699.004-1.556-.06-2.095-.58-.475-.458-.54-1.174-.605-1.793l-.731-7.013-.322-3.094c-.037-.351-.286-.695-.678-.678-.336.015-.718.3-.678.679l.228 2.185.949 9.112c.147 1.344 1.174 2.068 2.446 2.272.742.12 1.503.144 2.257.156.966.016 1.942.053 2.892-.122 1.408-.258 2.465-1.198 2.616-2.657.34-3.332.683-6.663 1.024-9.995l.215-2.087a.484.484 0 0 1 .39-.426c.402-.078.787-.212 1.074-.518.455-.488.546-1.124.385-1.766zm-1.478.772c-.145.137-.363.201-.578.233-2.416.359-4.866.54-7.308.46-1.748-.06-3.477-.254-5.207-.498-.17-.024-.353-.055-.47-.18-.22-.236-.111-.71-.054-.995.052-.26.152-.609.463-.646.484-.057 1.046.148 1.526.22.577.088 1.156.159 1.737.212 2.48.226 5.002.19 7.472-.14.45-.06.899-.13 1.345-.21.399-.072.84-.206 1.08.206.166.281.188.657.162.974a.544.544 0 0 1-.169.364zm-6.159 3.9c-.862.37-1.84.788-3.109.788a5.884 5.884 0 0 1-1.569-.217l.877 9.004c.065.78.717 1.38 1.5 1.38 0 0 1.243.065 1.658.065.447 0 1.786-.065 1.786-.065.783 0 1.434-.6 1.499-1.38l.94-9.95a3.996 3.996 0 0 0-1.322-.238c-.826 0-1.491.284-2.26.613z"
+                  />
+                </svg>
+              </div>
+              <div className="mx-3">
+                <div className="text-xs">Make a donate</div>
+                <div className="text-xl font-semibold font-sans -mt-1">
+                  Buy me a coffee
+                </div>
+              </div>
+            </div>
+          </Link>
+        </div>
+      );
+    },
+    buttonKofi: ({ value }: any) => {
+      const buttonKofi_href = `${value.Kofi_url}`;
+      const buttonKofi_rel = !buttonKofi_href
+        ? "noreferrer noopener"
+        : undefined;
+      return (
+        <div className="flex items-center justify-center  mt-3 mb-3 mx-2 space-x-8 sm:space-x-20 ">
+          <Link href={buttonKofi_href} rel={buttonKofi_rel} target={"_blank"}>
+            <div className="flex mt-3 w-50 h-16 bg-transparent text-black dark:text-white border border-black  dark:border-white  rounded-xl items-center justify-center hover:scale-105 ease-in duration-300 mx-2 ">
+              <div className="mx-3">
+                <svg
+                  viewBox="0 0 501.333 501.333"
+                  width="30"
+                  fill="currentColor"
+                >
+                  {" "}
+                  <path d="M291.275,257.067c-6.4-26.667-28.8-41.6-45.867-48c-17.067-6.4-36.267-2.133-54.4,9.6c-18.133-12.8-38.4-16-55.467-10.667 c-17.067,6.4-38.4,22.4-45.867,48c-4.267,17.067-4.267,43.733,21.333,74.667c59.733,71.467,71.467,75.733,78.933,75.733 c1.067,0,1.067,0,1.067,0h1.067c7.467,0,19.2-4.267,77.867-74.667C296.608,300.8,295.542,274.133,291.275,257.067z M239.008,304 c-14.933,17.067-35.2,40.533-48,53.333c-12.8-12.8-34.133-37.333-49.067-54.4c-7.466-9.6-16-23.466-12.799-36.266 c2.133-9.6,11.733-17.067,19.2-19.2c6.4-2.133,17.067,2.133,26.667,11.733c2.133,1.067,3.2,2.133,5.333,3.2 c8.533,4.267,18.133,4.267,25.6-2.133c9.6-9.6,20.267-13.867,26.667-11.733c7.467,2.133,16,9.6,19.2,19.2 C255.008,280.533,246.475,294.4,239.008,304z"></path>
+                  <path d="M493.942,220.8c-13.867-26.667-41.6-40.533-71.467-35.2l-40.533,6.4v-55.467c0-11.733-9.6-21.333-21.333-21.333h-339.2 c-11.733,0-21.333,9.6-21.333,21.333V400c0,55.467,45.867,101.333,101.333,101.333h178.133c56.533,0,101.333-45.867,102.4-100.267 l101.333-105.6C502.475,275.2,506.742,246.4,493.942,220.8z M339.275,400c0,33.067-26.667,59.733-59.733,59.733H101.408 c-33.067,0-59.733-26.667-59.733-59.733V157.867h297.6V400z M453.408,266.667l-71.467,73.6v-105.6l48-7.467 c13.867-3.2,23.467,5.333,27.733,12.8C459.808,244.267,464.075,256,453.408,266.667z"></path>
+                  <path d="M87.542,0C75.808,0,66.208,9.6,66.208,21.333V57.6c0,11.733,9.6,21.333,21.333,21.333s20.267-9.6,21.333-20.267V21.333 C108.875,9.6,99.275,0,87.542,0z"></path>
+                  <path d="M191.008,0c-11.733,0-21.333,9.6-21.333,21.333V57.6c0,11.733,9.6,21.333,21.333,21.333s20.267-9.6,21.333-20.267V21.333 C212.342,9.6,202.742,0,191.008,0z"></path>
+                  <path d="M294.475,0c-11.733,0-21.333,9.6-21.333,21.333V57.6c0,11.733,9.6,21.333,21.333,21.333s21.333-9.6,21.333-20.267V21.333 C315.808,9.6,306.208,0,294.475,0z"></path>
+                </svg>
+              </div>
+              <div className="mx-3">
+                <div className="text-xs">Make a donate</div>
+                <div className="text-xl font-semibold font-sans -mt-1">
+                  Buy me a coffee
+                </div>
+              </div>
+            </div>
+          </Link>
+        </div>
+      );
+    },
     customButton: ({ value }: any) => {
       const href = `${value.url}`;
       const rel = !href ? "noreferrer noopener" : undefined;
@@ -88,6 +273,7 @@ export const RichTextComponents = {
         </div>
       );
     },
+
     assetFile: ({ value }: any) => {
       const url = process.env.NEXT_PUBLIC_SANITY_FILE_URL;
       return (
@@ -120,7 +306,9 @@ export const RichTextComponents = {
   },
   list: {
     bullet: ({ children }: any) => (
-      <ul className="ml-10 py-5 list-disc space-y-5 marker:text-[#99e000]">{children}</ul>
+      <ul className="ml-10 py-5 list-disc space-y-5 marker:text-[#99e000]">
+        {children}
+      </ul>
     ),
     number: ({ children }: any) => (
       <ol className="ml-lg list-decimal marker:text-[#99e000]">{children}</ol>

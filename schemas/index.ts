@@ -9,7 +9,7 @@ import project from "./ProjectSchemas/projects";
 import contact from "./ContactFormSchemas/contact";
 import video from "./video";
 import youtubeVideoEmbad from "./ViedosEmbadSchemas/youtubeVideoEmbad";
-import buttonLink from "./CustomButtonSchemas/LinkBottons/buttonLink";
+import buttonLink from "./CustomButtonSchemas/LinkButtons/buttonLink";
 import assetFile from "./CustomButtonSchemas/AssetsFiles/assetFile";
 import code from "./code";
 import community from "./community";
@@ -36,6 +36,11 @@ import resource from "./ResourceSchemas/resource";
 import resourceDetailsCard from "./ResourceSchemas/resourcesDetailsCard";
 import resourceSection from "./ResourceSchemas/resourceSection";
 import resourceTags from "./ResourceSchemas/resourceTags";
+import buttonAppleAndGoogle_Store from "./CustomButtonSchemas/StoreButtons/DoubleButtons/buttonAppleAndGoogle_Store";
+import buttonAppleStore from "./CustomButtonSchemas/StoreButtons/SingelButton/buttonAppleStore";
+import buttonGooglePlayStore from "./CustomButtonSchemas/StoreButtons/SingelButton/buttonGooglePlayStore";
+import buttonBuyMeACafe from "./CustomButtonSchemas/DonationButtons/buttonBuyMeACafe";
+import buttonKoFi from "./CustomButtonSchemas/DonationButtons/buttonKofi";
 
 
 export const schemaTypes = [
@@ -73,9 +78,14 @@ export const schemaTypes = [
   videoEmbad,
   youtubeVideoEmbad,
   buttonLink,
+  buttonAppleAndGoogle_Store,
+  buttonAppleStore,
+  buttonGooglePlayStore,
   assetFile,
   code,
   community,
   status,
+  buttonBuyMeACafe,
+  buttonKoFi,
  
 ];
