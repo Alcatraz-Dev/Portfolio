@@ -25,7 +25,7 @@ import LogoCarousel from "@/components/SkillsLogoCarousel/LogoCarousel";
 import Colors from "@/components/Colors/Colors";
 import CookieConsentPopup from "@/components/CookiePopup/CookieConsentPopup";
 import NewsLetter from "@/components/Newsletter/NewsLetter";
-
+import ArtWorkGallery from "@/components/ArtGallery/ArtWorkGallery";
 
 const colors = [Colors];
 
@@ -220,15 +220,13 @@ export default async function HomePage() {
         resources={resources}
       />
       {/* <Comment comment={comments} reaction={reactions}  /> */}
+      <ArtWorkGallery />
       <ContactSection contact={contact} />
-      <CookieConsentPopup />
       <NewsLetter />
       <Footer />
-      {/* <Header socialIcons={socialIcon} /> */}
-      {/* <HomeSection pharagraph={paragraph} /> */}
+      <CookieConsentPopup />
 
-      {/* <About pharagraph={paragraph} resume={resume} />
-      <Technologies pharagraph={paragraph} technologies={technologies} />
+      {/* <Technologies pharagraph={paragraph} technologies={technologies} />
       <VideoList linkButton={buttons} pharagraph={paragraph} video={videos} />
       <Project linkButton={buttons} pharagraph={paragraph} project={project} />
       <BlogList linkButton={buttons} pharagraph={paragraph} post={post} />

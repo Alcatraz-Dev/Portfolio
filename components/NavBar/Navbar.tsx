@@ -25,6 +25,10 @@ const navLinks = [
     title: "Resources",
     path: "resources",
   },
+  {
+    title: "Art Gallery",
+    path: "gallery",
+  },
 
   {
     title: "Contact",
