@@ -3,8 +3,6 @@ import React from "react";
 function ArtWorkGallery() {
   return (
     <section className="section" id="gallery">
-      {/* <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
-        <div className="mb-4 flex items-center justify-between gap-8 sm:mb-8 md:mb-12"> */}
       <div className="mt-5 md:mt-0 text-left flex flex-col h-full">
         <h2 className="text-4xl font-bold mb-4 bg-gradient-to-br from-amber-300 to-orange-600 bg-clip-text text-transparent">
           Gallery
