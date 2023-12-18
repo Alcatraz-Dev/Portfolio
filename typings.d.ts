@@ -248,7 +248,17 @@ export interface TermsAndConditions extends Base {
   title: string;
   body: Block[];
 }
-
+export interface GallerySection extends Base {
+  shortDescription: string;
+  gallery: Gallery[];
+  classNamegallerySectionTitleColor: string;
+  gallerySectionTitle: string;
+}
+export interface Gallery extends Base {
+  slug: Slug;
+  artImage: Image;
+  title: string;
+}
 export interface Video extends Base {
   author: Author;
   body: Block[];

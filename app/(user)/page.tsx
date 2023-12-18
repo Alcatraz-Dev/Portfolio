@@ -88,6 +88,17 @@ const projectsQuery = groq`
 }|order(_createAt desc)
 `;
 
+const gallerySectionQuery = groq`
+  *[_type == "gallerySection"]{
+  ...,gallery[]->
+}|order(_createAt desc)
+`;
+const galleryQuery = groq`
+ *[_type == "gallery" ]{
+..., artImage,
+}|order(_createAt desc)
+`;
+
 const resourcesSectionQuery = groq`
   *[_type == 'resourceSection' ]{
        ...,resource[]->,tabFilter[]->,
@@ -198,6 +209,8 @@ export default async function HomePage() {
   const projects = await client.fetch(projectsQuery);
   const resourcesSection = await client.fetch(resourcesSectionQuery);
   const resources = await client.fetch(resourcesQuery);
+  const gallerySection = await client.fetch(gallerySectionQuery);
+  const gallery = await client.fetch(galleryQuery);
   const contact = await client.fetch(contactQuery);
   const paragraph = await client.fetch(paragraphsQuery);
   const post = await client.fetch(blogQuery);
@@ -223,7 +236,7 @@ export default async function HomePage() {
       />
       {/* <Comment comment={comments} reaction={reactions}  /> */}
       {/* <ArtWorkGallery /> */}
-      <ScrolingGallery/>
+      <ScrolingGallery gallerySection={gallerySection} gallery={gallery} />
       <ContactSection contact={contact} />
       <NewsLetter />
       <Footer />

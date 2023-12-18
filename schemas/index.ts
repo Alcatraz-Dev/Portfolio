@@ -41,6 +41,8 @@ import buttonAppleStore from "./CustomButtonSchemas/StoreButtons/SingelButton/bu
 import buttonGooglePlayStore from "./CustomButtonSchemas/StoreButtons/SingelButton/buttonGooglePlayStore";
 import buttonBuyMeACafe from "./CustomButtonSchemas/DonationButtons/buttonBuyMeACafe";
 import buttonKoFi from "./CustomButtonSchemas/DonationButtons/buttonKofi";
+import gallerySection from "./GallerySchemas/gallerySection";
+import gallery from "./GallerySchemas/gallery";
 
 
 export const schemaTypes = [
@@ -64,6 +66,8 @@ export const schemaTypes = [
   resourceDetailsCard,
   resourceSection,
   resourceTags,
+  gallerySection,
+  gallery,
   post,
   comment,
   emoji,
