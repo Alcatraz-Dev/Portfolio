@@ -1,0 +1,170 @@
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 16px;
+  box-sizing: border-box;
+  font: inherit;
+  --primary: rgb(255, 255, 255);
+  --secondary: #8ee918;
+  font-family: "Urbanist", sans-serif;
+}
+
+/* start: Gallery Section */
+.gallerySection {
+  overflow: hidden;
+  position: relative;
+}
+.gallerySection::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 940px;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    rgba(185, 255, 9, 0.626) 50%,
+    transparent 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+.gallerySection::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 300px;
+  background: linear-gradient(0deg, rgba(185, 255, 9, 0.626), transparent);
+  z-index: 1;
+  pointer-events: none;
+}
+.galleryWrapper {
+  position: relative;
+}
+.galleryContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 540px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+.galleryContent h1 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 32px;
+}
+.galleryContent p {
+  line-height: 1.5;
+}
+.galleryImagesBox {
+  padding-left: 300px;
+  min-height: 500px;
+  height: 100vh;
+}
+.galleryImagesWrapper {
+  display: flex;
+  transform: rotateZ(15deg);
+}
+.galleryImages {
+  margin-top: -100px;
+  margin-right: 32px;
+  animation: animate var(--duration, 10s) infinite linear;
+}
+.galleryImages:hover {
+  animation-play-state: paused;
+}
+.galleryImages a {
+  display: block;
+  width: 160px;
+  height: 160px;
+  margin-bottom: 32px;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+.galleryImages a:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 0 4px var(--primary), 0 0 0 6px var(--secondary);
+}
+.galleryImages img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.galleryImages span {
+    display: inline-block; 
+    position: relative; 
+    margin-bottom: 0.75rem; 
+    margin-left: 1rem; 
+    font-size: 0.875rem;
+    line-height: 1.25rem; 
+    color: #ffffff; 
+  }
+  
+@keyframes animate {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+/* end: Gallery Section */
+
+/* start: Breakpoints */
+@media screen and (max-width: 1400px) {
+  .container {
+    max-width: 1160px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .container {
+    max-width: 940px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .container {
+    max-width: 720px;
+  }
+
+  .galleryImagesBox {
+    padding-left: 100px;
+  }
+  .gallerySection::before {
+    width: 720px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    max-width: 540px;
+  }
+
+  .galleryContent {
+    width: 100%;
+    height: auto;
+    padding: 48px 0 24px;
+  }
+  .galleryImagesBox {
+    padding-left: 0;
+    margin-left: -300px;
+    min-height: 700px;
+  }
+  .gallerySection::before {
+    background-image: linear-gradient(
+      180deg,
+      var(--primary) 40%,
+      transparent 100%
+    );
+    height: 500px;
+  }
+}
+/* end: Breakpoints */

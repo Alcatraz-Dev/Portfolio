@@ -26,6 +26,8 @@ import Colors from "@/components/Colors/Colors";
 import CookieConsentPopup from "@/components/CookiePopup/CookieConsentPopup";
 import NewsLetter from "@/components/Newsletter/NewsLetter";
 import ArtWorkGallery from "@/components/ArtGallery/ArtWorkGallery";
+import ScrollingGallery from "@/components/ArtGallery/ScrolingGallery";
+import ScrolingGallery from "@/components/ArtGallery/ScrolingGallery";
 
 const colors = [Colors];
 
@@ -220,7 +222,8 @@ export default async function HomePage() {
         resources={resources}
       />
       {/* <Comment comment={comments} reaction={reactions}  /> */}
-      <ArtWorkGallery />
+      {/* <ArtWorkGallery /> */}
+      <ScrolingGallery/>
       <ContactSection contact={contact} />
       <NewsLetter />
       <Footer />

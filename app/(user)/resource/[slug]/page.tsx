@@ -402,7 +402,7 @@ async function Resources({ params: { slug } }: Props) {
         </div>
       </div>
 
-      {/* <CommentSection/> */}
+      {/* CommentSection */}
       <Comments />
       <div className="grid grid-cols-3 md:grid-cols-1 ">
         <Link href="/#projects">
