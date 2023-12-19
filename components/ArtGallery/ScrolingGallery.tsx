@@ -1,20 +1,15 @@
 "use client";
 import { client } from "@/lib/sanity.client";
 import urlFor from "@/lib/urlFor";
-import { Gallery, GallerySection } from "@/typings";
+import { GallerySection } from "@/typings";
 import Image from "next/image";
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import ClientSideRoute from "../Route/ClientSideRoute";
 import styles from "./index.module.css";
 
-type Props = {
-  gallerySection: GallerySection[];
-  gallery: Gallery[];
-};
 export const revalidate = 10;
-function ScrolingGallery({ gallerySection, gallery }: Props) {
-  const [pageData, setPageData] = useState<GallerySection>();
+function ScrolingGallery() {
+  const [galleryData, setGalleryData] = useState<GallerySection>();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,7 +17,7 @@ function ScrolingGallery({ gallerySection, gallery }: Props) {
         const result = await client.fetch<GallerySection[]>(
           `*[_type == "gallerySection"]{..., gallery[]->}`
         );
-        setPageData(result[0]);
+        setGalleryData(result[0]);
       } catch (error) {
         console.error("Error fetching data: ", error);
       }
@@ -30,10 +25,11 @@ function ScrolingGallery({ gallerySection, gallery }: Props) {
 
     fetchData();
   }, []);
-  if (!pageData) {
+  if (!galleryData) {
     return (
-      <div className=" w-full h-screen flex justify-center items-center text-3xl font-bold text-gray-800 dark:text-white">
-        Loading...
+      <div className=" w-full h-screen font-mono text-lime-500 flex justify-center items-center text-xl font-bold  ">
+        Loading Gallery Section {""}
+        <span className="animate-pulse">...</span>
       </div>
     ); // Loading state
   }
@@ -41,19 +37,19 @@ function ScrolingGallery({ gallerySection, gallery }: Props) {
   return (
     <>
       <section id="gallery" className="p-5 sm:p-10 ">
-        {/* {pageData?.map((art) => ( */}
         <div
-          key={pageData?._id}
+          key={galleryData?._id}
           className="mt-5 md:mt-0 text-left flex flex-col h-full py-8 px-2 ml-4 mr-6 "
         >
           <h2
-            className={`text-4xl font-bold mb-4 ${pageData?.classNamegallerySectionTitleColor} `}
+            className={`text-4xl font-bold mb-4 ${galleryData?.classNamegallerySectionTitleColor} `}
           >
-            {pageData?.gallerySectionTitle}
+            {galleryData?.gallerySectionTitle}
           </h2>
-          <p className="text-base lg:text-lg ">{pageData?.shortDescription}</p>
+          <p className="text-base lg:text-lg ">
+            {galleryData?.shortDescription}
+          </p>
         </div>
-        {/* ))} */}
       </section>
       <>
         <section className={styles.gallerySection}>
@@ -62,11 +58,14 @@ function ScrolingGallery({ gallerySection, gallery }: Props) {
               <div className={styles.galleryContent}></div>
               <div className={styles.galleryImagesBox}>
                 <div className={styles.galleryImagesWrapper}>
-                  <>
-                    {pageData?.gallery.map((art) => (
-                      <div key={art?._id} className={styles.galleryImages}>
-                        <a href="">
-                          <img
+                  <div className={styles.galleryImages}>
+                    {galleryData?.gallery.map((art) => (
+                      <ClientSideRoute
+                        key={art?._id}
+                        route={`/gallery/${art?.slug.current}`}
+                      >
+                        <p>
+                          <Image
                             src={urlFor(art?.artImage)
                               .width(500)
                               .height(500)
@@ -76,15 +75,41 @@ function ScrolingGallery({ gallerySection, gallery }: Props) {
                             height={500}
                             className=" cursor-pointer"
                           />
-                        </a>
-                      </div>
+                        </p>
+                      </ClientSideRoute>
                     ))}
-                  </>
-                  <>
-                    {pageData?.gallery.map((art) => (
-                      <div key={art?._id} className={styles.galleryImages}>
-                        <a href="">
-                          <img
+                  </div>
+                  <div className={styles.galleryImages}>
+                    <div className={styles.galleryImagesDuration}>
+                      {galleryData?.gallery.map((art) => (
+                        <ClientSideRoute
+                          key={art?._id}
+                          route={`/gallery/${art?.slug.current}`}
+                        >
+                          <p>
+                            <Image
+                              src={urlFor(art?.artImage)
+                                .width(500)
+                                .height(500)
+                                .url()}
+                              alt={art?.title}
+                              width={500}
+                              height={500}
+                              className=" cursor-pointer"
+                            />
+                          </p>
+                        </ClientSideRoute>
+                      ))}
+                    </div>
+                  </div>
+                  <div className={styles.galleryImages}>
+                    {galleryData?.gallery.map((art) => (
+                      <ClientSideRoute
+                        key={art?._id}
+                        route={`/gallery/${art?.slug.current}`}
+                      >
+                        <p>
+                          <Image
                             src={urlFor(art?.artImage)
                               .width(500)
                               .height(500)
@@ -94,15 +119,41 @@ function ScrolingGallery({ gallerySection, gallery }: Props) {
                             height={500}
                             className=" cursor-pointer"
                           />
-                        </a>
-                      </div>
+                        </p>
+                      </ClientSideRoute>
                     ))}
-                  </>
-                  <>
-                    {pageData?.gallery.map((art) => (
-                      <div key={art?._id} className={styles.galleryImages}>
-                        <a href="">
-                          <img
+                  </div>
+                  <div className={styles.galleryImages}>
+                    <div className={styles.galleryImagesDuration}>
+                      {galleryData?.gallery.map((art) => (
+                        <ClientSideRoute
+                          key={art?._id}
+                          route={`/gallery/${art?.slug.current}`}
+                        >
+                          <p>
+                            <Image
+                              src={urlFor(art?.artImage)
+                                .width(500)
+                                .height(500)
+                                .url()}
+                              alt={art?.title}
+                              width={500}
+                              height={500}
+                              className=" cursor-pointer"
+                            />
+                          </p>
+                        </ClientSideRoute>
+                      ))}
+                    </div>
+                  </div>
+                  <div className={styles.galleryImages}>
+                    {galleryData?.gallery.map((art) => (
+                      <ClientSideRoute
+                        key={art?._id}
+                        route={`/gallery/${art?.slug.current}`}
+                      >
+                        <p>
+                          <Image
                             src={urlFor(art?.artImage)
                               .width(500)
                               .height(500)
@@ -112,54 +163,16 @@ function ScrolingGallery({ gallerySection, gallery }: Props) {
                             height={500}
                             className=" cursor-pointer"
                           />
-                        </a>
-                      </div>
+                        </p>
+                      </ClientSideRoute>
                     ))}
-                  </>
-                  <>
-                    {pageData?.gallery.map((art) => (
-                      <div key={art?._id} className={styles.galleryImages}>
-                        <a href="">
-                          <img
-                            src={urlFor(art?.artImage)
-                              .width(500)
-                              .height(500)
-                              .url()}
-                            alt={art?.title}
-                            width={500}
-                            height={500}
-                            className=" cursor-pointer"
-                          />
-                        </a>
-                      </div>
-                    ))}
-                  </>
-                  <>
-                    {pageData?.gallery.map((art) => (
-                      <div key={art?._id} className={styles.galleryImages}>
-                        <a href="">
-                          <img
-                            src={urlFor(art?.artImage)
-                              .width(500)
-                              .height(500)
-                              .url()}
-                            alt={art?.title}
-                            width={500}
-                            height={500}
-                            className=" cursor-pointer"
-                          />
-                        </a>
-                      </div>
-                    ))}
-                  </>
-                  
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
       </>
-      ;
     </>
   );
 }

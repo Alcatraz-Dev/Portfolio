@@ -1,7 +1,7 @@
 import React from "react";
 
 function page() {
-  return <div>page gallery</div>;
+  return <div>page gallery info</div>;
 }
 
 export default page;

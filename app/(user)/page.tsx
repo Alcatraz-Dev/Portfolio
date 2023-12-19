@@ -236,7 +236,7 @@ export default async function HomePage() {
       />
       {/* <Comment comment={comments} reaction={reactions}  /> */}
       {/* <ArtWorkGallery /> */}
-      <ScrolingGallery gallerySection={gallerySection} gallery={gallery} />
+      <ScrolingGallery />
       <ContactSection contact={contact} />
       <NewsLetter />
       <Footer />

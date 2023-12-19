@@ -6,9 +6,7 @@ import { PortableText } from "@portabletext/react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { ArrowLeftCircleIcon } from "@heroicons/react/24/outline";
-type Props = {
-  PrivacyPolicy: PrivacyPolicy;
-};
+
 export const revalidate = 10;
 
 function PrivacyPolicyPage() {
@@ -30,8 +28,8 @@ function PrivacyPolicyPage() {
   }, []);
   if (!pageData) {
     return (
-      <div className=" w-full h-screen flex justify-center items-center text-3xl font-bold text-gray-800 dark:text-white">
-        Loading...
+      <div className=" w-full h-screen font-mono text-lime-500 flex justify-center items-center text-xl font-bold  ">
+        Privacy Policy {''}<span className="animate-pulse">...</span>
       </div>
     ); // Loading state
   }
