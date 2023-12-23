@@ -32,7 +32,9 @@ module.exports = {
   plugins: [
     require("tailwind-scrollbar-hide"),
     require("@tailwindcss/line-clamp"),
-   
+    // plugin(function({ addVariant }) {
+    //   addVariant('children', '&>*')
+    // })
   
   ],
 };

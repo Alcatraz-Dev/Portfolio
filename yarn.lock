@@ -3486,6 +3486,13 @@ dom-walk@^0.1.0:
   resolved "https://registry.npmjs.org/dom-walk/-/dom-walk-0.1.2.tgz"
   integrity sha512-6QvTW9mrGeIegrFXdtQi9pk7O/nSK6lSdXW2eqUspN5LWD7UTji2Fqw5V2YLjBpHEoU9Xl/eUWNpDeZvoyOv2w==
 
+dom7@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.npmjs.org/dom7/-/dom7-3.0.0.tgz"
+  integrity sha512-oNlcUdHsC4zb7Msx7JN3K0Nro1dzJ48knvBOnDPKJ2GV9wl1i5vydJZUSyOfrkKFDZEud/jBsTk92S/VGSAe/g==
+  dependencies:
+    ssr-window "^3.0.0-alpha.1"
+
 domelementtype@^2.3.0:
   version "2.3.0"
   resolved "https://registry.npmjs.org/domelementtype/-/domelementtype-2.3.0.tgz"
@@ -6185,6 +6192,13 @@ react-fast-compare@^3.2.0:
   resolved "https://registry.npmjs.org/react-fast-compare/-/react-fast-compare-3.2.0.tgz"
   integrity sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA==
 
+react-feather@^2.0.10:
+  version "2.0.10"
+  resolved "https://registry.npmjs.org/react-feather/-/react-feather-2.0.10.tgz"
+  integrity sha512-BLhukwJ+Z92Nmdcs+EMw6dy1Z/VLiJTzEQACDUEnWMClhYnFykJCGWQx+NmwP/qQHGX/5CzQ+TGi8ofg2+HzVQ==
+  dependencies:
+    prop-types "^15.7.2"
+
 react-focus-lock@^2.8.1:
   version "2.9.3"
   resolved "https://registry.npmjs.org/react-focus-lock/-/react-focus-lock-2.9.3.tgz"
@@ -6334,7 +6348,7 @@ react-web-share@^2.0.2:
   resolved "https://registry.npmjs.org/react-web-share/-/react-web-share-2.0.2.tgz"
   integrity sha512-bGm1TJc6xtC0MhAnYFsrzT4En7l2oAdLTgCK7nk7b4xGTg3L5gOldiPrmYQ8a/dEXNydgekvOj/tfjduIlIRVA==
 
-react@*, "react@^15 || ^16 || ^17 || ^18", "react@^15.0.0 || ^16.0.0 || ^17.0.0|| ^18.0.0", "react@^15.3.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^15.3.0 || 16 || 17 || 18", "react@^15.5.4 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16 || ^17 || ^18", "react@^16.8 || ^17 || ^18", "react@^16.8.0  || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17 || ^18", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.9 || ^17 || ^18", "react@^17 || ^18", react@^18, react@^18.0.0, react@^18.2.0, "react@>= 0.14.0", "react@>= 15.0.0", "react@>= 16", "react@>= 16.8.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", react@>=15.0.0, react@>=16, react@>=16.13.1, react@>=16.6.0, "react@>=16.8 || ^17.0.0 || ^18.0.0", react@>=16.8.0, react@>=17.0, react@>=17.0.0, "react@15.x.x || 16.x.x || 17.x.x || 18.x.x", react@18.2.0:
+react@*, "react@^15 || ^16 || ^17 || ^18", "react@^15.0.0 || ^16.0.0 || ^17.0.0|| ^18.0.0", "react@^15.3.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^15.3.0 || 16 || 17 || 18", "react@^15.5.4 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16 || ^17 || ^18", "react@^16.8 || ^17 || ^18", "react@^16.8.0  || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17 || ^18", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.9 || ^17 || ^18", "react@^17 || ^18", react@^18, react@^18.0.0, react@^18.2.0, "react@>= 0.14.0", "react@>= 15.0.0", "react@>= 16", "react@>= 16.8.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", react@>=15.0.0, react@>=16, react@>=16.13.1, react@>=16.6.0, "react@>=16.8 || ^17.0.0 || ^18.0.0", react@>=16.8.0, react@>=16.8.6, react@>=17.0, react@>=17.0.0, "react@15.x.x || 16.x.x || 17.x.x || 18.x.x", react@18.2.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
@@ -7047,6 +7061,11 @@ split2@^4.1.0:
   resolved "https://registry.npmjs.org/split2/-/split2-4.1.0.tgz"
   integrity sha512-VBiJxFkxiXRlUIeyMQi8s4hgvKCSjtknJv/LVYbrgALPwf5zSKmEwV9Lst25AkvMDnvxODugjdl6KZgwKM1WYQ==
 
+ssr-window@^3.0.0, ssr-window@^3.0.0-alpha.1:
+  version "3.0.0"
+  resolved "https://registry.npmjs.org/ssr-window/-/ssr-window-3.0.0.tgz"
+  integrity sha512-q+8UfWDg9Itrg0yWK7oe5p/XRCJpJF9OBtXfOPgSJl+u3Xd5KI328RUEvUqSMVM9CiQUEf1QdBzJMkYGErj9QA==
+
 stop-iteration-iterator@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/stop-iteration-iterator/-/stop-iteration-iterator-1.0.0.tgz"
@@ -7211,6 +7230,14 @@ suspend-react@^0.0.9:
   version "0.0.9"
   resolved "https://registry.npmjs.org/suspend-react/-/suspend-react-0.0.9.tgz"
   integrity sha512-668Pxy4z54fhjpnPqw6olj3vvpV03VywFNXazyNSYSTuHaRw3NJJjO5l8R49AUk5fMTkJXGVGaaVSgdaO01S3w==
+
+swiper@^6.8.4:
+  version "6.8.4"
+  resolved "https://registry.npmjs.org/swiper/-/swiper-6.8.4.tgz"
+  integrity sha512-O+buF9Q+sMA0H7luMS8R59hCaJKlpo8PXhQ6ZYu6Rn2v9OsFd4d1jmrv14QvxtQpKAvL/ZiovEeANI/uDGet7g==
+  dependencies:
+    dom7 "^3.0.0"
+    ssr-window "^3.0.0"
 
 symbol-tree@^3.2.4:
   version "3.2.4"

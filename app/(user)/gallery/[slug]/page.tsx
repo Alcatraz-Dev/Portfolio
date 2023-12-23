@@ -1,7 +1,11 @@
+import Gallery from "@/components/Gallery/Gallery";
+import Testing from "@/components/Gallery/testing";
 import React from "react";
 
 function page() {
-  return <div>page gallery</div>;
+  return (
+    <Gallery/>
+  );
 }
 
 export default page;
