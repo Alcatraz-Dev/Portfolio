@@ -1,6 +1,5 @@
 import { client } from "@/lib/sanity.client";
 import { groq } from "next-sanity";
-import { previewData } from "next/headers";
 import PreviewSuspense from "@/components/PreviewSuspense";
 import StatusPreview from "@/components/PreviewsComponents/PreviewStatus/StatusPreview";
 import HeroPreview from "@/components/PreviewsComponents/PreviewHero/HeroPreview";
@@ -159,45 +158,8 @@ const communityQuery = groq`
 `;
 export const revalidate = 10;
 export default async function HomePage() {
-  if (previewData()) {
-    return (
-      <PreviewSuspense
-        fallback={
-          <div role={"status"}>
-            <p className="text-center text-lg animate-pulse text-[#99e000]">
-              Loading Preview Data...
-            </p>
-          </div>
-        }
-      >
-        <HeroPreview hero={heroQuery} />
-        {/* <PreviewTechnologies
-          pargraph={paragraphsQuery}
-          generalTechnologies={technologiesQuery}
-        /> */}
-        {/* <PreviewVideo
-          buttonLink={customButtonQuery}
-          pargraph={paragraphsQuery}
-          video={videoQuery}
-        /> */}
-        <PreviewProject
-          projects={projectsQuery}
-          projectSection={projectsSectionQuery}
-        />
-        <ContactPreview contact={contactQuery} />
-        {/* <PreviewBlogList
-          buttonLink={customButtonQuery}
-          pargraph={paragraphsQuery}
-          post={blogQuery}
-        /> */}
-        {/* <PreviewCommunity
-          buttonLink={customButtonQuery}
-          pargraph={paragraphsQuery}
-          Community={communityQuery}
-        /> */}
-      </PreviewSuspense>
-    );
-  }
+  
+  
   const hero = await client.fetch(heroQuery);
   const logoCarousel = await client.fetch(logoCarouselQuery);
   const about = await client.fetch(aboutQuery);
@@ -255,3 +217,7 @@ export default async function HomePage() {
     </>
   );
 }
+function previewData() {
+  throw new Error("Function not implemented.");
+}
+

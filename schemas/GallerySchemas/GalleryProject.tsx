@@ -1,8 +1,8 @@
 import { defineField, defineType } from "sanity";
 import { FcFolder } from "react-icons/fc";
 export default defineType({
-  name: "gallery",
-  title: "Gallery",
+  name: "galleryProject",
+  title: "Gallery Project",
   icon: FcFolder,
   type: "document",
   fields: [
@@ -12,29 +12,12 @@ export default defineType({
       type: "string",
     }),
 
+    
     defineField({
-      name: "artImage",
-      title: "Art Image",
-      type: "image",
-      options: {
-        hotspot: true,
-      },
-    }),
-
-    defineField({
-      name: "slug",
-      title: "Slug",
-      type: "slug",
-      options: {
-        source: "title",
-        maxLength: 96,
-      },
-    }),
-    defineField({
-      name: "galleryProject",
-      title: "Gallery Project ",
+      name: "galleryDetails",
+      title: " Detailes Gallery",
       type: "array",
-      of: [{ type: "reference", to: { type: "galleryProject" } }],
+      of: [{ type: "reference", to: { type: "galleryDetailes" } }],
     }),
   ],
   preview: {

@@ -43,6 +43,8 @@ import buttonBuyMeACafe from "./CustomButtonSchemas/DonationButtons/buttonBuyMeA
 import buttonKoFi from "./CustomButtonSchemas/DonationButtons/buttonKofi";
 import gallerySection from "./GallerySchemas/gallerySection";
 import gallery from "./GallerySchemas/gallery";
+import GalleryProject from "./GallerySchemas/GalleryProject";
+import GalleryDetails from "./GallerySchemas/GalleryDetails";
 
 
 export const schemaTypes = [
@@ -68,6 +70,8 @@ export const schemaTypes = [
   resourceTags,
   gallerySection,
   gallery,
+  GalleryProject,
+  GalleryDetails,
   post,
   comment,
   emoji,

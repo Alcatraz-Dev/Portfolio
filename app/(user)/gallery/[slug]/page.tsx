@@ -1,10 +1,10 @@
+import AutosliderImages from "@/components/Gallery/AutosliderImages";
 import Gallery from "@/components/Gallery/Gallery";
-import Testing from "@/components/Gallery/testing";
 import React from "react";
 
 function page() {
   return (
-    <Gallery/>
+    <AutosliderImages/>
   );
 }
 

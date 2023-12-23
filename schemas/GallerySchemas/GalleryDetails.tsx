@@ -1,16 +1,34 @@
 import { defineField, defineType } from "sanity";
 import { FcFolder } from "react-icons/fc";
 export default defineType({
-  name: "gallery",
-  title: "Gallery",
+  name: "galleryDetailes",
+  title: "Gallery Detailes",
   icon: FcFolder,
   type: "document",
   fields: [
+    defineField({
+        name: "subtitel",
+        title: "Subtitel",
+        type: "string",
+      }),
     defineField({
       name: "title",
       title: "Title",
       type: "string",
     }),
+    defineField({
+        name: "titleColer",
+        title: "Title Coler",
+        type: "string",
+        description:"the end of titel with anther color "
+      }),
+      defineField({
+        name: "paragraph",
+        title: "Paragraph",
+        type: "text",
+       
+      }),
+   
 
     defineField({
       name: "artImage",
@@ -29,12 +47,6 @@ export default defineType({
         source: "title",
         maxLength: 96,
       },
-    }),
-    defineField({
-      name: "galleryProject",
-      title: "Gallery Project ",
-      type: "array",
-      of: [{ type: "reference", to: { type: "galleryProject" } }],
     }),
   ],
   preview: {

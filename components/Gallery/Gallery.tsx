@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import styles from "./index.module.css";
 
+
 const Gallery: React.FC = () => {
   const images = ["/image/one.png", "/image/tow.png", "/image/three.png"];
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -112,20 +113,21 @@ const Gallery: React.FC = () => {
               {images.map((url, index) => (
                 <motion.div
                   key={index}
-                  className={` w-40 h-56 mr-2 relative overflow-hidden rounded-lg cursor-pointer ${
-                    index === currentIndex ? " border  border-lime-400 rounded-3xl z-10" : ""
+                  className={` w-40 h-56 mr-2 relative overflow-hidden rounded-lg cursor-pointer z-50 ${
+                    index === currentIndex ? "" : ""
                   }`}
                   onClick={() => handleChangeImage(index - currentIndex)}
                   whileTap={{
                     scale: [1, 2, 2, 1, 1],
-                    transition: { duration: 0.5 },
+                    transition: { duration: 0.7 },
                   }}
                 >
-                  <img
+                 
+                   <img
                     className="w-full h-full object-cover rounded-lg"
                     src={url}
                     alt={`${index + 1}`}
-                  />
+                  /> 
                 </motion.div>
               ))}
             </div>
