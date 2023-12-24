@@ -1,14 +1,5 @@
 import { client } from "@/lib/sanity.client";
 import { groq } from "next-sanity";
-import PreviewSuspense from "@/components/PreviewSuspense";
-import Technologies from "@/components/Technologies";
-import PreviewTechnologies from "@/components/PreviewTechnologies";
-import PreviewBlogList from "@/components/PreviewBlogList";
-import BlogList from "@/components/BlogList";
-import PreviewVideo from "@/components/PreviewVideo";
-import VideoList from "@/components/videoList";
-import Communitys from "@/components/Community";
-import PreviewCommunity from "@/components/PreviewCommunity";
 import Navbar from "@/components/NavBar/Navbar";
 import HeroSection from "@/components/HeroSection/HeroSection";
 import Footer from "@/components/Footer/Footer";
@@ -20,8 +11,6 @@ import LogoCarousel from "@/components/SkillsLogoCarousel/LogoCarousel";
 import Colors from "@/components/Colors/Colors";
 import CookieConsentPopup from "@/components/CookiePopup/CookieConsentPopup";
 import NewsLetter from "@/components/Newsletter/NewsLetter";
-import ArtWorkGallery from "@/components/ArtGallery/ArtWorkGallery";
-import ScrollingGallery from "@/components/ArtGallery/ScrolingGallery";
 import ScrolingGallery from "@/components/ArtGallery/ScrolingGallery";
 
 const colors = [Colors];
@@ -90,7 +79,14 @@ const gallerySectionQuery = groq`
 `;
 const galleryQuery = groq`
  *[_type == "gallery" ]{
-..., artImage,
+..., galleryProject[]->{
+  ...,galleryDetails[]->
+}
+}|order(_createAt desc)
+`;
+const galleryProjectQuery = groq`
+ *[_type == "galleryProject" ]{
+..., galleryDetails[]->,
 }|order(_createAt desc)
 `;
 

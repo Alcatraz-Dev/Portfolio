@@ -1,5 +1,5 @@
 import Image from "next/image";
-import LogoImage from "../../public/LogoImage.png";
+import LogoImage from "../../public/BrandLogo.png";
 function Logo(props: any) {
   const { renderDefault, title } = props;
   return (

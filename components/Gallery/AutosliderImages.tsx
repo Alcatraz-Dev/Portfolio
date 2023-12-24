@@ -90,11 +90,11 @@ const Gallery: React.FC = () => {
                 <ArrowLeftCircleIcon
                   width={40}
                   height={40}
-                  className="mr-10 hover:text-lime-400 hover:scale-105 ease-in-out duration-300"
+                  className="mr-10 text-white hover:text-lime-400 hover:scale-105 ease-in-out duration-300"
                 />
               </div>
             </Link>
-            <div className=" absolute right-[-30px]  top-14  cursor-pointer items-center hover:text-blue-400 hover:scale-105 ease-in-out duration-300 z-50">
+            <div className=" text-white absolute right-[-30px]  top-14  cursor-pointer items-center hover:text-blue-400 hover:scale-105 ease-in-out duration-300 z-50">
               <WebShare
                 // key={project?._id}
                 // title={project?.title}
@@ -128,7 +128,7 @@ const Gallery: React.FC = () => {
             >
               <motion.div
                 key={currentIndex}
-                className="absolute pl-20 lg:pl-44 md:pl-40 top-[5%] flex flex-col items-center justify-center"
+                className="absolute pl-20 lg:pl-44 md:pl-40 top-[25%] flex flex-col items-center justify-center"
                 initial={{ filter: "blur(10px)", y: 50, opacity: 0 }}
                 animate={{ filter: "blur(0)", y: 0, opacity: 1 }}
                 transition={{ duration: 1, delay: 0.5, staggerChildren: 0.2 }}
@@ -160,7 +160,7 @@ const Gallery: React.FC = () => {
                     ANIMAL
                   </motion.div>
                   <motion.div
-                    className=" flex justify-between space-x-2 pr-20 drop-shadow-lg "
+                    className=" text-white flex justify-between space-x-2 pr-20 drop-shadow-lg "
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                   >
@@ -172,7 +172,7 @@ const Gallery: React.FC = () => {
                   <div className="my-5 pr-20  ">
                     <Link
                       href={"/"}
-                      className=" sm:mr-10 text-center px-8  cursor-pointer inline-block py-3 w-full sm:w-fit rounded-full hover:scale-105 ease-in duration-300 bg-gradient-to-br from-lime-500 to-green-500"
+                      className=" text-white sm:mr-10 text-center px-8  cursor-pointer inline-block py-3 w-full sm:w-fit rounded-full hover:scale-105 ease-in duration-300 bg-gradient-to-br from-lime-500 to-green-500"
                     >
                       More Detailes
                     </Link>
@@ -184,7 +184,7 @@ const Gallery: React.FC = () => {
         </motion.div>
       </div>
       <div
-        className=" absolute inset-x-0 bottom-[60px] flex place-items-center items-center justify-center  px-10 
+        className=" absolute inset-x-0 bottom-[10%] flex place-items-center items-center justify-center  px-10 
        "
       >
         {images.map((url, index) => (

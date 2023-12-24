@@ -1,10 +1,11 @@
+
 export default function Head() {
   const BaseUrl = `${process.env.NEXT_PUBLIC_VERCEL_URL}/`;
 
   return (
     <>
       <title>Haythem Dhahri | Portfolio - Full Stack & Game Developer</title>
-
+      
       <meta
         name="description"
         content="Haythem Dhahri, an experienced Full Stack Developer specializing in frontend, backend, game development, and graphic design, delivering innovative solutions."
@@ -56,12 +57,9 @@ export default function Head() {
         property="twitter:description"
         content="Haythem Dhahri, an experienced Full Stack Developer specializing in frontend, backend, game development, and graphic design, delivering innovative solutions."
       />
-      <meta
-        property="twitter:image"
-        content={`${BaseUrl}og-image.png`}
-      />
+      <meta property="twitter:image" content={`${BaseUrl}og-image.png`} />
       <meta content="width=device-width, initial-scale=1" property="viewport" />
-      <link rel="icon" href="./LogoImage.png" />
+      <link rel="icon" href={`${BaseUrl}LogoImage.png`}  sizes="any"/>
     </>
   );
 }

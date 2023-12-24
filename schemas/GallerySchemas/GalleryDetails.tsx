@@ -7,28 +7,31 @@ export default defineType({
   type: "document",
   fields: [
     defineField({
-        name: "subtitel",
-        title: "Subtitel",
-        type: "string",
-      }),
+      name: "subtitel",
+      title: "Subtitel",
+      type: "string",
+    }),
     defineField({
       name: "title",
       title: "Title",
       type: "string",
     }),
     defineField({
-        name: "titleColer",
-        title: "Title Coler",
-        type: "string",
-        description:"the end of titel with anther color "
-      }),
-      defineField({
-        name: "paragraph",
-        title: "Paragraph",
-        type: "text",
-       
-      }),
-   
+      name: "titleColer",
+      title: "Title Color",
+      type: "string",
+      description: "the end of titel with anther color ",
+    }),
+    defineField({
+      name: "lastOfTitle",
+      title: "Last Of Title",
+      type: "string",
+    }),
+    defineField({
+      name: "paragraph",
+      title: "Paragraph",
+      type: "text",
+    }),
 
     defineField({
       name: "artImage",

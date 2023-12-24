@@ -258,6 +258,21 @@ export interface Gallery extends Base {
   slug: Slug;
   artImage: Image;
   title: string;
+  galleryProject:GalleryProject[];
+}
+export interface GalleryProject extends Base{
+  title: string;
+  galleryDetailes:GalleryDetailes[];
+
+}
+export interface GalleryDetailes extends Base{
+  subtitel: string;
+  title: string;
+  titleColor: string;
+  lastOfTitle: string;
+  paragraph:string;
+  artImage: Image;
+  slug: Slug;
 }
 export interface Video extends Base {
   author: Author;
