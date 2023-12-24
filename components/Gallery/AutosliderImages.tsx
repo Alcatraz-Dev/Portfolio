@@ -83,8 +83,8 @@ const Gallery: React.FC = () => {
   }, [currentIndex, controls]);
 
   return (
-    <div className="relative h-screen ">
-      <div className="flex justify-center items-center h-full">
+    <div className="relative h-screen overflow-hidden ">
+      <div className="flex justify-center items-center h-full overflow-hidden">
       <Link href="/#gallery">
               <div className=" absolute right-[-30px] top-14  cursor-pointer items-center z-50 ">
                 <ArrowLeftCircleIcon
