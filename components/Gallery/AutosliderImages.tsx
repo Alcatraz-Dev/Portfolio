@@ -128,7 +128,7 @@ const Gallery: React.FC = () => {
             >
               <motion.div
                 key={currentIndex}
-                className="absolute pl-20 lg:pl-44 md:pl-40 py-44 flex flex-col items-center justify-center"
+                className="absolute pl-20 lg:pl-44 md:pl-40 top-[5%] flex flex-col items-center justify-center"
                 initial={{ filter: "blur(10px)", y: 50, opacity: 0 }}
                 animate={{ filter: "blur(0)", y: 0, opacity: 1 }}
                 transition={{ duration: 1, delay: 0.5, staggerChildren: 0.2 }}
@@ -169,7 +169,7 @@ const Gallery: React.FC = () => {
                     sequi, rem magnam nesciunt minima placeat, itaque eum neque
                     officiis unde, eaque optio ratione aliquid assumenda facere
                   </motion.div>
-                  <div className="mt-4 pr-20  ">
+                  <div className="my-5 pr-20  ">
                     <Link
                       href={"/"}
                       className=" sm:mr-10 text-center px-8  cursor-pointer inline-block py-3 w-full sm:w-fit rounded-full hover:scale-105 ease-in duration-300 bg-gradient-to-br from-lime-500 to-green-500"
@@ -184,14 +184,14 @@ const Gallery: React.FC = () => {
         </motion.div>
       </div>
       <div
-        className=" absolute inset-x-0 bottom-40 flex place-items-center items-center justify-center  px-10  
+        className=" absolute inset-x-0 bottom-[60px] flex place-items-center items-center justify-center  px-10 
        "
       >
         {images.map((url, index) => (
           <motion.div
             key={index}
-            className={`w-10 h-10 lg:w-25 sm:h-25 md:w-20 md:h-20 mx-2 relative  rounded-lg cursor-pointer ${
-              index === currentIndex ? "border-2 border-lime-500" : ""
+            className={`w-9 h-9 lg:w-25 sm:h-25 md:w-20 md:h-20 mx-2 relative  rounded-lg cursor-pointer ${
+              index === currentIndex ? "border-2 border-lime-500 " : ""
             }`}
             onClick={() => handleChangeImage(index - currentIndex)}
             whileTap={{
@@ -207,8 +207,11 @@ const Gallery: React.FC = () => {
             />
           </motion.div>
         ))}
+       
       </div>
-      <div className="absolute inset-x-0 bottom-0 flex items-center justify-center mb-20">
+      
+      <div className="absolute inset-x-0  bottom-3 flex items-center justify-center ">
+       
         <button
           className="mx-3 bg-black/40 rounded-full w-8 h-8 items-center hover:scale-110 ease-in duration-300 hover:bg-lime-500 z-50"
           onClick={() => handleChangeImage(-1)}
