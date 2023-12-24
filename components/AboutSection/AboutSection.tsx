@@ -103,6 +103,7 @@ const AboutSection = ({ about }: Props) => {
                           alt={education?.educationName}
                           width={40}
                           height={40}
+                          className={"mt-1"}
                         />
                         <p className="mt-3 ml-3 ">{education?.educationInfo}</p>
                       </span>
@@ -133,7 +134,7 @@ const AboutSection = ({ about }: Props) => {
                 >
                   <div className="container mx-auto max-w-6xl flex flex-col-reverse md:flex-row sm:mx-0 items-center justify-between">
                     <div className="list-disc pl-2">
-                      <span className="flex justify-start ">
+                      <span className="flex justify-start  ">
                         <Image
                           key={certificate?._id}
                           src={urlFor(certificate?.certificatelistItemImage)
@@ -143,6 +144,7 @@ const AboutSection = ({ about }: Props) => {
                           alt={certificate?.certificateName}
                           width={40}
                           height={40}
+                          className={"mt-3"}
                         />
                         <p className="mt-3 ml-3 ">
                           {certificate?.certificateInfo}

@@ -1,12 +1,8 @@
 import { client } from "@/lib/sanity.client";
 import { groq } from "next-sanity";
 import PreviewSuspense from "@/components/PreviewSuspense";
-import StatusPreview from "@/components/PreviewsComponents/PreviewStatus/StatusPreview";
-import HeroPreview from "@/components/PreviewsComponents/PreviewHero/HeroPreview";
 import Technologies from "@/components/Technologies";
 import PreviewTechnologies from "@/components/PreviewTechnologies";
-import PreviewProject from "@/components/PreviewsComponents/PreviewProject/PreviewProject";
-import ContactPreview from "@/components/PreviewsComponents/PreviewContact/ContactPreview";
 import PreviewBlogList from "@/components/PreviewBlogList";
 import BlogList from "@/components/BlogList";
 import PreviewVideo from "@/components/PreviewVideo";
@@ -158,8 +154,6 @@ const communityQuery = groq`
 `;
 export const revalidate = 10;
 export default async function HomePage() {
-  
-  
   const hero = await client.fetch(heroQuery);
   const logoCarousel = await client.fetch(logoCarouselQuery);
   const about = await client.fetch(aboutQuery);
@@ -196,8 +190,7 @@ export default async function HomePage() {
         resourceSection={resourcesSection}
         resources={resources}
       />
-      {/* <Comment comment={comments} reaction={reactions}  /> */}
-      {/* <ArtWorkGallery /> */}
+
       <ScrolingGallery />
       <ContactSection contact={contact} />
       <NewsLetter />
@@ -220,4 +213,3 @@ export default async function HomePage() {
 function previewData() {
   throw new Error("Function not implemented.");
 }
-

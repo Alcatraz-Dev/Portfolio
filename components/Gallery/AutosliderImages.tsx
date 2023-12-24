@@ -2,15 +2,18 @@
 
 import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
+import Link from "next/link";
+import { ArrowLeftCircleIcon } from "@heroicons/react/24/outline";
+import WebShare from "../Shear/WebShare";
 
 const Gallery: React.FC = () => {
   const images = [
     "/image/one.png",
-    "/image/two.png",
+    "/image/tow.png",
     "/image/three.png",
     "/image/four.png",
     "/image/one.png",
-    "/image/two.png",
+    "/image/tow.png",
     "/image/three.png",
     "/image/four.png",
   ];
@@ -80,10 +83,26 @@ const Gallery: React.FC = () => {
   }, [currentIndex, controls]);
 
   return (
-    <div className="relative h-screen overflow-hidden">
+    <div className="relative h-screen ">
       <div className="flex justify-center items-center h-full">
+      <Link href="/#gallery">
+              <div className=" absolute right-[-30px] top-14  cursor-pointer items-center z-50 ">
+                <ArrowLeftCircleIcon
+                  width={40}
+                  height={40}
+                  className="mr-10 hover:text-lime-400 hover:scale-105 ease-in-out duration-300"
+                />
+              </div>
+            </Link>
+            <div className=" absolute right-[-30px]  top-14  cursor-pointer items-center hover:text-blue-400 hover:scale-105 ease-in-out duration-300 z-50">
+              <WebShare
+                // key={project?._id}
+                // title={project?.title}
+                // url={`${BaseUrl}${project?.slug.current}`}
+              />
+            </div>
         <motion.div
-          className="relative w-full h-full rounded-md overflow-hidden"
+          className="relative w-full h-full rounded-md "
           animate={{ opacity: 1, scale: 1.2 }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
         >
@@ -120,28 +139,28 @@ const Gallery: React.FC = () => {
                   transition={{ duration: 0.5 }}
                 >
                   <motion.div
-                    className="text-white text-2xl font-bold mb-2"
+                    className="text-white text-2xl font-bold mb-2 drop-shadow-lg"
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                   >
                     LUNDEV
                   </motion.div>
                   <motion.div
-                    className="text-white text-5xl font-bold mb-2"
+                    className="text-white text-5xl font-bold mb-2 pr-10 drop-shadow-lg"
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                   >
-                    DESIGN <span className="text-lime-500">SLIDER</span>
+                    DESIGN <span className="text-lime-500 drop-shadow-lg">SLIDER</span>
                   </motion.div>
                   <motion.div
-                    className="text-white text-2xl mb-4"
+                    className="text-white text-2xl mb-4 drop-shadow-lg"
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                   >
                     ANIMAL
                   </motion.div>
                   <motion.div
-                    className="font-light text-lg"
+                    className=" flex justify-between space-x-2 pr-20 drop-shadow-lg "
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                   >
@@ -150,10 +169,13 @@ const Gallery: React.FC = () => {
                     sequi, rem magnam nesciunt minima placeat, itaque eum neque
                     officiis unde, eaque optio ratione aliquid assumenda facere
                   </motion.div>
-                  <div className="mt-4">
-                    <button className="rounded-xl px-6 py-2 bg-gradient-to-br  from-lime-500 to-green-500 text-white hover:scale-105 transition duration-300 cursor-pointer">
-                      Explore
-                    </button>
+                  <div className="mt-4 pr-20  ">
+                    <Link
+                      href={"/"}
+                      className=" sm:mr-10 text-center px-8  cursor-pointer inline-block py-3 w-full sm:w-fit rounded-full hover:scale-105 ease-in duration-300 bg-gradient-to-br from-lime-500 to-green-500"
+                    >
+                      More Detailes
+                    </Link>
                   </div>
                 </motion.div>
               </motion.div>
@@ -161,12 +183,14 @@ const Gallery: React.FC = () => {
           ))}
         </motion.div>
       </div>
-      <div className="absolute bottom-40 flex place-items-center items-center justify-center overflow-x-scroll  px-10  scrollbar-hide
-       ">
+      <div
+        className=" absolute inset-x-0 bottom-40 flex place-items-center items-center justify-center  px-10  
+       "
+      >
         {images.map((url, index) => (
           <motion.div
             key={index}
-            className={`w-16 h-16 mx-2 relative overflow-hidden rounded-lg cursor-pointer ${
+            className={`w-10 h-10 lg:w-25 sm:h-25 md:w-20 md:h-20 mx-2 relative  rounded-lg cursor-pointer ${
               index === currentIndex ? "border-2 border-lime-500" : ""
             }`}
             onClick={() => handleChangeImage(index - currentIndex)}
@@ -186,7 +210,7 @@ const Gallery: React.FC = () => {
       </div>
       <div className="absolute inset-x-0 bottom-0 flex items-center justify-center mb-20">
         <button
-          className="mx-3 bg-black/40 rounded-full w-8 h-8 items-center hover:scale-110 transition duration-400 hover:bg-lime-500"
+          className="mx-3 bg-black/40 rounded-full w-8 h-8 items-center hover:scale-110 ease-in duration-300 hover:bg-lime-500 z-50"
           onClick={() => handleChangeImage(-1)}
         >
           &lt;
@@ -201,7 +225,7 @@ const Gallery: React.FC = () => {
           ></motion.div>
         ))}
         <button
-          className="mx-3 bg-black/40 rounded-full w-8 h-8 items-center hover:scale-110 transition duration-400 hover:bg-lime-500"
+          className="mx-3 bg-black/40 rounded-full w-8 h-8 items-center hover:scale-110 ease-in duration-300 hover:bg-lime-500 z-50"
           onClick={() => handleChangeImage(1)}
         >
           &gt;
