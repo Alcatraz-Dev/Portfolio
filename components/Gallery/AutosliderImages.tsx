@@ -176,7 +176,7 @@ const GalleryPage: React.FC = () => {
                         initial={{ y: 20, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                       >
-                        {galleryData?.gallery[0]?.projectTitle}{" "}
+                        {image?.projectTitle}{" "}
                         <span className="text-lime-500 drop-shadow-lg z-50">
                           {image?.titleSpan}
                         </span>
