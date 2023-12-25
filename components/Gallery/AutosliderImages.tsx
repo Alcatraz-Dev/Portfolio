@@ -5,6 +5,8 @@ import { motion, useAnimation } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeftCircleIcon } from "@heroicons/react/24/outline";
 import WebShare from "../Shear/WebShare";
+import { GallerySection } from "@/typings";
+import { client } from "@/lib/sanity.client";
 
 const Gallery: React.FC = () => {
   const images = [
@@ -35,7 +37,7 @@ const Gallery: React.FC = () => {
     controls.start({ opacity: 0, scale: 1 });
 
     setTimeout(() => {
-      controls?.start({ opacity: 1, scale: 1.2 });
+      controls.start({ opacity: 1, scale: 1.2 });
       setCurrentIndex(0);
     }, 6000);
   };
@@ -81,6 +83,30 @@ const Gallery: React.FC = () => {
       transition: { duration: 1, delay: 0.5, staggerChildren: 0.2 },
     });
   }, [currentIndex, controls]);
+  const [galleryData, setGalleryData] = useState<GallerySection>();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await client.fetch<GallerySection[]>(
+          `*[_type == "gallerySection"]{..., gallery[]->}`
+        );
+        setGalleryData(result[0]);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+  if (!galleryData) {
+    return (
+      <div className=" w-full h-screen font-mono text-lime-500 flex justify-center items-center text-xl font-bold  ">
+        Loading Gallery Section {""}
+        <span className="animate-pulse">...</span>
+      </div>
+    ); // Loading state
+  }
 
   return (
     <div className="relative h-screen overflow-hidden  ">

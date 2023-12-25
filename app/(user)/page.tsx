@@ -79,9 +79,7 @@ const gallerySectionQuery = groq`
 `;
 const galleryQuery = groq`
  *[_type == "gallery" ]{
-..., galleryProject[]->{
-  ...,galleryDetails[]->
-}
+..., 
 }|order(_createAt desc)
 `;
 const galleryProjectQuery = groq`

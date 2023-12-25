@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+
 import React, { useEffect, useRef, useState } from "react";
 import NavLink from "./NavLink";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
@@ -7,6 +7,7 @@ import MenuOverlay from "./MenuOverlay";
 import Image from "next/image";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
 import { useTheme } from "next-themes";
+import { Link } from "react-scroll";
 
 const navLinks = [
   {
@@ -65,13 +66,17 @@ const Navbar = () => {
         className="fixed mx-auto border backdrop-blur-md  dark:border-[#33353F]/30 top-0 left-0 right-0 z-20 dark:bg-[#121212]/30 bg-opacity-100"
       >
         <div className="flex container lg:py-4 flex-wrap items-center justify-between mx-auto px-4 py-2 p-5">
-          <Link href={"/"}>
+          <Link  to={"home"}
+            offset={-100}
+            smooth={true}
+            duration={1000}
+            spy={true}>
             <Image
               src={"/LogoImage.png"}
               width={50}
               height={0}
               alt="Logo"
-              className=" flex justify-start left-0 hover:scale-105 duration-300 transition-transform ease-in-out"
+              className=" cursor-pointer flex justify-start left-0 hover:scale-105 duration-300 transition-transform ease-in-out"
             />
           </Link>
           <div className="mobile-menu block lg:hidden xl:hidden text-lg font-bold ">

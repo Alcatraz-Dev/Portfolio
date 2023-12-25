@@ -3,7 +3,6 @@ import React from "react";
 import { client } from "@/lib/sanity.client";
 import { groq } from "next-sanity";
 
-import PreviewSuspense from "@/components/PreviewSuspense";
 
 import ResumePage from "@/components/Resume/Resume";
 

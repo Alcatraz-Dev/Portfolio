@@ -15,7 +15,7 @@ const fileUrl = process.env.NEXT_PUBLIC_SANITY_FILE_URL!;
 export default defineConfig({
   basePath: "/studio",
   name: "Alcatraz_Dev",
-  title: "Alcatraz Dev Portfolio",
+  title: "Haythem Dhahri | Portfolio",
 
   projectId,
   dataset,
