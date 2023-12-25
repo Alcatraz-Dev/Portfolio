@@ -255,25 +255,18 @@ export interface GallerySection extends Base {
   gallerySectionTitle: string;
 }
 export interface Gallery extends Base {
+  title: string;
   slug: Slug;
   artImage: Image;
-  title: string;
-  galleryProject:GalleryProject[];
+  buttonSlug: Slug;
+  paragraph: string;
+  projectTitle: string;
+  images: Image[];
+  titleSpan: string;
+  authorName: string;
+  categoryOrTag: string;
 }
-export interface GalleryProject extends Base{
-  title: string;
-  galleryDetailes:GalleryDetailes[];
 
-}
-export interface GalleryDetailes extends Base{
-  subtitel: string;
-  title: string;
-  titleColor: string;
-  lastOfTitle: string;
-  paragraph:string;
-  artImage: Image;
-  slug: Slug;
-}
 export interface Video extends Base {
   author: Author;
   body: Block[];

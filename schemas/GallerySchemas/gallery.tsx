@@ -11,6 +11,51 @@ export default defineType({
       title: "Title",
       type: "string",
     }),
+    defineField({
+      name: "authorName",
+      title: "Author Name",
+      type: "string",
+    }),
+    defineField({
+      name: "projectTitle",
+      title: "Project Title",
+      type: "string",
+    }),
+
+    defineField({
+      name: "titleSpan",
+      title: "Title Span",
+      type: "string",
+      description:"this the complet of title but with anouther color"
+    }),
+    defineField({
+      name: "categoryOrTag",
+      title: "Category Or Tag",
+      type: "string",
+    }),
+    defineField({
+      name: "paragraph",
+      title: "Paragraph",
+      type: "text",
+    }),
+    defineField({
+      name: "buttonSlug",
+      title: "Button Slug",
+      type: "slug",
+      options: {
+        source: "projectTitle",
+        maxLength: 96,
+      },
+    }),
+    defineField({
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      options: {
+        source: "title",
+        maxLength: 96,
+      },
+    }),
 
     defineField({
       name: "artImage",
@@ -48,15 +93,7 @@ export default defineType({
       },
     }),
 
-    defineField({
-      name: "slug",
-      title: "Slug",
-      type: "slug",
-      options: {
-        source: "title",
-        maxLength: 96,
-      },
-    }),
+ 
   ],
   preview: {
     select: {
