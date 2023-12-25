@@ -20,11 +20,13 @@ export default defineType({
         hotspot: true,
       },
     }),
+
     defineField({
       name: "images",
       type: "array",
       title: "Images",
       of: [
+        
         {
           name: "image",
           type: "image",
@@ -60,7 +62,7 @@ export default defineType({
     select: {
       title: "title",
       author: "author.name",
-      media: "mainImage",
+      media: "artImage",
       images: "images",
       image: "images.0",
     },

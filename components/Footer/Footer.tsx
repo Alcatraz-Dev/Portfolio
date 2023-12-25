@@ -31,7 +31,7 @@ const Footer = () => {
 
           <div className="text-[#afafaf] mt-7 ">
             {" "}
-            ©️ Alcatraz Dev | {new Date().getFullYear()} All rights reserved.{" "}
+            &copy; Alcatraz Dev | {new Date().getFullYear()} All rights reserved.{" "}
             <a href={"/PrivacyPolicy"}>
               {" "}
               <span className="text-[#afafaf] mt-7 text-sm underline hover:scale-105 ease-in duration-300 hover:text-lime-400 ">

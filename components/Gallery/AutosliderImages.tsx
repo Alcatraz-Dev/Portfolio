@@ -83,26 +83,25 @@ const Gallery: React.FC = () => {
   }, [currentIndex, controls]);
 
   return (
-    <div className="relative h-screen overflow-hidden ">
+    <div className="relative h-screen overflow-hidden  ">
       <div className="flex justify-center items-center h-full overflow-hidden">
-       
-          <Link href="/#gallery">
-            <div className=" absolute right-[-10px] top-[12%] cursor-pointer items-center z-50 ">
-              <ArrowLeftCircleIcon
-                width={40}
-                height={40}
-                className="mr-10 text-white hover:text-lime-400 hover:scale-105 ease-in-out duration-300"
-              />
-            </div>
-          </Link>
-          <div className=" text-white absolute right-[-10px] top-[12%]  cursor-pointer items-center hover:text-blue-400 hover:scale-105 ease-in-out duration-300 z-50">
-            <WebShare
-            // key={project?._id}
-            // title={project?.title}
-            // url={`${BaseUrl}${project?.slug.current}`}
+        <Link href="/#gallery">
+          <div className=" absolute right-[-10px] top-[20%] cursor-pointer items-center z-50 ">
+            <ArrowLeftCircleIcon
+              width={40}
+              height={40}
+              className="mr-10 text-white  hover:scale-105 ease-in-out duration-300 hover:text-lime-500"
             />
           </div>
-        
+        </Link>
+        <div className=" text-white absolute right-[-10px] top-[20%]  cursor-pointer items-center hover:text-blue-400 hover:scale-105 ease-in-out duration-300 z-50">
+          <WebShare
+          // key={project?._id}
+          // title={project?.title}
+          // url={`${BaseUrl}${project?.slug.current}`}
+          />
+        </div>
+
         <motion.div
           className="relative w-full h-full rounded-md "
           animate={{ opacity: 1, scale: 1.2 }}
@@ -114,7 +113,7 @@ const Gallery: React.FC = () => {
               initial={{ opacity: index === currentIndex ? 1 : 0 }}
               animate={{ opacity: index === currentIndex ? 1 : 0 }}
               transition={{ duration: 0.5 }}
-              className={`w-full h-full ${
+              className={`w-full h-auto ${
                 index === currentIndex ? "block" : "hidden"
               }`}
               style={{
@@ -128,9 +127,10 @@ const Gallery: React.FC = () => {
                 bottom: 0,
               }}
             >
+              <div className="absolute top-0 left-0 w-full h-full bg-black/10 " />
               <motion.div
                 key={currentIndex}
-                className="absolute pl-20 lg:pl-44 md:pl-40 top-[25%] flex flex-col items-center justify-center"
+                className="absolute pl-20 lg:pl-44 md:pl-40 top-[25%] flex flex-col items-center justify-center z-50"
                 initial={{ filter: "blur(10px)", y: 50, opacity: 0 }}
                 animate={{ filter: "blur(0)", y: 0, opacity: 1 }}
                 transition={{ duration: 1, delay: 0.5, staggerChildren: 0.2 }}
@@ -175,7 +175,7 @@ const Gallery: React.FC = () => {
                   <div className="my-5 pr-20  ">
                     <Link
                       href={"/"}
-                      className=" text-white sm:mr-10 text-center px-8  cursor-pointer inline-block py-3 w-full sm:w-fit rounded-full hover:scale-105 ease-in duration-300 bg-gradient-to-br from-lime-500 to-green-500"
+                      className=" text-white font-medium sm:mr-10 text-center px-8  cursor-pointer inline-block py-3 w-full sm:w-fit rounded-full hover:scale-105 ease-in duration-300 bg-gradient-to-br from-lime-500 to-green-500"
                     >
                       More Detailes
                     </Link>
@@ -214,7 +214,7 @@ const Gallery: React.FC = () => {
 
       <div className="absolute inset-x-0  bottom-3 flex items-center justify-center ">
         <button
-          className="mx-3 bg-gray-500/40 rounded-full w-8 h-8 items-center hover:scale-110 ease-in duration-300 hover:bg-lime-500 z-50"
+          className=" text-white mx-3 bg-gray-500/40 rounded-full w-8 h-8 items-center hover:scale-110 ease-in duration-300 hover:bg-lime-500 z-50"
           onClick={() => handleChangeImage(-1)}
         >
           &lt;
@@ -229,7 +229,7 @@ const Gallery: React.FC = () => {
           ></motion.div>
         ))}
         <button
-          className="mx-3 bg-gray-500/40 rounded-full w-8 h-8 items-center hover:scale-110 ease-in duration-300 hover:bg-lime-500 z-50"
+          className=" text-white mx-3 bg-gray-500/40 rounded-full w-8 h-8 items-center hover:scale-110 ease-in duration-300 hover:bg-lime-500 z-50"
           onClick={() => handleChangeImage(1)}
         >
           &gt;
