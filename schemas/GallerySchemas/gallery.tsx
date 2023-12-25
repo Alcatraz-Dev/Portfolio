@@ -20,6 +20,31 @@ export default defineType({
         hotspot: true,
       },
     }),
+    defineField({
+      name: "images",
+      type: "array",
+      title: "Images",
+      of: [
+        {
+          name: "image",
+          type: "image",
+          title: "Image",
+          options: {
+            hotspot: true,
+          },
+          fields: [
+            {
+              name: "alt",
+              type: "string",
+              title: "Alternative text",
+            },
+          ],
+        },
+      ],
+      options: {
+        layout: "grid",
+      },
+    }),
 
     defineField({
       name: "slug",
@@ -30,18 +55,14 @@ export default defineType({
         maxLength: 96,
       },
     }),
-    defineField({
-      name: "galleryProject",
-      title: "Gallery Project ",
-      type: "array",
-      of: [{ type: "reference", to: { type: "galleryProject" } }],
-    }),
   ],
   preview: {
     select: {
       title: "title",
       author: "author.name",
       media: "mainImage",
+      images: "images",
+      image: "images.0",
     },
     prepare(selection) {
       const { author } = selection;
