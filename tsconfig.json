@@ -39,6 +39,8 @@
     "components/ProjectsSection/ProjectSearchFilter.jsx",
     "components/Status/StatusProgresBar.jsx",
     "app/(user)/resume/page.tsx",
+    "app/(user)/gallery/gallery-project/page.tsx",
+    "app/(user)/gallery/gallery-detailes/page.tsx",
     "lib/dynamicScriptLoader.js",
     "lib/utils.js",
     "lib/snarkdown.js",

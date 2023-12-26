@@ -8,6 +8,7 @@ import ClientSideRoute from "../Route/ClientSideRoute";
 import styles from "./index.module.css";
 
 export const revalidate = 10;
+const BaseUrl = `${process.env.NEXT_PUBLIC_VERCEL_URL}/`;
 function ScrolingGallery() {
   const [galleryData, setGalleryData] = useState<GallerySection>();
 
@@ -84,7 +85,7 @@ function ScrolingGallery() {
                       {galleryData?.gallery.map((art) => (
                         <ClientSideRoute
                           key={art?._id}
-                          route={`/gallery/gallery-project/${art?.slug?.current}`}
+                          route={`${art?.slug?.current}`}
                         >
                           <p>
                             <Image
@@ -106,7 +107,7 @@ function ScrolingGallery() {
                     {galleryData?.gallery.map((art) => (
                       <ClientSideRoute
                         key={art?._id}
-                        route={`/gallery/${art?.slug?.current}`}
+                        route={`/gallery/gallery-project/${art?.slug?.current}`}
                       >
                         <p>
                           <Image
@@ -150,7 +151,7 @@ function ScrolingGallery() {
                     {galleryData?.gallery.map((art) => (
                       <ClientSideRoute
                         key={art?._id}
-                        route={`/gallery/${art?.slug?.current}`}
+                        route={`/gallery//gallery-project/${art?.slug?.current}`}
                       >
                         <p>
                           <Image

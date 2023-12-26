@@ -3,451 +3,236 @@ import React from "react";
 import Link from "next/link";
 import { groq } from "next-sanity";
 import { client } from "@/lib/sanity.client";
-import { Gallery, Project } from "@/typings";
+import { Gallery } from "@/typings";
 import urlFor from "@/lib/urlFor";
 import { ArrowLeftCircleIcon } from "@heroicons/react/24/outline";
-import { PortableText } from "@portabletext/react";
-import { RichTextComponents } from "@/components/CustomText/RichText/RichTextComponents";
 import WebShare from "@/components/Shear/WebShare";
-import { format } from "date-fns";
 import { notFound } from "next/navigation";
-import Comments from "@/components/CommentSection/comments";
-
+import { MotionDiv } from "@/components/ServerSideAnimation/MotionDiv";
+import ClientSideRoute from "@/components/Route/ClientSideRoute";
 type Props = {
   params: {
     slug: string;
   };
 };
 export const revalidate = 10;
-const BaseUrl = `${process.env.NEXT_PUBLIC_VERCEL_URL}/project-detailes/`;
-const urlFile = process.env.NEXT_PUBLIC_SANITY_FILE_URL;
+const BaseUrl = `${process.env.NEXT_PUBLIC_VERCEL_URL}/`;
+// const urlFile = process.env.NEXT_PUBLIC_SANITY_FILE_URL;
 export async function generateStaticParams() {
   const quary = groq`*[_type =='gallery']{
           slug
       }`;
-  const slugs: Project[] = await client.fetch(quary);
-  const slagRoutes = slugs?.map((slug) => slug.slug.current);
+  const slugs: Gallery[] = await client.fetch(quary);
+  const slagRoutes = slugs?.map((slug) => slug.slug.current );
   return slagRoutes?.map((slug) => ({
     slug,
   }));
 }
 async function Projects({ params: { slug } }: Props) {
   const query = groq`
-      *[_type == 'gallery' && slug.current == $slug][0]{
+      *[_type == 'gallery' && slug.current == $slug][0]   {
         ...,
       }
       `;
 
-  const projectDetailes: Gallery = await client.fetch(query, { slug });
-  if (!projectDetailes) return notFound();
+  const galleryProject: Gallery = await client.fetch(query, { slug });
+  if (!galleryProject) return notFound();
 
   return (
-    <div className="w-full">
-      <div className="w-screen h-[50vh] relative">
-        <div
-          key={projectDetailes?._id}
-          className={`absolute top-0 left-0 w-full h-[50vh] bg-black/20 backdrop-brightness-50 z-10 `}
-        />
-        <Image
-          className="absolute z-1 object-cover "
-          fill
-          src={urlFor(projectDetailes?.artImage).width(500).height(500).url()}
-          alt={projectDetailes?.title}
-        />
-
-        <div
-          key={projectDetailes?._id}
-          className="absolute top-[75%] max-w-[1240px] w-full left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%] text-white z-10 p-2"
-        >
-         
-            <Link href="/#projects">
-              <div className=" absolute right-[-30px] top-14  cursor-pointer items-center  ">
-                <ArrowLeftCircleIcon
-                  width={40}
-                  height={40}
-                  className="mr-10 hover:text-lime-400 hover:scale-105 ease-in-out duration-300"
-                />
-              </div>
-            </Link>
-            <div className=" absolute right-[-30px]  top-14  cursor-pointer items-center hover:text-blue-400 hover:scale-105 ease-in-out duration-300">
-              <WebShare
-                key={projectDetailes?._id}
-                title={projectDetailes?.title}
-                url={`${BaseUrl}${projectDetailes?.slug.current}`}
-              />
-            </div>
-        
-          <div className="p-5">
-          <p
-              className={`   text-lg py-2 lg:text-xl  justify-start font-bold `}
-            >
-              {projectDetailes?.authorName} 
-            </p>
-            <h2
-              className={`text-2xl lg:text-3xl py-2 justify-start font-bold `}
-            >
-              {projectDetailes?.projectTitle} <span className="text-lime-500"> {projectDetailes?.titleSpan}</span>
-            </h2>
-            <p
-              className={`text-lg lg:text-xl py-2 justify-start font-bold `}
-            >
-              {projectDetailes?.categoryOrTag} 
-            </p>
-
-            <div
-              key={projectDetailes?._id}
-              className="flex items-center space-x-4 my-10"
-            >
-              {/* <div className="flex items-center">
-                <div className="flex items-center space-x-1 my-5">
-                  <Image
-                    src={urlFor(projectDetailes?.author?.authorImage)
-                      .width(500)
-                      .height(500)
-                      .url()}
-                    alt={project?.author?.name}
-                    width={50}
-                    height={50}
-                    className=" mr-3"
-                  />
-                  <span className="font-mono">
-                    {project?.author?.name}{" "}
-                    <p>
-                      {format(
-                        new Date(project?.publishedAt),
-                        " dd,MMMM,yyyy, p"
-                      )}
-                    </p>
-                  </span>
-                </div>
-              </div> */}
-            </div>
-
-            {/* <div
-              key={project?._id}
-              className="flex items-center space-x-4 mt-2 mb-32 "
-            >
-              <div key={project?._id} className="flex items-center">
-                <div className="flex items-center space-x-1 mb-20 font-mono text-sm lg:text-base">
-                  <PortableText
-                    value={project?.projectShortDescriptionPage}
-                    components={RichTextComponents}
-                  />
-                </div>
-              </div>
-            </div> */}
+    <div className="relative h-screen overflow-hidden  ">
+      <div className="flex justify-center items-center h-full overflow-hidden">
+        <Link href="/#gallery">
+          <div className=" absolute right-[-10px] top-[20%] cursor-pointer items-center z-50 ">
+            <ArrowLeftCircleIcon
+              width={40}
+              height={40}
+              className="mr-10 text-white  hover:scale-105 ease-in-out duration-300 hover:text-lime-500"
+            />
           </div>
-        </div>
-      </div>
-      <div className="  mx-5">
-        <div className="mt-8">
-          <div className="mx-5 col-span-4 md:col-span-1 shadow-sm shadow-gray-400 rounded-xl py-4">
-            <h1 className="text-center  text-xl font-bold mt-3 text-gray-600 ">
-              Information about the project
-            </h1>
-            <div className="p-2">
-              <div className="col-span-4 md:col-span-1 shadow-sm shadow-gray-400 rounded-xl py-4 mx-5 mt-10 mb-10">
-                <div className="p-2">
-                  <div className="text-center font-bold pb-2">
-                    <span className="text-center font-bold pb-2 pt-2 text-gray-600 ">
-                      {" "}
-                      Project Technologies
-                    </span>
-                    {/* <div className=" mt-3 place-items-center grid gap-x-8 gap-y-4 grid-cols-3 xl:grid-cols-6 md:grid-cols-4 px-2  ">
-                      {projectDetailes?.stacks?.map((stack) => (
-                        <div
-                          key={stack?._id}
-                          className="  text-gray-600 py-2  mt-5 mb-5 "
-                        >
-                          <Image
-                            src={urlFor(stack?.mainImage)
-                              .width(500)
-                              .height(500)
-                              .url()}
-                            alt={stack?.title}
-                            width={40}
-                            height={40}
-                            className="flex items-center justify-center "
-                          />
-                        </div>
-                      ))}
-                    </div> */}
-                  </div>
-                </div>
-              </div>
-              {/* <div className="col-span-4 md:col-span-1 shadow-sm shadow-gray-400 rounded-xl py-4 px-3 mx-5 mt-10 mb-10">
-                <p className="text-center font-bold pb-2 text-gray-600">
-                  Project Details
-                </p>
-                {project?.projectDetails?.map((details) => (
-                  <div key={details?._id} className=" p-2 ">
-                    <div className=" flex justify-center  text-xs font-semibold py-2 font-mono">
-                      <Image
-                        src={urlFor(details?.projectDetailsAuthorCardIcon)
-                          .width(500)
-                          .height(500)
-                          .url()}
-                        alt={details?.title}
-                        width={20}
-                        height={20}
-                        className="flex justify-start "
-                      />{" "}
-                      <span className="mx-2 mt-1 font-bold text-sm ">
-                        Author
-                      </span>
-                    </div>
-                    <span className=" flex justify-center text-xs  mt-1 ml-4">
-                      {project?.author?.name}
-                    </span>
-                  </div>
-                ))}
-
-                {project?.projectDetails?.map((details) => (
-                  <div key={details?._id} className=" p-2 ">
-                    <div className=" flex justify-center  text-xs font-semibold py-2 font-mono">
-                      <Image
-                        src={urlFor(details?.projectDetailsTitleCardIcon)
-                          .width(500)
-                          .height(500)
-                          .url()}
-                        alt={details?.title}
-                        width={20}
-                        height={20}
-                        className="flex justify-start "
-                      />{" "}
-                      <span className="mx-2 mt-1 font-bold text-sm ">
-                        title
-                      </span>
-                    </div>
-                    <span className=" flex justify-center text-xs  mt-1 ml-4">
-                      {project?.title}
-                    </span>
-                  </div>
-                ))}
-
-                {project?.projectDetails?.map((details) => (
-                  <div key={details?._id} className=" p-2 ">
-                    <div className=" flex justify-center  text-xs font-semibold py-2 font-mono">
-                      <Image
-                        src={urlFor(details?.projectDetailsStatusCardIcon)
-                          .width(500)
-                          .height(500)
-                          .url()}
-                        alt={details?.title}
-                        width={20}
-                        height={20}
-                        className="flex justify-start "
-                      />{" "}
-                      <span className="mx-2 mt-1 font-bold text-sm ">
-                        Status
-                      </span>
-                    </div>
-                    <span className=" flex justify-center text-xs  mt-1 ml-4">
-                      {project?.statusName}
-                    </span>
-                  </div>
-                ))}
-
-                {project?.projectDetails?.map((details) => (
-                  <div key={details?._id} className=" p-2 ">
-                    <div className=" flex justify-center  text-xs font-semibold py-2 font-mono">
-                      <Image
-                        src={urlFor(details?.projectDetailsCategoryCardIcon)
-                          .width(500)
-                          .height(500)
-                          .url()}
-                        alt={details?.title}
-                        width={20}
-                        height={20}
-                        className="flex justify-start "
-                      />{" "}
-                      <span className="mx-2 mt-1 font-bold text-sm ">
-                        Category
-                      </span>
-                    </div>
-                    <span className=" flex justify-center text-xs  mt-1 ml-4">
-                      {project?.categories?.map((category) => (
-                        <span key={category?._id}>{category?.title}</span>
-                      ))}
-                    </span>
-                  </div>
-                ))}
-
-                {project?.projectDetails?.map((details) => (
-                  <div key={details?._id} className=" p-2 ">
-                    <div className=" flex justify-center  text-xs font-semibold py-2 font-mono">
-                      <Image
-                        src={urlFor(details?.projectDetailsTagCardIcon)
-                          .width(500)
-                          .height(500)
-                          .url()}
-                        alt={details?.title}
-                        width={20}
-                        height={20}
-                        className="flex justify-start "
-                      />{" "}
-                      <span className="mx-2 mt-1 font-bold text-sm ">Tag</span>
-                    </div>
-                    <span className=" flex justify-center text-xs  mt-1 ml-4">
-                      {project?.projectTag}
-                    </span>
-                  </div>
-                ))}
-
-                {project?.projectDetails?.map((details) => (
-                  <div key={details?._id} className=" p-2 ">
-                    <div className=" flex justify-center  text-xs font-semibold py-2 font-mono">
-                      <Image
-                        src={urlFor(details?.projectDetailsCreatedDateCardIcon)
-                          .width(500)
-                          .height(500)
-                          .url()}
-                        alt={details?.title}
-                        width={20}
-                        height={20}
-                        className="flex justify-start "
-                      />{" "}
-                      <span className="mx-2 mt-1 font-bold text-sm ">
-                        Created Date
-                      </span>
-                    </div>
-                    <span className=" flex justify-center text-xs  mt-1 ml-4">
-                      {new Date(project?.publishedAt).toLocaleDateString(
-                        "en-US",
-                        {
-                          day: "numeric",
-                          month: "long",
-                          year: "numeric",
-                        }
-                      )}
-                    </span>
-                  </div>
-                ))}
-
-                {project?.projectDetails?.map((details) => (
-                  <div key={details?._id} className=" p-2 ">
-                    <div className=" flex justify-center  text-xs  py-2 font-mono">
-                      <Image
-                        src={urlFor(
-                          details?.projectDetailsShortDescriptionCardIcon
-                        )
-                          .width(500)
-                          .height(500)
-                          .url()}
-                        alt={details?.title}
-                        width={20}
-                        height={20}
-                        className="flex justify-start "
-                      />{" "}
-                      <span className="mx-2 mt-1 font-bold text-sm ">
-                        Short Description
-                      </span>
-                    </div>
-                    <span className=" flex justify-center text-xs  mt-1 ml-4">
-                      {project?.description}
-                    </span>
-                  </div>
-                ))}
-                {project?.projectDetails?.map((details) => (
-                  <div key={details?._id} className=" p-2 ">
-                    <div className=" flex justify-center  text-xs font-semibold py-2 font-mono">
-                      <Image
-                        src={urlFor(details?.projectDetailsAuthorBioCardIcon)
-                          .width(500)
-                          .height(500)
-                          .url()}
-                        alt={details?.title}
-                        width={20}
-                        height={20}
-                        className="flex justify-start "
-                      />{" "}
-                      <span className="mx-2 mt-1 font-bold text-sm ">
-                        Author Bio
-                      </span>
-                    </div>
-                    <span className=" flex justify-center text-xs  mt-1 ml-4">
-                      <PortableText
-                        value={project?.author?.bio}
-                        components={RichTextComponents}
-                      />
-                    </span>
-                  </div>
-                ))}
-              </div> */}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* <div className="  mx-5">
-        <div className="mt-4 ">
-          <PortableText
-            key={project?._id}
-            value={project?.body}
-            components={RichTextComponents}
+        </Link>
+        <div className=" text-white absolute right-[-10px] top-[20%]  cursor-pointer items-center hover:text-blue-400 hover:scale-105 ease-in-out duration-300 z-50">
+          <WebShare
+            key={galleryProject?._id}
+            title={galleryProject?.title}
+            url={`${BaseUrl}${galleryProject?.slug.current}`}
           />
         </div>
-        <div className=" flex items-center justify-center space-x-3 mt-5 mb-5">
-          {project?.customButton?.map((buttons) => (
-            <div
-              key={buttons?._id}
-              className="flex items-center justify-center "
-            >
-              <Link href={buttons?.url} target={"_blank"}>
-                <div
-                  className={`flex items-center justify-center right-0 p-3 py-3 mt-4 mb-4 text-xs font-bold w-auto h-auto text-white ${buttons?.buttonBgColor} py-2 
-                rounded-lg shadow-lg ${buttons?.buttonHoverBgColor} hover:scale-105 ease-in duration-300`}
-                >
-                  <span className="mr-3">{buttons?.buttonTitle}</span>
-                  <Image
-                    src={urlFor(buttons?.buttonIcon)
-                      .width(500)
-                      .height(500)
-                      .url()}
-                    alt={buttons?.buttonTitle}
-                    width={20}
-                    height={20}
-                  />
-                </div>
-              </Link>
-            </div>
-          ))}
-        </div>
-        <div className=" flex items-center justify-center space-x-3 mt-5 mb-5">
-          {project?.assetFile?.map((asset) => (
-            <div key={asset?._id} className="flex items-center justify-center ">
-              <a href={`${urlFile}${asset?.fileId}?dl`} download>
-                <div
-                  className={`flex items-center justify-center right-0 p-3 py-3 mt-4 mb-4 text-xs font-bold w-auto h-auto text-white bg-${asset?.buttonBgColor}-600 py-2 
-                rounded-lg shadow-lg hover:bg-${asset?.buttonBgColor}-300 hover:scale-105 ease-in duration-300`}
-                >
-                  <span className="mr-3">{asset?.name}</span>
-                  <Image
-                    src={urlFor(asset?.buttonIcon).width(500).height(500).url()}
-                    alt={asset?.name}
-                    width={20}
-                    height={20}
-                  />
-                </div>
-              </a>
-            </div>
-          ))}
-        </div>
-      </div> */}
 
-      {/* CommentSection */}
-      <Comments />
-      <div className="grid grid-cols-3 md:grid-cols-1 ">
-        <Link href="/#projects">
-          <p
-            className={`mt-10 mb-10 mx-5  rounded-lg w-32 h-auto p-2 cursor-pointer items-center hover:scale-105 ease-in duration-300 bg-orange-500 hover:bg-orange-400`}
+        <MotionDiv
+          className="relative w-full h-full rounded-md "
+          animate={{ opacity: 1, scale: 1.2 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+        >
+          {galleryProject?.images?.map((imageSrc, imageIndex) => (
+            <MotionDiv
+              key={imageIndex}
+              initial={{ opacity: imageIndex === imageIndex ? 1 : 0 }}
+              animate={{ opacity: imageIndex === imageIndex ? 1 : 0 }}
+              transition={{ duration: 0.5 }}
+              className={`w-full h-auto ${
+                imageIndex === imageIndex ? "block" : "hidden"
+              }`}
+            >
+              <Image
+                key={imageIndex}
+                className="w-full h-full object-cover rounded-lg"
+                src={urlFor(galleryProject?.artImage)
+                  .width(500)
+                  .height(500)
+                  .url()}
+                fill
+                alt={`${imageIndex + 1}`}
+              />
+
+              <div className="absolute top-0 left-0 w-full h-full bg-black/10 " />
+
+              <MotionDiv
+                key={imageIndex}
+                className="absolute pl-20 lg:pl-44 md:pl-40 top-[25%] flex flex-col items-center justify-center z-50"
+                initial={{ filter: "blur(10px)", y: 50, opacity: 0 }}
+                animate={{ filter: "blur(0)", y: 0, opacity: 1 }}
+                transition={{
+                  duration: 1,
+                  delay: 0.3,
+                  staggerChildren: 0.5,
+                }}
+              >
+                <MotionDiv
+                  key={imageIndex}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <MotionDiv
+                    className="text-white text-2xl font-bold mb-2 drop-shadow-lg z-50"
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{
+                      duration: 1,
+                      delay: imageIndex * 0.25,
+
+                      staggerChildren: 0.5,
+                    }}
+                  >
+                    {galleryProject?.authorName}
+                  </MotionDiv>
+                  <MotionDiv
+                    className="text-white text-5xl font-bold mb-2 pr-10 drop-shadow-lg z-50"
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{
+                      duration: 1,
+                      delay: imageIndex * 0.3,
+
+                      staggerChildren: 0.5,
+                    }}
+                  >
+                    {galleryProject?.projectTitle}{" "}
+                    <span className="text-lime-500 drop-shadow-lg z-50">
+                      {galleryProject?.titleSpan}
+                    </span>
+                  </MotionDiv>
+                  <MotionDiv
+                    className="text-white text-2xl mb-4 drop-shadow-lg z-50"
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{
+                      duration: 1,
+                      delay: imageIndex * 0.35,
+
+                      staggerChildren: 0.5,
+                    }}
+                  >
+                    {galleryProject?.categoryOrTag}
+                  </MotionDiv>
+                  <MotionDiv
+                    className=" text-white flex justify-between space-x-2 pr-20 drop-shadow-lg z-50"
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{
+                      duration: 1,
+                      delay: imageIndex * 0.4,
+
+                      staggerChildren: 0.5,
+                    }}
+                  >
+                    {/* Your lorem ipsum text goes here */}
+                    {galleryProject?.paragraph}
+                  </MotionDiv>
+                  <MotionDiv
+                    className="my-5 pr-20 "
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{
+                      duration: 1,
+                      delay: imageIndex * 0.4,
+
+                      staggerChildren: 0.5,
+                    }}
+                  >
+                    <ClientSideRoute
+                      key={galleryProject?._id}
+                      route={`/gallery/project-detailes/${galleryProject?.slug.current}`}
+                      
+                    >
+                      <button className=" text-white font-medium sm:mr-10 text-center px-8  cursor-pointer inline-block py-3 w-full sm:w-fit rounded-full hover:scale-105 ease-in duration-300 bg-gradient-to-br from-lime-500 to-green-500">
+                      More Detailes
+                      </button>{" "}
+                    </ClientSideRoute>
+                  </MotionDiv>
+                </MotionDiv>
+              </MotionDiv>
+            </MotionDiv>
+          ))}
+        </MotionDiv>
+      </div>
+      <div
+        className=" absolute inset-x-0 bottom-[10%] flex place-items-center items-center justify-center  px-10 
+       "
+      >
+        {galleryProject?.images?.map((imageSrc, imageIndex) => (
+          <div
+            key={imageIndex}
+            className={`w-9 h-9 lg:w-25 sm:h-25 md:w-20 md:h-20 mx-2 relative rounded-lg cursor-pointer ${
+              imageIndex === imageIndex ? "border-2 border-lime-500" : ""
+            }`}
           >
-            <span className="font-semibold text-white flex items-center justify-center ">
-              <ArrowLeftCircleIcon width={20} height={20} className="mr-3" />
-              Back
-            </span>
-          </p>
-        </Link>
+            <Image
+              key={imageIndex}
+              className="w-full h-full object-cover rounded-lg"
+              src={urlFor(imageSrc).width(500).height(500).url()}
+              width={500}
+              height={500}
+              alt={`${imageIndex + 1}`}
+            />
+          </div>
+        ))}
+      </div>
+
+      <div className="absolute inset-x-0  bottom-3 flex items-center justify-center ">
+        <button
+          className=" text-white mx-3 bg-gray-500/40 rounded-full w-8 h-8 items-center hover:scale-110 ease-in duration-300 hover:bg-lime-500 z-50"
+          // onClick={() => handleChangeImage(-1)}
+        >
+          &lt;
+        </button>
+
+        {galleryProject?.images?.map((imageSrc, imageIndex) => (
+          <div
+            key={imageIndex}
+            className={`w-4 h-4 mx-1 rounded-full cursor-pointer ${
+              imageIndex === imageIndex ? "bg-lime-500" : "bg-gray-500/40"
+            }`}
+            // onClick={() => handleChangeImage(index - currentIndex)}
+          ></div>
+        ))}
+
+        <button
+          className=" text-white mx-3 bg-gray-500/40 rounded-full w-8 h-8 items-center hover:scale-110 ease-in duration-300 hover:bg-lime-500 z-50"
+          // onClick={() => handleChangeImage(1)}
+        >
+          &gt;
+        </button>
       </div>
     </div>
   );
