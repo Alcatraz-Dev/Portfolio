@@ -16,7 +16,7 @@ type Props = {
   };
 };
 export const revalidate = 10;
-const BaseUrl = `${process.env.NEXT_PUBLIC_VERCEL_URL}gallery/`;
+const BaseUrl = `${process.env.NEXT_PUBLIC_VERCEL_URL}/gallery/`;
 const urlFile = process.env.NEXT_PUBLIC_SANITY_FILE_URL;
 export async function generateStaticParams() {
   const quary = groq`*[_type =='gallery']{
