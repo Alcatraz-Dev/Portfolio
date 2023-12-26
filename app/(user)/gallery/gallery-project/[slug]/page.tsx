@@ -54,7 +54,7 @@ async function Projects({ params: { slug } }: Props) {
           <WebShare
             key={galleryProject?._id}
             title={galleryProject?.title}
-            url={`${BaseUrl}${galleryProject?.slug.current}`}
+            url={`${BaseUrl}/gallery/gallery-project/${galleryProject?.slug.current}`}
           />
         </div>
 
