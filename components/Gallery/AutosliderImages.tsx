@@ -9,7 +9,9 @@ import { client } from "@/lib/sanity.client";
 import Image from "next/image";
 import urlFor from "@/lib/urlFor";
 
-const GalleryPage: React.FC = () => {
+
+
+const AutoScrollingGallery: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const controls = useAnimation();
   const timeRunning = 8000;
@@ -80,7 +82,7 @@ const GalleryPage: React.FC = () => {
     const fetchData = async () => {
       try {
         const result = await client.fetch<GallerySection[]>(
-          `*[_type == "gallerySection"]{...,gallery[]->}`
+          `*[_type == "gallerySection" ]{...,gallery[]->}`
         );
         setGalleryData(result[0]);
       } catch (error) {
@@ -89,7 +91,7 @@ const GalleryPage: React.FC = () => {
     };
 
     fetchData();
-  }, []);
+  }, [setGalleryData]);
   if (!galleryData) {
     return (
       <div className=" w-full h-screen font-mono text-lime-500 flex justify-center items-center text-xl font-bold  ">
@@ -125,7 +127,7 @@ const GalleryPage: React.FC = () => {
           transition={{ duration: 0.5, ease: "easeInOut" }}
         >
           {galleryData?.gallery?.map((image, index) => (
-            <div key={index} className="flex">
+            <div   key={index} className="flex">
               {image?.images?.map((imageSrc, imageIndex) => (
                 <motion.div
                   key={imageIndex}
@@ -142,7 +144,7 @@ const GalleryPage: React.FC = () => {
                     className="w-full h-full object-cover rounded-lg"
                     src={urlFor(image?.artImage).width(500).height(500).url()}
                     fill
-                    alt={`${index + 1}`}
+                    alt={`${imageIndex + 1}`}
                   />
 
                   <div className="absolute top-0 left-0 w-full h-full bg-black/10 " />
@@ -159,7 +161,7 @@ const GalleryPage: React.FC = () => {
                     }}
                   >
                     <motion.div
-                      key={image?._id}
+                      key={imageIndex}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ duration: 0.5 }}
@@ -209,7 +211,7 @@ const GalleryPage: React.FC = () => {
                 </motion.div>
               ))}
             </div>
-          ))}
+           ))} 
         </motion.div>
       </div>
       <div
@@ -217,7 +219,7 @@ const GalleryPage: React.FC = () => {
        "
       >
         {galleryData?.gallery?.map((image, index) => (
-          <div key={index} className="flex">
+          <div   key={index} className="flex">
             {image?.images?.map((imageSrc, imageIndex) => (
               <motion.div
                 key={imageIndex}
@@ -235,12 +237,12 @@ const GalleryPage: React.FC = () => {
                   src={urlFor(imageSrc).width(500).height(500).url()}
                   width={500}
                   height={500}
-                  alt={`${index + 1}`}
+                  alt={`${imageIndex + 1}`}
                 />
               </motion.div>
             ))}
           </div>
-        ))}
+         ))} 
       </div>
 
       <div className="absolute inset-x-0  bottom-3 flex items-center justify-center ">
@@ -251,14 +253,18 @@ const GalleryPage: React.FC = () => {
           &lt;
         </button>
         {galleryData?.gallery?.map((image, index) => (
+           <div key={index} className="flex">
+           {image?.images?.map((imageSrc, imageIndex) => (
           <motion.div
-            key={index}
+            key={imageIndex}
             className={`w-4 h-4 mx-1 rounded-full cursor-pointer ${
-              index === currentIndex ? "bg-lime-500" : "bg-gray-500/40"
+              imageIndex === currentIndex ? "bg-lime-500" : "bg-gray-500/40"
             }`}
             // onClick={() => handleChangeImage(index - currentIndex)}
           ></motion.div>
-        ))}
+          ))}
+          </div>
+         ))} 
         <button
           className=" text-white mx-3 bg-gray-500/40 rounded-full w-8 h-8 items-center hover:scale-110 ease-in duration-300 hover:bg-lime-500 z-50"
           // onClick={() => handleChangeImage(1)}
@@ -270,4 +276,4 @@ const GalleryPage: React.FC = () => {
   );
 };
 
-export default GalleryPage;
+export default AutoScrollingGallery;

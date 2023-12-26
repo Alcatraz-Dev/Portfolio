@@ -50,8 +50,7 @@
     "components/CommentSection/Emoji/ReactionBlock.jsx",
     "components/CommentSection/AddComment/ImageUpload.jsx",
     "components/CommentSection/AddComment/AddCommentForm.jsx",
-    "pages/api/addReaction.js",
-    "app/(user)/gallery/[slug]/page.tsx"
+    "pages/api/addReaction.js"
   ],
   "exclude": ["node_modules"]
 }

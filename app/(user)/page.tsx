@@ -13,6 +13,7 @@ import CookieConsentPopup from "@/components/CookiePopup/CookieConsentPopup";
 import NewsLetter from "@/components/Newsletter/NewsLetter";
 import ScrolingGallery from "@/components/ArtGallery/ScrolingGallery";
 
+
 const colors = [Colors];
 
 const heroQuery = groq`
@@ -184,7 +185,6 @@ export default async function HomePage() {
         resourceSection={resourcesSection}
         resources={resources}
       />
-
       <ScrolingGallery />
       <ContactSection contact={contact} />
       <NewsLetter />

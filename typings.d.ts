@@ -251,14 +251,14 @@ export interface TermsAndConditions extends Base {
 export interface GallerySection extends Base {
   shortDescription: string;
   gallery: Gallery[];
+  slug:Slug;
   classNamegallerySectionTitleColor: string;
   gallerySectionTitle: string;
 }
 export interface Gallery extends Base {
   title: string;
-  slug: Slug;
   artImage: Image;
-  buttonSlug: Slug;
+  slug:Slug;
   paragraph: string;
   projectTitle: string;
   images: Image[];

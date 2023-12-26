@@ -1,9 +1,9 @@
 import { defineField, defineType } from "sanity";
-import { FcFolder } from "react-icons/fc";
+import { FcGallery } from 'react-icons/fc';
 export default defineType({
   name: "gallery",
   title: "Gallery",
-  icon: FcFolder,
+  icon: FcGallery,
   type: "document",
   fields: [
     defineField({
@@ -38,15 +38,7 @@ export default defineType({
       title: "Paragraph",
       type: "text",
     }),
-    defineField({
-      name: "buttonSlug",
-      title: "Button Slug",
-      type: "slug",
-      options: {
-        source: "projectTitle",
-        maxLength: 96,
-      },
-    }),
+  
     defineField({
       name: "slug",
       title: "Slug",
@@ -92,8 +84,6 @@ export default defineType({
         layout: "grid",
       },
     }),
-
- 
   ],
   preview: {
     select: {

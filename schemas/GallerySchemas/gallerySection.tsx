@@ -24,6 +24,7 @@ export default defineType({
       title: "Short Description",
       type: "text",
     }),
+ 
     
     defineField({
       name: "gallery",

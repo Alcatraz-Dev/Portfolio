@@ -1,183 +1,459 @@
-"use client";
-import { client } from "@/lib/sanity.client";
-import urlFor from "@/lib/urlFor";
-import { GallerySection } from "@/typings";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
-import ClientSideRoute from "../Route/ClientSideRoute";
-import styles from "./index.module.css";
+import React from "react";
+import Link from "next/link";
+import { groq } from "next-sanity";
+import { client } from "@/lib/sanity.client";
+import { Gallery, Project } from "@/typings";
+import urlFor from "@/lib/urlFor";
+import { ArrowLeftCircleIcon } from "@heroicons/react/24/outline";
+import { PortableText } from "@portabletext/react";
+import { RichTextComponents } from "@/components/CustomText/RichText/RichTextComponents";
+import WebShare from "@/components/Shear/WebShare";
+import { format } from "date-fns";
+import { notFound } from "next/navigation";
+import Comments from "@/components/CommentSection/comments";
 
+type Props = {
+  params: {
+    slug: string;
+  };
+};
 export const revalidate = 10;
-function ScrolingGallery() {
-  const [galleryData, setGalleryData] = useState<GallerySection>();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await client.fetch<GallerySection[]>(
-          `*[_type == "gallerySection"]{..., gallery[]->}`
-        );
-        setGalleryData(result[0]);
-      } catch (error) {
-        console.error("Error fetching data: ", error);
+const BaseUrl = `${process.env.NEXT_PUBLIC_VERCEL_URL}project-detailes/`;
+const urlFile = process.env.NEXT_PUBLIC_SANITY_FILE_URL;
+export async function generateStaticParams() {
+  const quary = groq`*[_type =='gallery']{
+          slug
+      }`;
+  const slugs: Project[] = await client.fetch(quary);
+  const slagRoutes = slugs?.map((slug) => slug.slug.current);
+  return slagRoutes?.map((slug) => ({
+    slug,
+  }));
+}
+async function Projects({ params: { slug } }: Props) {
+  const query = groq`
+      *[_type == 'gallery' && slug.current == $slug][0]{
+        ...,
       }
-    };
+      `;
 
-    fetchData();
-  }, []);
-  if (!galleryData) {
-    return (
-      <div className=" w-full h-screen font-mono text-lime-500 flex justify-center items-center text-xl font-bold  ">
-        Loading Gallery Section {""}
-        <span className="animate-pulse">...</span>
-      </div>
-    ); // Loading state
-  }
+  const projectDetailes: Gallery = await client.fetch(query, { slug });
+  if (!projectDetailes) return notFound();
 
   return (
-    <>
-      <section id="gallery" className="p-5 sm:p-10 ">
+    <div className="w-full">
+      <div className="w-screen h-[50vh] relative">
         <div
-          key={galleryData?._id}
-          className="mt-5 md:mt-0 text-left flex flex-col h-full py-8 px-2 ml-4 mr-6 "
+          key={projectDetailes?._id}
+          className={`absolute top-0 left-0 w-full h-[50vh] bg-black/20 backdrop-brightness-50 z-10 `}
+        />
+        <Image
+          className="absolute z-1 object-cover "
+          fill
+          src={urlFor(projectDetailes?.artImage).width(500).height(500).url()}
+          alt={projectDetailes?.title}
+        />
+
+        <div
+          key={projectDetailes?._id}
+          className="absolute top-[75%] max-w-[1240px] w-full left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%] text-white z-10 p-2"
         >
-          <h2
-            className={`text-4xl font-bold mb-4 ${galleryData?.classNamegallerySectionTitleColor} `}
-          >
-            {galleryData?.gallerySectionTitle}
-          </h2>
-          <p className="text-base lg:text-lg ">
-            {galleryData?.shortDescription}
-          </p>
+         
+            <Link href="/#projects">
+              <div className=" absolute right-[-30px] top-14  cursor-pointer items-center  ">
+                <ArrowLeftCircleIcon
+                  width={40}
+                  height={40}
+                  className="mr-10 hover:text-lime-400 hover:scale-105 ease-in-out duration-300"
+                />
+              </div>
+            </Link>
+            <div className=" absolute right-[-30px]  top-14  cursor-pointer items-center hover:text-blue-400 hover:scale-105 ease-in-out duration-300">
+              <WebShare
+                key={projectDetailes?._id}
+                title={projectDetailes?.title}
+                url={`${BaseUrl}${projectDetailes?.slug.current}`}
+              />
+            </div>
+        
+          <div className="p-5">
+          <p
+              className={`   text-lg py-2 lg:text-xl  justify-start font-bold `}
+            >
+              {projectDetailes?.authorName} 
+            </p>
+            <h2
+              className={`text-2xl lg:text-3xl py-2 justify-start font-bold `}
+            >
+              {projectDetailes?.projectTitle} <span className="text-lime-500"> {projectDetailes?.titleSpan}</span>
+            </h2>
+            <p
+              className={`text-lg lg:text-xl py-2 justify-start font-bold `}
+            >
+              {projectDetailes?.categoryOrTag} 
+            </p>
+
+            <div
+              key={projectDetailes?._id}
+              className="flex items-center space-x-4 my-10"
+            >
+              {/* <div className="flex items-center">
+                <div className="flex items-center space-x-1 my-5">
+                  <Image
+                    src={urlFor(projectDetailes?.author?.authorImage)
+                      .width(500)
+                      .height(500)
+                      .url()}
+                    alt={project?.author?.name}
+                    width={50}
+                    height={50}
+                    className=" mr-3"
+                  />
+                  <span className="font-mono">
+                    {project?.author?.name}{" "}
+                    <p>
+                      {format(
+                        new Date(project?.publishedAt),
+                        " dd,MMMM,yyyy, p"
+                      )}
+                    </p>
+                  </span>
+                </div>
+              </div> */}
+            </div>
+
+            {/* <div
+              key={project?._id}
+              className="flex items-center space-x-4 mt-2 mb-32 "
+            >
+              <div key={project?._id} className="flex items-center">
+                <div className="flex items-center space-x-1 mb-20 font-mono text-sm lg:text-base">
+                  <PortableText
+                    value={project?.projectShortDescriptionPage}
+                    components={RichTextComponents}
+                  />
+                </div>
+              </div>
+            </div> */}
+          </div>
         </div>
-      </section>
-      <>
-        <section className={styles.gallerySection}>
-          <div className={styles.container}>
-            <div className={styles.galleryWrapper}>
-              <div className={styles.galleryContent}></div>
-              <div className={styles.galleryImagesBox}>
-                <div className={styles.galleryImagesWrapper}>
-                  <div className={styles.galleryImages}>
-                    {galleryData?.gallery.map((art) => (
-                      <ClientSideRoute
-                        key={galleryData?._id}
-                        route={`/gallery/${art?.slug?.current}`}
-                      >
-                        <p>
-                          <Image
-                            src={urlFor(art?.artImage)
-                              .width(500)
-                              .height(500)
-                              .url()}
-                            alt={art?.title}
-                            width={500}
-                            height={500}
-                            className=" cursor-pointer"
-                          />
-                        </p>
-                      </ClientSideRoute>
-                    ))}
-                  </div>
-                  <div className={styles.galleryImages}>
-                    <div className={styles.galleryImagesDuration}>
-                      {galleryData?.gallery.map((art) => (
-                        <ClientSideRoute
-                          key={art?._id}
-                          route={`/gallery/gallery-project/${art?.slug?.current}`}
+      </div>
+      <div className="  mx-5">
+        <div className="mt-8">
+          <div className="mx-5 col-span-4 md:col-span-1 shadow-sm shadow-gray-400 rounded-xl py-4">
+            <h1 className="text-center  text-xl font-bold mt-3 text-gray-600 ">
+              Information about the project
+            </h1>
+            <div className="p-2">
+              <div className="col-span-4 md:col-span-1 shadow-sm shadow-gray-400 rounded-xl py-4 mx-5 mt-10 mb-10">
+                <div className="p-2">
+                  <div className="text-center font-bold pb-2">
+                    <span className="text-center font-bold pb-2 pt-2 text-gray-600 ">
+                      {" "}
+                      Project Technologies
+                    </span>
+                    {/* <div className=" mt-3 place-items-center grid gap-x-8 gap-y-4 grid-cols-3 xl:grid-cols-6 md:grid-cols-4 px-2  ">
+                      {projectDetailes?.stacks?.map((stack) => (
+                        <div
+                          key={stack?._id}
+                          className="  text-gray-600 py-2  mt-5 mb-5 "
                         >
-                          <p>
-                            <Image
-                              src={urlFor(art?.artImage)
-                                .width(500)
-                                .height(500)
-                                .url()}
-                              alt={art?.title}
-                              width={500}
-                              height={500}
-                              className=" cursor-pointer"
-                            />
-                          </p>
-                        </ClientSideRoute>
-                      ))}
-                    </div>
-                  </div>
-                  <div className={styles.galleryImages}>
-                    {galleryData?.gallery.map((art) => (
-                      <ClientSideRoute
-                        key={art?._id}
-                        route={`/gallery/${art?.slug?.current}`}
-                      >
-                        <p>
                           <Image
-                            src={urlFor(art?.artImage)
+                            src={urlFor(stack?.mainImage)
                               .width(500)
                               .height(500)
                               .url()}
-                            alt={art?.title}
-                            width={500}
-                            height={500}
-                            className=" cursor-pointer"
+                            alt={stack?.title}
+                            width={40}
+                            height={40}
+                            className="flex items-center justify-center "
                           />
-                        </p>
-                      </ClientSideRoute>
-                    ))}
-                  </div>
-                  <div className={styles.galleryImages}>
-                    <div className={styles.galleryImagesDuration}>
-                      {galleryData?.gallery.map((art) => (
-                        <ClientSideRoute
-                          key={art?._id}
-                          route={`/gallery/gallery-project/${art?.slug.current}`}
-                        >
-                          <p>
-                            <Image
-                              src={urlFor(art?.artImage)
-                                .width(500)
-                                .height(500)
-                                .url()}
-                              alt={art?.title}
-                              width={500}
-                              height={500}
-                              className=" cursor-pointer"
-                            />
-                          </p>
-                        </ClientSideRoute>
+                        </div>
                       ))}
-                    </div>
-                  </div>
-                  <div className={styles.galleryImages}>
-                    {galleryData?.gallery.map((art) => (
-                      <ClientSideRoute
-                        key={art?._id}
-                        route={`/gallery/${art?.slug?.current}`}
-                      >
-                        <p>
-                          <Image
-                            src={urlFor(art?.artImage)
-                              .width(500)
-                              .height(500)
-                              .url()}
-                            alt={art?.title}
-                            width={500}
-                            height={500}
-                            className=" cursor-pointer"
-                          />
-                        </p>
-                      </ClientSideRoute>
-                    ))}
+                    </div> */}
                   </div>
                 </div>
               </div>
+              {/* <div className="col-span-4 md:col-span-1 shadow-sm shadow-gray-400 rounded-xl py-4 px-3 mx-5 mt-10 mb-10">
+                <p className="text-center font-bold pb-2 text-gray-600">
+                  Project Details
+                </p>
+                {project?.projectDetails?.map((details) => (
+                  <div key={details?._id} className=" p-2 ">
+                    <div className=" flex justify-center  text-xs font-semibold py-2 font-mono">
+                      <Image
+                        src={urlFor(details?.projectDetailsAuthorCardIcon)
+                          .width(500)
+                          .height(500)
+                          .url()}
+                        alt={details?.title}
+                        width={20}
+                        height={20}
+                        className="flex justify-start "
+                      />{" "}
+                      <span className="mx-2 mt-1 font-bold text-sm ">
+                        Author
+                      </span>
+                    </div>
+                    <span className=" flex justify-center text-xs  mt-1 ml-4">
+                      {project?.author?.name}
+                    </span>
+                  </div>
+                ))}
+
+                {project?.projectDetails?.map((details) => (
+                  <div key={details?._id} className=" p-2 ">
+                    <div className=" flex justify-center  text-xs font-semibold py-2 font-mono">
+                      <Image
+                        src={urlFor(details?.projectDetailsTitleCardIcon)
+                          .width(500)
+                          .height(500)
+                          .url()}
+                        alt={details?.title}
+                        width={20}
+                        height={20}
+                        className="flex justify-start "
+                      />{" "}
+                      <span className="mx-2 mt-1 font-bold text-sm ">
+                        title
+                      </span>
+                    </div>
+                    <span className=" flex justify-center text-xs  mt-1 ml-4">
+                      {project?.title}
+                    </span>
+                  </div>
+                ))}
+
+                {project?.projectDetails?.map((details) => (
+                  <div key={details?._id} className=" p-2 ">
+                    <div className=" flex justify-center  text-xs font-semibold py-2 font-mono">
+                      <Image
+                        src={urlFor(details?.projectDetailsStatusCardIcon)
+                          .width(500)
+                          .height(500)
+                          .url()}
+                        alt={details?.title}
+                        width={20}
+                        height={20}
+                        className="flex justify-start "
+                      />{" "}
+                      <span className="mx-2 mt-1 font-bold text-sm ">
+                        Status
+                      </span>
+                    </div>
+                    <span className=" flex justify-center text-xs  mt-1 ml-4">
+                      {project?.statusName}
+                    </span>
+                  </div>
+                ))}
+
+                {project?.projectDetails?.map((details) => (
+                  <div key={details?._id} className=" p-2 ">
+                    <div className=" flex justify-center  text-xs font-semibold py-2 font-mono">
+                      <Image
+                        src={urlFor(details?.projectDetailsCategoryCardIcon)
+                          .width(500)
+                          .height(500)
+                          .url()}
+                        alt={details?.title}
+                        width={20}
+                        height={20}
+                        className="flex justify-start "
+                      />{" "}
+                      <span className="mx-2 mt-1 font-bold text-sm ">
+                        Category
+                      </span>
+                    </div>
+                    <span className=" flex justify-center text-xs  mt-1 ml-4">
+                      {project?.categories?.map((category) => (
+                        <span key={category?._id}>{category?.title}</span>
+                      ))}
+                    </span>
+                  </div>
+                ))}
+
+                {project?.projectDetails?.map((details) => (
+                  <div key={details?._id} className=" p-2 ">
+                    <div className=" flex justify-center  text-xs font-semibold py-2 font-mono">
+                      <Image
+                        src={urlFor(details?.projectDetailsTagCardIcon)
+                          .width(500)
+                          .height(500)
+                          .url()}
+                        alt={details?.title}
+                        width={20}
+                        height={20}
+                        className="flex justify-start "
+                      />{" "}
+                      <span className="mx-2 mt-1 font-bold text-sm ">Tag</span>
+                    </div>
+                    <span className=" flex justify-center text-xs  mt-1 ml-4">
+                      {project?.projectTag}
+                    </span>
+                  </div>
+                ))}
+
+                {project?.projectDetails?.map((details) => (
+                  <div key={details?._id} className=" p-2 ">
+                    <div className=" flex justify-center  text-xs font-semibold py-2 font-mono">
+                      <Image
+                        src={urlFor(details?.projectDetailsCreatedDateCardIcon)
+                          .width(500)
+                          .height(500)
+                          .url()}
+                        alt={details?.title}
+                        width={20}
+                        height={20}
+                        className="flex justify-start "
+                      />{" "}
+                      <span className="mx-2 mt-1 font-bold text-sm ">
+                        Created Date
+                      </span>
+                    </div>
+                    <span className=" flex justify-center text-xs  mt-1 ml-4">
+                      {new Date(project?.publishedAt).toLocaleDateString(
+                        "en-US",
+                        {
+                          day: "numeric",
+                          month: "long",
+                          year: "numeric",
+                        }
+                      )}
+                    </span>
+                  </div>
+                ))}
+
+                {project?.projectDetails?.map((details) => (
+                  <div key={details?._id} className=" p-2 ">
+                    <div className=" flex justify-center  text-xs  py-2 font-mono">
+                      <Image
+                        src={urlFor(
+                          details?.projectDetailsShortDescriptionCardIcon
+                        )
+                          .width(500)
+                          .height(500)
+                          .url()}
+                        alt={details?.title}
+                        width={20}
+                        height={20}
+                        className="flex justify-start "
+                      />{" "}
+                      <span className="mx-2 mt-1 font-bold text-sm ">
+                        Short Description
+                      </span>
+                    </div>
+                    <span className=" flex justify-center text-xs  mt-1 ml-4">
+                      {project?.description}
+                    </span>
+                  </div>
+                ))}
+                {project?.projectDetails?.map((details) => (
+                  <div key={details?._id} className=" p-2 ">
+                    <div className=" flex justify-center  text-xs font-semibold py-2 font-mono">
+                      <Image
+                        src={urlFor(details?.projectDetailsAuthorBioCardIcon)
+                          .width(500)
+                          .height(500)
+                          .url()}
+                        alt={details?.title}
+                        width={20}
+                        height={20}
+                        className="flex justify-start "
+                      />{" "}
+                      <span className="mx-2 mt-1 font-bold text-sm ">
+                        Author Bio
+                      </span>
+                    </div>
+                    <span className=" flex justify-center text-xs  mt-1 ml-4">
+                      <PortableText
+                        value={project?.author?.bio}
+                        components={RichTextComponents}
+                      />
+                    </span>
+                  </div>
+                ))}
+              </div> */}
             </div>
           </div>
-        </section>
-      </>
-    </>
+        </div>
+      </div>
+
+      {/* <div className="  mx-5">
+        <div className="mt-4 ">
+          <PortableText
+            key={project?._id}
+            value={project?.body}
+            components={RichTextComponents}
+          />
+        </div>
+        <div className=" flex items-center justify-center space-x-3 mt-5 mb-5">
+          {project?.customButton?.map((buttons) => (
+            <div
+              key={buttons?._id}
+              className="flex items-center justify-center "
+            >
+              <Link href={buttons?.url} target={"_blank"}>
+                <div
+                  className={`flex items-center justify-center right-0 p-3 py-3 mt-4 mb-4 text-xs font-bold w-auto h-auto text-white ${buttons?.buttonBgColor} py-2 
+                rounded-lg shadow-lg ${buttons?.buttonHoverBgColor} hover:scale-105 ease-in duration-300`}
+                >
+                  <span className="mr-3">{buttons?.buttonTitle}</span>
+                  <Image
+                    src={urlFor(buttons?.buttonIcon)
+                      .width(500)
+                      .height(500)
+                      .url()}
+                    alt={buttons?.buttonTitle}
+                    width={20}
+                    height={20}
+                  />
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
+        <div className=" flex items-center justify-center space-x-3 mt-5 mb-5">
+          {project?.assetFile?.map((asset) => (
+            <div key={asset?._id} className="flex items-center justify-center ">
+              <a href={`${urlFile}${asset?.fileId}?dl`} download>
+                <div
+                  className={`flex items-center justify-center right-0 p-3 py-3 mt-4 mb-4 text-xs font-bold w-auto h-auto text-white bg-${asset?.buttonBgColor}-600 py-2 
+                rounded-lg shadow-lg hover:bg-${asset?.buttonBgColor}-300 hover:scale-105 ease-in duration-300`}
+                >
+                  <span className="mr-3">{asset?.name}</span>
+                  <Image
+                    src={urlFor(asset?.buttonIcon).width(500).height(500).url()}
+                    alt={asset?.name}
+                    width={20}
+                    height={20}
+                  />
+                </div>
+              </a>
+            </div>
+          ))}
+        </div>
+      </div> */}
+
+      {/* CommentSection */}
+      <Comments />
+      <div className="grid grid-cols-3 md:grid-cols-1 ">
+        <Link href="/#projects">
+          <p
+            className={`mt-10 mb-10 mx-5  rounded-lg w-32 h-auto p-2 cursor-pointer items-center hover:scale-105 ease-in duration-300 bg-orange-500 hover:bg-orange-400`}
+          >
+            <span className="font-semibold text-white flex items-center justify-center ">
+              <ArrowLeftCircleIcon width={20} height={20} className="mr-3" />
+              Back
+            </span>
+          </p>
+        </Link>
+      </div>
+    </div>
   );
 }
 
-export default ScrolingGallery;
+export default Projects;
 
 const BgGradientColor = [
   "bg-gradient-to-br from-lime-500 to-green-500",
@@ -206,8 +482,6 @@ const TextGradientColor = [
   "bg-gradient-to-br from-gray-700 via-gray-900 to-black bg-clip-text text-transparent",
   "bg-gradient-to-br from-indigo-200 via-red-200 to-yellow-100 bg-clip-text text-transparent",
   "bg-gradient-to-br from-yellow-100 via-yellow-300 to-yellow-500 bg-clip-text text-transparent",
-  "bg-gradient-to-br from-yellow-100 via-yellow-500 to-yellow-700 bg-clip-text text-transparent",
-  "bg-gradient-to-br from-yellow-300 via-yellow-500 to-yellow-700 bg-clip-text text-transparent",
   "bg-gradient-to-br from-yellow-200 via-green-200 to-green-500 bg-clip-text text-transparent",
   "bg-gradient-to-br from-gray-200 via-gray-400 to-gray-600 bg-clip-text text-transparent",
   "bg-gradient-to-br from-red-200 via-red-300 to-yellow-200 bg-clip-text text-transparent",
