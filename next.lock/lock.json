@@ -1,8 +1,4 @@
 {
-  "https://themer.sanity.build/api/hues": { "integrity": "sha512-bI81nU9rTFU4AiNmyjRYDT6Aj0NeOqY94NkcZjtLf4CjfKL1M+eQbwp3l2OyA/5gYrY1RFfbtsC78FBmuqpbww==", "contentType": "application/javascript; charset=utf-8" },
-  "https://themer.sanity.build/api/hues?default=0ea70c&primary=aeff00": { "integrity": "sha512-FCRfrpFi8L3dN52tkYMq3UWIXu8fA1Qr+f86fFpCm1PoE4sIkNR35uE0LIiarlwduy6u++mEfsYwIXm3aLunRg==", "contentType": "application/javascript; charset=utf-8" },
-  "https://themer.sanity.build/api/hues?default=424040;600&primary=94bb07;600&transparent=424040;600&positive=43d675;300&caution=fbd024;200&lightest=fdfcfc&darkest=080707": { "integrity": "sha512-8q4DIdhYsUzebufeQYbPdy5dfz8PaHvTQhYjaaPx1s9O69nqtn2PxzSaKq4E1bkJ8xeeKTBhU/HhqrJzqezTKg==", "contentType": "application/javascript; charset=utf-8" },
-  "https://themer.sanity.build/api/hues?default=424040;600&primary=caff0a;600&transparent=424040;600&positive=43d675;300&caution=fbd024;200&lightest=fdfcfc&darkest=080707": { "integrity": "sha512-PsQcxvx8TzCBS9D5/L7HnOV+uvHAH9KuiSAKvRF6gASgvraksCn1q6ITHZRuwypCvSkU1BGb435xqSbbVwzE4g==", "contentType": "application/javascript; charset=utf-8" },
-  "https://themer.sanity.build/api/hues?default=5d7fb6&primary=d8fd21": { "integrity": "sha512-yCOnj2mhb4HcAw4cD4X9AudHiDnT0AVJzwA4SgUkD4hSw76R1fXzXooFZoeMaKjGYyOYiFOG5bx5NbBXm3Q4Fw==", "contentType": "application/javascript; charset=utf-8" },
+  "https://themer.sanity.build/api/hues?default=424040;600&primary=94bb07;600&transparent=424040;600&positive=43d675;300&caution=fbd024;200&lightest=fdfcfc&darkest=080707": { "integrity": "sha512-eUVYSSzV9Zv83VqAv0dV/tT6hk8cZxMAlHC3h1lPvJvjXE6wj8eBMQJdBXDPQyz9qETyRBM6UrCUrtTn+G8HoQ==", "contentType": "application/javascript; charset=utf-8" },
   "version": 1
 }

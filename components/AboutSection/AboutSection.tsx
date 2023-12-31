@@ -1,5 +1,5 @@
 "use client";
-import React, { useTransition, useState } from "react";
+import { useTransition, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import TabButton from "../TabButtons/TabButton";
@@ -44,12 +44,12 @@ const AboutSection = ({ about }: Props) => {
                         <div key={skills?._id}>
                           <p
                             key={skills?._id}
-                            className=" flex justify-between space-x-2 "
+                            className=" flex justify-between space-x-2"
                           >
-                            <span className="flex justify-start mb-1 text-xs font-sm capitalize line-clamp-1 hover:line-clamp-none  ">
+                            <span className="flex justify-start mb-1 text-xs font-sm capitalize  line-clamp-1 hover:line-clamp-none ">
                               {skills?.skillName}{" "}
                             </span>
-                            <span className="flex justify-end mb-1 text-xs font-sm capitalize line-clamp-1 hover:line-clamp-none ">
+                            <span className="flex justify-end mb-1 text-xs font-sm capitalize line-clamp-1 hover:line-clamp-none">
                               {skills?.skillProgress} %
                             </span>
                           </p>
