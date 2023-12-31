@@ -6,24 +6,23 @@ import StudioNavbar from "./components/CustomStudioCms/StudioNavbar";
 import { getDefaultDocumentNode } from "./structure";
 import { codeInput } from "@sanity/code-input";
 import { simplerColorInput } from "sanity-plugin-simpler-color-input";
-import {
-  createTheme,
-  hues,
-} from "https://themer.sanity.build/api/hues?default=0ea70c&primary=aeff00";
-import Logo from "./components/CustomStudioCms/Logo";
+import {theme} from  'https://themer.sanity.build/api/hues?default=424040;600&primary=94bb07;600&transparent=424040;600&positive=43d675;300&caution=fbd024;200&lightest=fdfcfc&darkest=080707'
+
+
+
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!;
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET!;
 const fileUrl = process.env.NEXT_PUBLIC_SANITY_FILE_URL!;
+
 export default defineConfig({
-  basePath: "/studio",
+  basePath: "/admin",
   name: "Alcatraz_Dev",
   title: "Haythem Dhahri | Portfolio",
-  theme: createTheme({ ...hues, primary: { ...hues.primary, mid: "#aeff00" } }),
+  theme,
   projectId,
   dataset,
   fileUrl,
-
   plugins: [
     deskTool({ defaultDocumentNode: getDefaultDocumentNode }),
     visionTool(),
@@ -40,4 +39,6 @@ export default defineConfig({
       //logo: Logo,
     },
   },
+
+
 });
