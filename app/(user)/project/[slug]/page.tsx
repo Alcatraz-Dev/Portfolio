@@ -32,6 +32,7 @@ export async function generateStaticParams() {
   }));
 }
 async function Projects({ params: { slug } }: Props) {
+  
   const query = groq`
       *[_type == 'project' && slug.current == $slug][0]{
         ...,author->, stacks[]->,paragraph[]->,customButton[]->,assetFile[]->,categories[]->,projectDetails[]->

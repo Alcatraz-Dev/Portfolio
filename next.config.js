@@ -2,6 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   experimental: {
+    urlImports: ['https://themer.sanity.build/'],
+    serverActions:true,
     appDir: true,
   },
   images: {

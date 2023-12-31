@@ -36,6 +36,8 @@ interface SocialIcons extends Base {
 interface Image {
   _type: "image";
   asset: Reference;
+  alt?:string;
+  index?:number;
 }
 interface Reference {
   _ref: string;
@@ -266,6 +268,7 @@ export interface Gallery extends Base {
   authorName: string;
   categoryOrTag: string;
 }
+
 
 export interface Video extends Base {
   author: Author;

@@ -2,7 +2,7 @@ import {defineField, defineType} from 'sanity'
 import {FcCancel} from "react-icons/fc"
 export default defineType({
   name: 'defaultNotFoundPage',
-  title: 'Default Not Found Page 404',
+  title: 'Not Found Page 404',
   icon:FcCancel,
   type: 'document',
   fields: [

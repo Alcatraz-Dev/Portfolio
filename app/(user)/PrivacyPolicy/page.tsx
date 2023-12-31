@@ -6,7 +6,6 @@ import { PortableText } from "@portabletext/react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { ArrowLeftCircleIcon } from "@heroicons/react/24/outline";
-
 export const revalidate = 10;
 
 function PrivacyPolicyPage() {

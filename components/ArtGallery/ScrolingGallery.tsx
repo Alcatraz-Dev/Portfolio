@@ -63,7 +63,7 @@ function ScrolingGallery() {
                     {galleryData?.gallery.map((art) => (
                       <ClientSideRoute
                         key={galleryData?._id}
-                        route={`/gallery/${art?.slug?.current}`}
+                        route={`/gallery/gallery-project/${art?.slug?.current}`}
                       >
                         <p>
                           <Image
@@ -129,7 +129,7 @@ function ScrolingGallery() {
                       {galleryData?.gallery.map((art) => (
                         <ClientSideRoute
                           key={art?._id}
-                          route={`/gallery/gallery-project/${art?.slug.current}`}
+                          route={`/gallery/gallery-project/${art?.slug?.current}`}
                         >
                           <p>
                             <Image
@@ -151,7 +151,7 @@ function ScrolingGallery() {
                     {galleryData?.gallery.map((art) => (
                       <ClientSideRoute
                         key={art?._id}
-                        route={`/gallery//gallery-project/${art?.slug?.current}`}
+                        route={`/gallery/gallery-project/${art?.slug?.current}`}
                       >
                         <p>
                           <Image

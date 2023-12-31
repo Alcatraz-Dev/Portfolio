@@ -76,9 +76,17 @@ export default defineType({
               name: "alt",
               type: "string",
               title: "Alternative text",
+              
             },
+            {
+              name: "index",
+              type: "number",
+              title: "Image Index",
+            }
           ],
+         
         },
+        
       ],
       options: {
         layout: "grid",

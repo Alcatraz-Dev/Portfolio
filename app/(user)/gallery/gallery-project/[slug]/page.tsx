@@ -1,5 +1,4 @@
 import Image from "next/image";
-import React from "react";
 import Link from "next/link";
 import { groq } from "next-sanity";
 import { client } from "@/lib/sanity.client";
@@ -7,9 +6,9 @@ import { Gallery } from "@/typings";
 import urlFor from "@/lib/urlFor";
 import { ArrowLeftCircleIcon } from "@heroicons/react/24/outline";
 import WebShare from "@/components/Shear/WebShare";
-import { notFound } from "next/navigation";
 import { MotionDiv } from "@/components/ServerSideAnimation/MotionDiv";
-import ClientSideRoute from "@/components/Route/ClientSideRoute";
+import ClientSideRoute from "@/components/Route/ClientSideRoute"; // Update the path accordingly
+
 type Props = {
   params: {
     slug: string;
@@ -17,18 +16,17 @@ type Props = {
 };
 export const revalidate = 10;
 const BaseUrl = `${process.env.NEXT_PUBLIC_VERCEL_URL}/`;
-// const urlFile = process.env.NEXT_PUBLIC_SANITY_FILE_URL;
 export async function generateStaticParams() {
   const quary = groq`*[_type =='gallery']{
           slug
       }`;
   const slugs: Gallery[] = await client.fetch(quary);
-  const slagRoutes = slugs?.map((slug) => slug.slug.current );
+  const slagRoutes = slugs?.map((slug) => slug.slug.current);
   return slagRoutes?.map((slug) => ({
     slug,
   }));
 }
-async function Projects({ params: { slug } }: Props) {
+async function GalleryProjects({ params: { slug } }: Props) {
   const query = groq`
       *[_type == 'gallery' && slug.current == $slug][0]   {
         ...,
@@ -36,33 +34,37 @@ async function Projects({ params: { slug } }: Props) {
       `;
 
   const galleryProject: Gallery = await client.fetch(query, { slug });
-  if (!galleryProject) return notFound();
+
+  if (!galleryProject)
+    return (
+      <div className=" w-full h-screen font-mono text-lime-500 flex justify-center items-center text-xl font-bold  ">
+        Gallery Project{""}
+        <span className="animate-pulse">...</span>
+      </div>
+    ); // Loading state
 
   return (
     <div className="relative h-screen overflow-hidden  ">
       <div className="flex justify-center items-center h-full overflow-hidden">
         <Link href="/#gallery">
-          <div className=" absolute right-[-10px] top-[20%] cursor-pointer items-center z-50 ">
+         
+          <div className=" absolute right-[-10px] top-[15%] cursor-pointer items-center z-50 ">
             <ArrowLeftCircleIcon
               width={40}
               height={40}
               className="mr-10 text-white  hover:scale-105 ease-in-out duration-300 hover:text-lime-500"
             />
           </div>
+          <div className=" text-white absolute right-[-10px] top-[15%]  cursor-pointer items-center hover:text-blue-400 hover:scale-105 ease-in-out duration-300 z-50">
+            <WebShare
+              key={galleryProject?._id}
+              title={galleryProject?.title}
+              url={`${BaseUrl}/gallery/gallery-project/${galleryProject?.slug.current}`}
+            />
+          </div>
         </Link>
-        <div className=" text-white absolute right-[-10px] top-[20%]  cursor-pointer items-center hover:text-blue-400 hover:scale-105 ease-in-out duration-300 z-50">
-          <WebShare
-            key={galleryProject?._id}
-            title={galleryProject?.title}
-            url={`${BaseUrl}/gallery/gallery-project/${galleryProject?.slug.current}`}
-          />
-        </div>
 
-        <MotionDiv
-          className="relative w-full h-full rounded-md "
-          animate={{ opacity: 1, scale: 1.2 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-        >
+        <div className="relative w-full h-full rounded-md ">
           {galleryProject?.images?.map((imageSrc, imageIndex) => (
             <MotionDiv
               key={imageIndex}
@@ -76,13 +78,11 @@ async function Projects({ params: { slug } }: Props) {
               <Image
                 key={imageIndex}
                 className="w-full h-full object-cover rounded-lg"
-                src={urlFor(galleryProject?.artImage)
-                  .width(500)
-                  .height(500)
-                  .url()}
+                src={urlFor(galleryProject?.artImage).width(500).height(500).url()}
                 fill
                 alt={`${imageIndex + 1}`}
               />
+            
 
               <div className="absolute top-0 left-0 w-full h-full bg-black/10 " />
 
@@ -173,10 +173,9 @@ async function Projects({ params: { slug } }: Props) {
                     <ClientSideRoute
                       key={galleryProject?._id}
                       route={`/gallery/project-detailes/${galleryProject?.slug.current}`}
-                      
                     >
                       <button className=" text-white font-medium sm:mr-10 text-center px-8  cursor-pointer inline-block py-3 w-full sm:w-fit rounded-full hover:scale-105 ease-in duration-300 bg-gradient-to-br from-lime-500 to-green-500">
-                      More Detailes
+                        More Detailes
                       </button>{" "}
                     </ClientSideRoute>
                   </MotionDiv>
@@ -184,7 +183,7 @@ async function Projects({ params: { slug } }: Props) {
               </MotionDiv>
             </MotionDiv>
           ))}
-        </MotionDiv>
+        </div>
       </div>
       <div
         className=" absolute inset-x-0 bottom-[10%] flex place-items-center items-center justify-center  px-10 
@@ -193,10 +192,14 @@ async function Projects({ params: { slug } }: Props) {
         {galleryProject?.images?.map((imageSrc, imageIndex) => (
           <div
             key={imageIndex}
-            className={`w-9 h-9 lg:w-25 sm:h-25 md:w-20 md:h-20 mx-2 relative rounded-lg cursor-pointer ${
-              imageIndex === imageIndex ? "border-2 border-lime-500" : ""
-            }`}
+            className="w-9 h-9 lg:w-25 sm:h-25 md:w-20 md:h-20 mx-2 relative rounded-lg cursor-pointer 
+               active:border-2 border-lime-500"
           >
+             <ClientSideRoute
+                      key={galleryProject?._id}
+                      route={`/gallery/project-detailes/${galleryProject?.slug.current}`}
+                    >
+            
             <Image
               key={imageIndex}
               className="w-full h-full object-cover rounded-lg"
@@ -204,41 +207,19 @@ async function Projects({ params: { slug } }: Props) {
               width={500}
               height={500}
               alt={`${imageIndex + 1}`}
+           
             />
+            </ClientSideRoute>
           </div>
         ))}
       </div>
 
-      <div className="absolute inset-x-0  bottom-3 flex items-center justify-center ">
-        <button
-          className=" text-white mx-3 bg-gray-500/40 rounded-full w-8 h-8 items-center hover:scale-110 ease-in duration-300 hover:bg-lime-500 z-50"
-          // onClick={() => handleChangeImage(-1)}
-        >
-          &lt;
-        </button>
-
-        {galleryProject?.images?.map((imageSrc, imageIndex) => (
-          <div
-            key={imageIndex}
-            className={`w-4 h-4 mx-1 rounded-full cursor-pointer ${
-              imageIndex === imageIndex ? "bg-lime-500" : "bg-gray-500/40"
-            }`}
-            // onClick={() => handleChangeImage(index - currentIndex)}
-          ></div>
-        ))}
-
-        <button
-          className=" text-white mx-3 bg-gray-500/40 rounded-full w-8 h-8 items-center hover:scale-110 ease-in duration-300 hover:bg-lime-500 z-50"
-          // onClick={() => handleChangeImage(1)}
-        >
-          &gt;
-        </button>
-      </div>
+     
     </div>
   );
 }
 
-export default Projects;
+export default GalleryProjects;
 
 const BgGradientColor = [
   "bg-gradient-to-br from-lime-500 to-green-500",
